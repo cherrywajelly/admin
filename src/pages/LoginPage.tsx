@@ -1,25 +1,15 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '../components/Button';
 import SocialLoginButton from '../components/SocialLoginButton';
+import Context from '../contexts/Context';
 
 const LoginPage = (): ReactNode => {
   const [isCreatorClicked, setIsCreatorClicked] = useState<boolean>(false);
   const [isAdminClicked, setIsAdminClicked] = useState<boolean>(false);
-  const [role, setRole] = useState<string>('');
+  const { role, setRole } = useContext(Context);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    printState();
-  }, [isCreatorClicked, isAdminClicked, role]);
-
-  const printState = (): void => {
-    console.log(`isCreatorClicked: ${isCreatorClicked}`);
-    console.log(`isAdminClicked: ${isAdminClicked}`);
-    console.log(`role: ${role}`);
-    console.log('--------------------------------');
-  };
 
   const handleCreatorClick = (): void => {
     setIsAdminClicked(false);
@@ -47,14 +37,12 @@ const LoginPage = (): ReactNode => {
 
   const handleKakaoLogin = (): void => {
     if (role) {
-      navigate('/', { state: { role } });
+      navigate('/');
     }
   };
 
   const handleGoogleLogin = (): void => {
-    if (role) {
-      navigate('/login', { state: { role } });
-    }
+    navigate('/signup');
   };
 
   return (
