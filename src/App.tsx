@@ -1,6 +1,7 @@
+import { ReactNode } from 'react';
 import Router from './router/Router.tsx';
 
-function App() {
+function App(): ReactNode {
   return (
     <>
       <Router />
