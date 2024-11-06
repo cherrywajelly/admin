@@ -1,8 +1,10 @@
 import { ReactNode, useState } from 'react';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
+import { useNavigate } from 'react-router-dom';
 
 const SignupPage = (): ReactNode => {
+  const navigate = useNavigate();
   const [nickname, setNickname] = useState<string>('');
   const [accountInfo, setAccountInfo] = useState<string>('');
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
@@ -11,6 +13,10 @@ const SignupPage = (): ReactNode => {
     e.preventDefault();
     // 회원가입 로직을 여기에 추가하세요.
     console.log('회원가입 정보:', { nickname, accountInfo, profilePicture });
+  };
+
+  const handleLoginClick = (): void => {
+    navigate('/login');
   };
 
   return (
@@ -61,7 +67,7 @@ const SignupPage = (): ReactNode => {
         </div>
         <Button text="회원가입" />
       </form>
-      <Button text="로그인" />
+      <Button text="로그인" onClick={handleLoginClick} />
     </div>
   );
 };
