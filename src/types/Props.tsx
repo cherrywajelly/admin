@@ -6,4 +6,13 @@ type ButtonProps = {
   isClicked?: boolean;
 };
 
-export type { ButtonProps };
+type TextInputProps = {
+  text: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean;
+  textStyles?: string;
+  inputStyles?: string;
+};
+
+export type { ButtonProps, TextInputProps };
