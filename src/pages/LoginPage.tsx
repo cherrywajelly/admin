@@ -56,13 +56,13 @@ const LoginPage = (): ReactNode => {
         </div>
         <SocialLoginButton
           styles="bg-[#FEE500] border-none"
-          icon="/public/images/kakao.svg"
+          icon="/images/kakao.svg"
           text="카카오로 시작하기"
           onClick={handleKakaoLogin}
         />
         <SocialLoginButton
           styles="bg-white border border-gray-300"
-          icon="/public/images/google.svg"
+          icon="/images/google.svg"
           text="구글 계정으로 시작하기"
           onClick={handleGoogleLogin}
         />

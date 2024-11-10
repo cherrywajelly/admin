@@ -1,18 +1,28 @@
 import { ReactNode, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { BankName } from '../types/Enums';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
-import { useNavigate } from 'react-router-dom';
+import ProfileInput from '../components/ProfileInput';
+import BankInput from '../components/BankInput';
 
 const SignupPage = (): ReactNode => {
   const navigate = useNavigate();
   const [nickname, setNickname] = useState<string>('');
-  const [accountInfo, setAccountInfo] = useState<string>('');
+  const [bankName, setBankName] = useState<BankName | string>('');
+  const [accountNumber, setAccountNumber] = useState<string>('');
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
 
-  const handleSubmit = (e: React.FormEvent): void => {
-    e.preventDefault();
-    // 회원가입 로직을 여기에 추가하세요.
-    console.log('회원가입 정보:', { nickname, accountInfo, profilePicture });
+  const handleSignupClick = (): void => {
+    if ([nickname, bankName, accountNumber, profilePicture].some((field: string | BankName | File | null | undefined) => !field)) {
+      alert('모든 필드를 입력해야 합니다.');
+      return;
+    }
+
+    console.log('nickname: ', nickname);
+    console.log('bankName: ', bankName);
+    console.log('accountNumber: ', accountNumber);
+    console.log('profilePicture: ', profilePicture);
   };
 
   const handleLoginClick = (): void => {
@@ -20,54 +30,40 @@ const SignupPage = (): ReactNode => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen space-y-4 w-1/3 mx-auto">
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-4 mx-auto">
       <h1 className="text-4xl font-bold">회원가입</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4 w-full">
-        <TextInput
-          text="닉네임"
-          value={nickname}
-          onChange={(e): void => setNickname(e.target.value)}
-          required
+      <div className="flex flex-row space-x-4 w-1/2">
+        <ProfileInput
+          profilePicture={profilePicture}
+          setProfilePicture={setProfilePicture}
+          styles="!w-1/3"
         />
-        <TextInput
-          text="계좌 정보"
-          value={accountInfo}
-          onChange={(e): void => setAccountInfo(e.target.value)}
-          required
-        />
-        <div className="relative w-full flex flex-col items-center">
-          <div className="w-32 h-32 rounded-full overflow-hidden border border-gray-300 flex items-center justify-center">
-            {profilePicture ? (
-              <img
-                src={URL.createObjectURL(profilePicture)}
-                alt="Profile Preview"
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              <img
-                src="/public/images/empty.png"
-                alt="Profile Preview"
-                className="w-3/4 h-3/4 object-cover"
-              />
-            )}
-            <label className="absolute top-1/2 left-1/2 transform translate-x-full translate-y-full w-8 h-8 rounded-full bg-white border border-gray-300 flex items-center justify-center cursor-pointer">
-              <input
-                type="file"
-                onChange={(e): void => {
-                  if (e.target.files) {
-                    setProfilePicture(e.target.files[0]);
-                  }
-                }}
-                className="hidden"
-                required
-              />
-              <img src="/public/images/share.svg" alt="Upload Icon" className="w-4 h-4" />
-            </label>
-          </div>
+        <div className="flex flex-col justify-around w-2/3">
+          <TextInput
+            label="닉네임"
+            value={nickname}
+            onChange={(e): void => setNickname(e.target.value)}
+            textStyles="!w-1/6"
+            inputStyles="!w-5/6"
+          />
+          <BankInput
+            label="계좌 정보"
+            bankName={bankName}
+            accountNumber={accountNumber}
+            onBankNameChange={(e): void => setBankName(e.target.value as BankName)}
+            onAccountNumberChange={(e): void => setAccountNumber(e.target.value)}
+            textStyles="!w-1/6"
+            bankNameInputStyles="!w-2/6 h-[42px]"
+            accountNumberInputStyles="!w-3/6"
+          />
         </div>
-        <Button text="회원가입" />
-      </form>
-      <Button text="로그인" onClick={handleLoginClick} />
+      </div>
+      <div className="w-1/3">
+        <Button text="회원가입" onClick={handleSignupClick} />
+      </div>
+      <div className="w-1/3">
+        <Button text="로그인" onClick={handleLoginClick} />
+      </div>
     </div>
   );
 };
