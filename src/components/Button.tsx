@@ -7,7 +7,7 @@ const Button = (props: ButtonProps): ReactNode => {
   return (
     <>
       <button
-        className={`flex flex-row items-center justify-center py-2 px-4 rounded-lg w-full ${isClicked ? 'bg-[#D0BCFF]' : 'bg-[#EADDFF]'}`}
+        className={`flex flex-row items-center justify-center py-2 px-4 rounded-lg w-full ${isClicked ? 'bg-gray-80 text-white' : 'bg-white border border-gray-80'}`}
         onClick={onClick}
       >
         {text}
