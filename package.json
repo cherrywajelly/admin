@@ -11,6 +11,10 @@
     "cz": "./node_modules/cz-customizable/standalone.js"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.6",
+    "@mui/material": "^6.1.6",
     "autoprefixer": "^10.4.20",
     "cz-customizable": "^7.2.1",
     "postcss": "^8.4.47",

@@ -1,6 +1,7 @@
+import { ReactNode } from 'react';
 import { ButtonProps } from '../types/Props';
 
-const SocialLoginButton = (props: ButtonProps) => {
+const SocialLoginButton = (props: ButtonProps): ReactNode => {
   const { styles, icon, text, onClick } = props;
 
   return (
