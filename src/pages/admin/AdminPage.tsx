@@ -24,7 +24,7 @@ const AdminPage = (): ReactNode => {
   return (
     <div className="flex flex-row">
       <Sidebar setSelectedMenu={setSelectedMenu} />
-      <div className="ml-4">{renderContent()}</div>
+      <div>{renderContent()}</div>
     </div>
   );
 };

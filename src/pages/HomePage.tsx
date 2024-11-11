@@ -4,6 +4,7 @@ import Context from '../contexts/Context';
 import Header from '../components/Header';
 import CreatorPage from './creator/CreatorPage.tsx';
 import AdminPage from './admin/AdminPage.tsx';
+import { Divider } from '@mui/material';
 
 const HomePage = (): ReactNode => {
   const { role } = useContext(Context) as { role: keyof typeof pageType };
@@ -23,6 +24,7 @@ const HomePage = (): ReactNode => {
   return (
     <>
       <Header />
+      <Divider sx={{ width: '100%', backgroundColor: 'black' }} />
       {pageType[role]}
     </>
   );

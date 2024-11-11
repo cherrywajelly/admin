@@ -28,4 +28,12 @@ type BankInputProps = {
   accountNumberInputStyles?: string;
 };
 
-export type { ButtonProps, TextInputProps, BankInputProps };
+
+type ListElemProps = {
+  title: string;
+  subtitle: string;
+  image: string;
+  divider?: boolean;
+}
+
+export type { ButtonProps, TextInputProps, BankInputProps, ListElemProps };
