@@ -1,44 +1,48 @@
-import { ReactNode, useState, useContext } from 'react';
+import { ReactNode, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '../components/Button';
 import SocialLoginButton from '../components/SocialLoginButton';
-import Context from '../contexts/Context';
 
 const LoginPage = (): ReactNode => {
   const [isCreatorClicked, setIsCreatorClicked] = useState<boolean>(false);
   const [isAdminClicked, setIsAdminClicked] = useState<boolean>(false);
-  const { role, setRole } = useContext(Context);
   const navigate = useNavigate();
 
   const handleCreatorClick = (): void => {
     setIsAdminClicked(false);
     if (isCreatorClicked) {
       setIsCreatorClicked(false);
-      setRole('');
+      localStorage.removeItem('role');
       return;
     }
 
     setIsCreatorClicked(true);
-    setRole('creator');
+    localStorage.setItem('role', 'creator');
   };
 
   const handleAdminClick = (): void => {
     setIsCreatorClicked(false);
     if (isAdminClicked) {
       setIsAdminClicked(false);
-      setRole('');
+      localStorage.removeItem('role');
       return;
     }
 
     setIsAdminClicked(true);
-    setRole('admin');
+    localStorage.setItem('role', 'admin');
   };
 
   const handleKakaoLogin = (): void => {
-    if (role) {
-      navigate('/');
+    const role = localStorage.getItem('role');
+
+    console.log(role);
+    if (!role) {
+      navigate('/login');
+      return;
     }
+
+    navigate(`/${role}`);
   };
 
   const handleGoogleLogin = (): void => {

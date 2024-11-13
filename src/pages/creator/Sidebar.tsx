@@ -1,18 +1,14 @@
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
+import { ContextProps } from '../../types/Props.tsx';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import Context from '../../contexts/Context.tsx';
 
-type SidebarProps = {
-  setSelectedMenu: (menu: string) => void;
-};
-
-const Sidebar = (props: SidebarProps): ReactNode => {
-  const { setSelectedMenu } = props;
+const Sidebar = (): ReactNode => {
+  const { setSelectedMenu } = useContext(Context) as ContextProps;
 
   return (
     <Box className="bg-[#4E4540] w-48 h-screen p-4 flex flex-col justify-between">

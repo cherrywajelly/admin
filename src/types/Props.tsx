@@ -1,5 +1,5 @@
 import { SelectChangeEvent } from "@mui/material";
-import { BankName } from "./Enums";
+import { BankName, ApprovalState } from "./Enums";
 
 type ButtonProps = {
   styles?: string;
@@ -28,12 +28,32 @@ type BankInputProps = {
   accountNumberInputStyles?: string;
 };
 
-
 type ListElemProps = {
+  id: number;
   title: string;
   subtitle: string;
   image: string;
   divider?: boolean;
+  state?: ApprovalState;
 }
 
-export type { ButtonProps, TextInputProps, BankInputProps, ListElemProps };
+type IconDetailProps = {
+  id: number;
+  title: string;
+  creator: string;
+  headImage: string;
+  description: string;
+  approvalState: ApprovalState;
+  iconImages: string[];
+}
+
+type ContextProps = {
+  selectedMenu: string;
+  setSelectedMenu: (selectedMenu: string) => void;
+};
+
+type IconsSectionProps = {
+  iconImages: string[];
+};
+
+export type { ButtonProps, TextInputProps, BankInputProps, ListElemProps, ContextProps, IconDetailProps, IconsSectionProps };
