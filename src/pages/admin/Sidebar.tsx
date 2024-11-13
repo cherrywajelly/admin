@@ -1,4 +1,6 @@
-import { ReactNode } from 'react';
+import { ReactNode, useContext } from 'react';
+import { ContextProps } from '../../types/Props.tsx';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -6,35 +8,53 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import Context from '../../contexts/Context.tsx';
+  
+const Sidebar = (): ReactNode => {
+  const { setSelectedMenu } = useContext(Context) as ContextProps;
+  const navigate = useNavigate();
 
-type SidebarProps = {
-  setSelectedMenu: (menu: string) => void;
-};
+  const handleIconListClick = (): void => {
+    setSelectedMenu('아이콘 목록');
+    navigate('/admin/icons');
+  };
 
-const Sidebar = (props: SidebarProps): ReactNode => {
-  const { setSelectedMenu } = props;
+  const handleCreatorListClick = (): void => {
+    setSelectedMenu('제작자 목록');
+    navigate('/admin/creators');
+  };
+
+  const handleSettlementClick = (): void => {
+    setSelectedMenu('정산');
+    navigate('/admin/settlement');
+  };
+
+  const handleMyPageClick = (): void => {
+    setSelectedMenu('마이페이지');
+    navigate('/admin/mypage');
+  };
 
   return (
-    <Box className="bg-[#4E4540] w-48 h-screen p-4 flex flex-col justify-between">
+    <Box className="bg-gray-80 w-48 h-auto p-4 flex flex-col justify-between">
       <nav aria-label="sidebar navigation">
         <List className="!pt-0">
           <ListItem disablePadding>
-            <ListItemButton onClick={() => setSelectedMenu('아이콘 목록')}>
+            <ListItemButton onClick={handleIconListClick}>
               <ListItemText primary="아이콘 목록" className="text-white" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => setSelectedMenu('제작자 목록')}>
+            <ListItemButton onClick={handleCreatorListClick}>
               <ListItemText primary="제작자 목록" className="text-white" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => setSelectedMenu('정산')}>
+              <ListItemButton onClick={handleSettlementClick}>
               <ListItemText primary="정산" className="text-white" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={() => setSelectedMenu('마이페이지')}>
+            <ListItemButton onClick={handleMyPageClick}>
               <ListItemText primary="마이페이지" className="text-white" />
             </ListItemButton>
           </ListItem>
