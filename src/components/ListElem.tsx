@@ -1,20 +1,9 @@
-import { ReactNode, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from './Button';
-import { ContextProps, ListElemProps } from '../types/Props';
+import { ReactNode } from 'react';
+import { ListElemProps } from '../types/Props';
 import { Divider } from '@mui/material';
-import Context from '../contexts/Context';
 
 const ListElem = (props: ListElemProps): ReactNode => {
-  const { id, title, subtitle, image, state, divider } = props;
-  const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
-
-  const handleButtonClick = () => {
-    console.log(id);
-    setSelectedMenu('아이콘 상세');
-    navigate(`/admin/icons/${id}`);
-  };
+  const { id, title, subtitle, image, state, divider, buttons } = props;
 
   return (
     <>
@@ -27,8 +16,11 @@ const ListElem = (props: ListElemProps): ReactNode => {
         </div>
         </div>
         <div className="flex space-x-[10px] ml-auto">
-          <Button text={state as string} styles="!bg-secondary-main !text-white !w-40 border-none" />
-          <Button text="상세 보기" styles="!bg-secondary-main !text-white !w-40 border-none" onClick={handleButtonClick} />
+          {buttons?.map((button: ReactNode, idx: number) => (
+            <div key={idx}>
+              {button}
+            </div>
+          ))}
         </div>
       </div>
       {divider && <Divider sx={{ width: '100%', backgroundColor: 'gray-80' }} />}

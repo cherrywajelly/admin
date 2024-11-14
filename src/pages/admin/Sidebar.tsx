@@ -13,7 +13,7 @@ import Context from '../../contexts/Context.tsx';
 const Sidebar = (): ReactNode => {
   const { setSelectedMenu } = useContext(Context) as ContextProps;
   const navigate = useNavigate();
-
+  
   const handleIconListClick = (): void => {
     setSelectedMenu('아이콘 목록');
     navigate('/admin/icons');
@@ -35,7 +35,7 @@ const Sidebar = (): ReactNode => {
   };
 
   return (
-    <Box className="bg-gray-80 w-48 h-auto p-4 flex flex-col justify-between">
+    <Box className={`bg-gray-80 w-48 p-4 flex flex-col justify-between h-dvh`}>
       <nav aria-label="sidebar navigation">
         <List className="!pt-0">
           <ListItem disablePadding>

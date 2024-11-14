@@ -7,6 +7,7 @@ import MyPage from './MyPage.tsx';
 import Settlement from './Settlement.tsx';
 import IconDetail from './IconDetail.tsx';
 import Context from '../../contexts/Context.tsx';
+import CreatorDetail from './CreatorDetail.tsx';
   
 const AdminPage = (): ReactNode => {
   const { selectedMenu } = useContext(Context) as ContextProps;
@@ -19,6 +20,8 @@ const AdminPage = (): ReactNode => {
         return <IconDetail />;
       case '제작자 목록':
         return <CreatorList />;
+      case '제작자 상세':
+        return <CreatorDetail />;
       case '정산':
         return <Settlement />;
       case '마이페이지':

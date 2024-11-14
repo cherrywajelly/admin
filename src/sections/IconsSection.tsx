@@ -12,7 +12,7 @@ const IconsSection = (props: IconsSectionProps): ReactNode => {
       <div className="grid grid-cols-3 gap-4 w-full">
         {iconImages.map((image: string, index: number) => (
           <div key={index} className="flex flex-col items-center w-fit">
-            <img src={image} alt={`Icon ${index + 1}`} className="w-32 h-32 rounded-lg" />
+            <img src={image} alt={`Icon ${index + 1}`} className="w-32 h-32" />
           </div>
         ))}
       </div>
