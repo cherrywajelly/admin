@@ -1,6 +1,6 @@
-import { SelectChangeEvent } from "@mui/material";
-import { BankName, ApprovalState } from "./Enums";
-import { ReactNode } from "react";
+import { SelectChangeEvent } from '@mui/material';
+import { BankName, ApprovalState } from './Enums';
+import { ReactNode } from 'react';
 
 type ButtonProps = {
   styles?: string;
@@ -30,14 +30,14 @@ type BankInputProps = {
 };
 
 type ListElemProps = {
-  id: number;
+  id?: number;
   title: string;
   subtitle?: string;
   image: string;
   divider?: boolean;
   state?: ApprovalState;
   buttons: ReactNode[];
-}
+};
 
 type IconDetailProps = {
   id: number;
@@ -47,7 +47,7 @@ type IconDetailProps = {
   description: string;
   approvalState: ApprovalState;
   iconImages: string[];
-}
+};
 
 type ContextProps = {
   selectedMenu: string;
@@ -68,7 +68,7 @@ type IconGroup = {
   title: string;
   iconImages: string[];
   revenue: number;
-}
+};
 
 type CreatorDetailProps = {
   id: number;
@@ -77,21 +77,30 @@ type CreatorDetailProps = {
   madeIconNumber: number;
   totalRevenue: number;
   iconGroups: IconGroup[];
-}
+};
 
 type IconGroupsSectionProps = {
   iconGroups: IconGroup[];
-}
+};
 
 type UserInfo = {
   nickname: string;
   bankName: BankName | string;
   accountNumber: string;
   profilePicture: File | null;
-}
+};
 
-export type { 
-  ButtonProps, TextInputProps, BankInputProps, ListElemProps, ContextProps, 
-  IconDetailProps, IconsSectionProps, IconGroup, CreatorSectionProps, CreatorDetailProps,
-  IconGroupsSectionProps, UserInfo
+export type {
+  ButtonProps,
+  TextInputProps,
+  BankInputProps,
+  ListElemProps,
+  ContextProps,
+  IconDetailProps,
+  IconsSectionProps,
+  IconGroup,
+  CreatorSectionProps,
+  CreatorDetailProps,
+  IconGroupsSectionProps,
+  UserInfo,
 };

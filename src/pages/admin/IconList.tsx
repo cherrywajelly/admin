@@ -68,7 +68,6 @@ const IconList = (): ReactNode => {
       {iconList.map((icon: ListElemProps, idx: number) => (
         <ListElem
           key={idx}
-          id={icon.id}
           title={icon.title}
           subtitle={icon.subtitle}
           image={icon.image}
@@ -82,7 +81,7 @@ const IconList = (): ReactNode => {
             <Button
               text="상세 보기"
               styles="!bg-secondary-main !text-white !w-40 border-none"
-              onClick={(): void => handleButtonClick(icon.id)}
+              onClick={(): void => handleButtonClick(icon.id ?? 0)}
             />,
           ]}
         />

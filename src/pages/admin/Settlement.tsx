@@ -4,7 +4,9 @@ import Button from '../../components/Button';
 import { Tab, Tabs } from '@mui/material';
 
 const Settlement = (): ReactNode => {
-  const [monthlySettlements, setMonthlySettlements] = useState<{ month: string; amount: number; creators: string[] }[]>([]);
+  const [monthlySettlements, setMonthlySettlements] = useState<
+    { month: string; amount: number; creators: string[] }[]
+  >([]);
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -18,7 +20,8 @@ const Settlement = (): ReactNode => {
     ]);
   }, []);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (e: React.SyntheticEvent, newValue: number) => {
+    e.preventDefault();
     setValue(newValue);
   };
 
@@ -43,7 +46,11 @@ const Settlement = (): ReactNode => {
               subtitle={`정산 금액: ${settlement.amount.toLocaleString()}원`}
               image={'/images/empty.png'}
               buttons={[
-                <Button text={`${settlement.amount.toLocaleString()}원`} onClick={handleSettlement} styles="!bg-secondary-main !text-white !w-40 border-none" />
+                <Button
+                  text={`${settlement.amount.toLocaleString()}원`}
+                  onClick={handleSettlement}
+                  styles="!bg-secondary-main !text-white !w-40 border-none"
+                />,
               ]}
               divider={creatorIndex < settlement.creators.length - 1}
             />
