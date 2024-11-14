@@ -8,11 +8,11 @@ import Settlement from './Settlement.tsx';
 import IconDetail from './IconDetail.tsx';
 import Context from '../../contexts/Context.tsx';
 import CreatorDetail from './CreatorDetail.tsx';
-  
+
 const AdminPage = (): ReactNode => {
   const { selectedMenu } = useContext(Context) as ContextProps;
 
-  const renderContent = () => {
+  const renderContent = (): ReactNode => {
     switch (selectedMenu) {
       case '아이콘 목록':
         return <IconList />;
@@ -31,7 +31,7 @@ const AdminPage = (): ReactNode => {
 
   return (
     <div className="flex flex-row">
-      <Sidebar/>
+      <Sidebar />
       <div className="w-full">{renderContent()}</div>
     </div>
   );
