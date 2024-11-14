@@ -30,7 +30,6 @@ const CreatorList = (): ReactNode => {
       {creatorList.map((creator: ListElemProps, idx: number) => (
         <ListElem
           key={idx}
-          id={creator.id}
           title={creator.title}
           image={creator.image}
           divider={idx < creatorList.length - 1}
@@ -38,7 +37,7 @@ const CreatorList = (): ReactNode => {
             <Button
               text="상세 보기"
               styles="!bg-secondary-main !text-white !w-40 border-none"
-              onClick={() => handleButtonClick(creator.id)}
+              onClick={() => handleButtonClick(creator.id ?? 0)}
             />,
           ]}
         />
