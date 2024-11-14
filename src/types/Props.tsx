@@ -83,8 +83,15 @@ type IconGroupsSectionProps = {
   iconGroups: IconGroup[];
 }
 
+type UserInfo = {
+  nickname: string;
+  bankName: BankName | string;
+  accountNumber: string;
+  profilePicture: File | null;
+}
+
 export type { 
   ButtonProps, TextInputProps, BankInputProps, ListElemProps, ContextProps, 
   IconDetailProps, IconsSectionProps, IconGroup, CreatorSectionProps, CreatorDetailProps,
-  IconGroupsSectionProps
+  IconGroupsSectionProps, UserInfo
 };
