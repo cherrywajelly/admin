@@ -10,13 +10,13 @@ const CreatorList = (): ReactNode => {
   const navigate = useNavigate();
   const { setSelectedMenu } = useContext(Context) as ContextProps;
 
-  const handleButtonClick = (id: number) => {
+  const handleButtonClick = (id: number): void => {
     console.log(id);
     setSelectedMenu('제작자 상세');
     navigate(`/admin/creators/${id}`);
   };
 
-  useEffect(() => {
+  useEffect((): void => {
     setCreatorList([
       { id: 0, title: 'Cherry', image: '/images/empty.png', buttons: [] },
       { id: 1, title: 'Wade', image: '/images/empty.png', buttons: [] },
@@ -28,14 +28,18 @@ const CreatorList = (): ReactNode => {
   return (
     <div className="flex flex-col items-center justify-center w-full">
       {creatorList.map((creator: ListElemProps, idx: number) => (
-        <ListElem 
-          key={idx} 
+        <ListElem
+          key={idx}
           id={creator.id}
-          title={creator.title} 
-          image={creator.image} 
-          divider={idx < creatorList.length - 1} 
+          title={creator.title}
+          image={creator.image}
+          divider={idx < creatorList.length - 1}
           buttons={[
-            <Button text="상세 보기" styles="!bg-secondary-main !text-white !w-40 border-none" onClick={() => handleButtonClick(creator.id)} />
+            <Button
+              text="상세 보기"
+              styles="!bg-secondary-main !text-white !w-40 border-none"
+              onClick={() => handleButtonClick(creator.id)}
+            />,
           ]}
         />
       ))}

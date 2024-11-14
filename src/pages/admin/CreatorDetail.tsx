@@ -36,7 +36,7 @@ const CreatorDetail = (): ReactNode => {
             '/images/empty.png',
             '/images/empty.png',
           ],
-          revenue: 100000
+          revenue: 100000,
         },
       ],
     });
@@ -50,8 +50,11 @@ const CreatorDetail = (): ReactNode => {
           <h1 className="text-2xl font-bold">{creatorDetail?.title}</h1>
         </div>
       </div>
-      <CreatorSection madeIconNumber={creatorDetail?.madeIconNumber ?? 0} totalRevenue={creatorDetail?.totalRevenue ?? 0} />
-      <div className='mb-8'/>
+      <CreatorSection
+        madeIconNumber={creatorDetail?.madeIconNumber ?? 0}
+        totalRevenue={creatorDetail?.totalRevenue ?? 0}
+      />
+      <div className="mb-8" />
       <IconGroupsSection iconGroups={creatorDetail?.iconGroups ?? []} />
     </div>
   );

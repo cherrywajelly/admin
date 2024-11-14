@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { ApprovalState } from '../../types/Enums';
 import { IconDetailProps } from '../../types/Props';
-import { Select, MenuItem } from '@mui/material';
+import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import Button from '../../components/Button';
 import IconsSection from '../../sections/IconsSection';
 
@@ -9,7 +9,7 @@ const IconDetail = (): ReactNode => {
   const [approvalState, setApprovalState] = useState<ApprovalState>(ApprovalState.PENDING);
   const [iconDetail, setIconDetail] = useState<IconDetailProps>();
 
-  useEffect(() => {
+  useEffect((): void => {
     setIconDetail({
       id: 0,
       title: '노노노',
@@ -40,7 +40,9 @@ const IconDetail = (): ReactNode => {
         <div className="flex flex-row justify-end w-full mb-4">
           <Select
             value={approvalState}
-            onChange={(e): void => setApprovalState(e.target.value as ApprovalState)}
+            onChange={(e: SelectChangeEvent): void =>
+              setApprovalState(e.target.value as ApprovalState)
+            }
             className={`border-gray-300 !rounded-lg`}
           >
             {Object.values(ApprovalState).map((state: ApprovalState) => (

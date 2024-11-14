@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from '../pages/HomePage.tsx';
 import SignupPage from '../pages/SignupPage.tsx';
@@ -12,7 +13,7 @@ import AdminMyPage from '../pages/admin/MyPage.tsx';
 import CreatorPage from '../pages/creator/CreatorPage.tsx';
 import CreatorIconList from '../pages/creator/IconList.tsx';
 
-const Router = () => {
+const Router = (): ReactNode => {
   return (
     <BrowserRouter>
       <Routes>

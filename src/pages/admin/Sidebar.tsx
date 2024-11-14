@@ -9,11 +9,11 @@ import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Context from '../../contexts/Context.tsx';
-  
+
 const Sidebar = (): ReactNode => {
   const { setSelectedMenu } = useContext(Context) as ContextProps;
   const navigate = useNavigate();
-  
+
   const handleIconListClick = (): void => {
     setSelectedMenu('아이콘 목록');
     navigate('/admin/icons');
@@ -49,7 +49,7 @@ const Sidebar = (): ReactNode => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-              <ListItemButton onClick={handleSettlementClick}>
+            <ListItemButton onClick={handleSettlementClick}>
               <ListItemText primary="정산" className="text-white" />
             </ListItemButton>
           </ListItem>
@@ -60,13 +60,23 @@ const Sidebar = (): ReactNode => {
           </ListItem>
           <Divider sx={{ backgroundColor: 'white' }} />
           <ListItem disablePadding>
-            <ListItemButton component="a" href="https://prometheus.io" target="_blank" rel="noopener noreferrer">
+            <ListItemButton
+              component="a"
+              href="https://prometheus.io"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <ListItemText primary="Prometheus" className="text-white" />
               <OpenInNewIcon className="ml-2 w-2 h-2 text-white" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="https://grafana.com/oss/loki/" target="_blank" rel="noopener noreferrer">
+            <ListItemButton
+              component="a"
+              href="https://grafana.com/oss/loki/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <ListItemText primary="Loki" className="text-white" />
               <OpenInNewIcon className="ml-2 w-5 h-5 text-white" />
             </ListItemButton>
