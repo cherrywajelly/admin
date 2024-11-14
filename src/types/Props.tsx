@@ -1,5 +1,6 @@
 import { SelectChangeEvent } from "@mui/material";
 import { BankName, ApprovalState } from "./Enums";
+import { ReactNode } from "react";
 
 type ButtonProps = {
   styles?: string;
@@ -31,10 +32,11 @@ type BankInputProps = {
 type ListElemProps = {
   id: number;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   image: string;
   divider?: boolean;
   state?: ApprovalState;
+  buttons: ReactNode[];
 }
 
 type IconDetailProps = {
@@ -56,4 +58,33 @@ type IconsSectionProps = {
   iconImages: string[];
 };
 
-export type { ButtonProps, TextInputProps, BankInputProps, ListElemProps, ContextProps, IconDetailProps, IconsSectionProps };
+type CreatorSectionProps = {
+  madeIconNumber: number;
+  totalRevenue: number;
+};
+
+type IconGroup = {
+  id: number;
+  title: string;
+  iconImages: string[];
+  revenue: number;
+}
+
+type CreatorDetailProps = {
+  id: number;
+  title: string;
+  headImage: string;
+  madeIconNumber: number;
+  totalRevenue: number;
+  iconGroups: IconGroup[];
+}
+
+type IconGroupsSectionProps = {
+  iconGroups: IconGroup[];
+}
+
+export type { 
+  ButtonProps, TextInputProps, BankInputProps, ListElemProps, ContextProps, 
+  IconDetailProps, IconsSectionProps, IconGroup, CreatorSectionProps, CreatorDetailProps,
+  IconGroupsSectionProps
+};
