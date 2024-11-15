@@ -3,8 +3,9 @@ import { ContextProps } from '../../types/Props.tsx';
 import Sidebar from './Sidebar.tsx';
 import IconList from './IconList.tsx';
 import IconDetail from './IconDetail.tsx';
-import MyPage from './MyPage.tsx';
+import IconRegister from './IconRegister.tsx';
 import Settlement from './Settlement.tsx';
+import MyPage from './MyPage.tsx';
 import Context from '../../contexts/Context.tsx';
 
 const AdminPage = (): ReactNode => {
@@ -17,7 +18,7 @@ const AdminPage = (): ReactNode => {
       case '아이콘 상세':
         return <IconDetail />;
       case '아이콘 등록':
-        return <></>;
+        return <IconRegister />;
       case '정산':
         return <Settlement />;
       case '마이페이지':
