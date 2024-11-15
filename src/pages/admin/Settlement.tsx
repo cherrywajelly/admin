@@ -5,24 +5,30 @@ import { Tab, Tabs } from '@mui/material';
 
 const Settlement = (): ReactNode => {
   const [monthlySettlements, setMonthlySettlements] = useState<
-    { month: string; amount: number; creators: string[] }[]
+    { year: number; month: number; amount: number; creators: string[] }[]
   >([]);
-  const [value, setValue] = useState(0);
+  const [year, setYear] = useState<number>(0);
+  const [month, setMonth] = useState<number>(0);
 
   useEffect(() => {
     // 예시 데이터: 실제 데이터는 API 호출 등을 통해 가져올 수 있습니다.
     setMonthlySettlements([
-      { month: '1월', amount: 100000, creators: ['디자이너무빙'] },
-      { month: '2월', amount: 150000, creators: ['디자이너무빙'] },
-      { month: '6월', amount: 200000, creators: ['디자이너무빙'] },
-      { month: '7월', amount: 250000, creators: ['디자이너무빙', '다른제작자'] },
-      { month: '10월', amount: 300000, creators: ['디자이너무빙'] },
+      { year: 2023, month: 7, amount: 100000, creators: ['디자이너무빙'] },
+      { year: 2023, month: 10, amount: 150000, creators: ['디자이너무빙'] },
+      { year: 2023, month: 12, amount: 200000, creators: ['디자이너무빙'] },
+      { year: 2024, month: 2, amount: 250000, creators: ['디자이너무빙', '다른제작자'] },
+      { year: 2024, month: 6, amount: 300000, creators: ['디자이너무빙'] },
     ]);
   }, []);
 
-  const handleChange = (e: React.SyntheticEvent, newValue: number) => {
-    e.preventDefault();
-    setValue(newValue);
+  const handleYearChange = (_: React.SyntheticEvent, newValue: number) => {
+    console.log(`year: ${newValue}`);
+    setYear(newValue);
+  };
+
+  const handleMonthChange = (_: React.SyntheticEvent, newValue: number) => {
+    console.log(`month: ${newValue}`);
+    setMonth(newValue);
   };
 
   const handleSettlement = () => {
@@ -31,13 +37,18 @@ const Settlement = (): ReactNode => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      <Tabs value={value} onChange={handleChange} aria-label="monthly settlements tabs">
-        {monthlySettlements.map((settlement, index) => (
-          <Tab key={index} label={settlement.month} />
+      <Tabs value={year} onChange={handleYearChange} aria-label="year settlements tabs">
+        {Array.from({ length: 2 }, (_, i) => i).map((year) => (
+          <Tab key={year} label={`${year + 2023}년`} />
+        ))}
+      </Tabs>
+      <Tabs value={month} onChange={handleMonthChange} aria-label="month settlements tabs">
+        {Array.from({ length: 12 }, (_, i) => i).map((month) => (
+          <Tab key={month} label={`${month + 1}월`} />
         ))}
       </Tabs>
       {monthlySettlements.map((settlement, index) => (
-        <div key={index} hidden={value !== index} className="w-full">
+        <div key={index} hidden={year !== settlement.year - 2023 || month !== settlement.month - 1} className="w-full">
           {settlement.creators.map((creator, creatorIndex) => (
             <ListElem
               key={creatorIndex}

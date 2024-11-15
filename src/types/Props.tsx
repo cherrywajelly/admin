@@ -2,7 +2,7 @@ import { SelectChangeEvent } from '@mui/material';
 import { BankName, ApprovalState } from './Enums';
 import { ReactNode } from 'react';
 
-type ButtonProps = {
+export type ButtonProps = {
   styles?: string;
   icon?: string;
   text: string;
@@ -10,7 +10,7 @@ type ButtonProps = {
   isClicked?: boolean;
 };
 
-type TextInputProps = {
+export type TextInputProps = {
   label: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -18,7 +18,7 @@ type TextInputProps = {
   inputStyles?: string;
 };
 
-type BankInputProps = {
+export type BankInputProps = {
   label: string;
   bankName?: BankName | string;
   accountNumber?: string;
@@ -29,7 +29,7 @@ type BankInputProps = {
   accountNumberInputStyles?: string;
 };
 
-type ListElemProps = {
+export type ListElemProps = {
   id?: number;
   title: string;
   subtitle?: string;
@@ -39,7 +39,7 @@ type ListElemProps = {
   buttons: ReactNode[];
 };
 
-type IconDetailProps = {
+export type IconDetailProps = {
   id: number;
   title: string;
   creator: string;
@@ -47,30 +47,32 @@ type IconDetailProps = {
   description: string;
   approvalState: ApprovalState;
   iconImages: string[];
+  sales?: number;
+  revenue?: number;
 };
 
-type ContextProps = {
+export type ContextProps = {
   selectedMenu: string;
   setSelectedMenu: (selectedMenu: string) => void;
 };
 
-type IconsSectionProps = {
+export type IconsSectionProps = {
   iconImages: string[];
 };
 
-type CreatorSectionProps = {
+export type CreatorSectionProps = {
   madeIconNumber: number;
   totalRevenue: number;
 };
 
-type IconGroup = {
+export type IconGroup = {
   id: number;
   title: string;
   iconImages: string[];
   revenue: number;
 };
 
-type CreatorDetailProps = {
+export type CreatorDetailProps = {
   id: number;
   title: string;
   headImage: string;
@@ -79,28 +81,18 @@ type CreatorDetailProps = {
   iconGroups: IconGroup[];
 };
 
-type IconGroupsSectionProps = {
+export type IconGroupsSectionProps = {
   iconGroups: IconGroup[];
 };
 
-type UserInfo = {
+export type UserInfo = {
   nickname: string;
   bankName: BankName | string;
   accountNumber: string;
   profilePicture: File | null;
 };
 
-export type {
-  ButtonProps,
-  TextInputProps,
-  BankInputProps,
-  ListElemProps,
-  ContextProps,
-  IconDetailProps,
-  IconsSectionProps,
-  IconGroup,
-  CreatorSectionProps,
-  CreatorDetailProps,
-  IconGroupsSectionProps,
-  UserInfo,
+export type IconInfoSectionProps = {
+  sales: number;
+  revenue: number;
 };
