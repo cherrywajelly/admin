@@ -9,12 +9,12 @@ const IconGroupsSection = (props: IconGroupsSectionProps): ReactNode => {
     <div>
       <h2 className="text-xl font-bold mb-2">ICONS</h2>
       <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
-      <div className="grid grid-cols-3 gap-4 w-full">
+      <div className="flex flex-col w-full">
         {iconGroups.map((iconGroup: IconGroup, index1: number) => (
           <div key={index1}>
             <div className="flex justify-between">
               <div>{iconGroup.title}</div>
-              <div>수익 {iconGroup.revenue.toLocaleString()}원</div>
+              <div>수익 {iconGroup.revenue}원</div>
             </div>
             <div className="flex flex-row gap-4">
               {iconGroup.iconImages.map((image: string, index2: number) => (

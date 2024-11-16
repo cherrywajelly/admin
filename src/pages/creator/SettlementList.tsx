@@ -5,7 +5,7 @@ import Context from '../../contexts/Context';
 import ListElem from '../../components/ListElem';
 import Button from '../../components/Button';
 
-const Settlement = (): ReactNode => {
+const SettlementList = (): ReactNode => {
   const [settlementList, setSettlementList] = useState<ListElemProps[]>([]);
 
   const navigate = useNavigate();
@@ -75,4 +75,4 @@ const Settlement = (): ReactNode => {
   );
 };
 
-export default Settlement;
+export default SettlementList;

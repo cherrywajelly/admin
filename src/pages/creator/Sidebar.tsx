@@ -23,7 +23,7 @@ const Sidebar = (): ReactNode => {
   };
 
   const handleSettlementClick = (): void => {
-    setSelectedMenu('정산');
+    setSelectedMenu('정산 목록');
     navigate('/creator/settlements');
   };
 
@@ -48,7 +48,7 @@ const Sidebar = (): ReactNode => {
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton onClick={handleSettlementClick}>
-              <ListItemText primary="정산" className="text-white" />
+              <ListItemText primary="정산 목록" className="text-white" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
