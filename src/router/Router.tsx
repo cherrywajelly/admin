@@ -12,6 +12,11 @@ import AdminSettlement from '../pages/admin/Settlement.tsx';
 import AdminMyPage from '../pages/admin/MyPage.tsx';
 import CreatorPage from '../pages/creator/CreatorPage.tsx';
 import CreatorIconList from '../pages/creator/IconList.tsx';
+import CreatorIconDetail from '../pages/creator/IconDetail.tsx';
+// import CreatorIconRegister from '../pages/creator/IconRegister.tsx';
+import CreatorSettlement from '../pages/creator/SettlementList.tsx';
+import CreatorSettlementDetail from '../pages/creator/SettlementDetail.tsx';
+import CreatorMyPage from '../pages/creator/MyPage.tsx';
 
 const Router = (): ReactNode => {
   return (
@@ -30,10 +35,11 @@ const Router = (): ReactNode => {
           </Route>
           <Route path="/creator" element={<CreatorPage />}>
             <Route path="/creator/icons" element={<CreatorIconList />} />
-            <Route path="/creator/icons/:id" element={<></>} />
+            <Route path="/creator/icons/:id" element={<CreatorIconDetail />} />
             <Route path="/creator/register" element={<></>} />
-            <Route path="/creator/settlement" element={<></>} />
-            <Route path="/creator/mypage" element={<></>} />
+            <Route path="/creator/settlements" element={<CreatorSettlement />} />
+            <Route path="/creator/settlements/:id" element={<CreatorSettlementDetail />} />
+            <Route path="/creator/mypage" element={<CreatorMyPage />} />
           </Route>
         </Route>
       </Routes>

@@ -61,15 +61,17 @@ export type IconsSectionProps = {
 };
 
 export type CreatorSectionProps = {
-  madeIconNumber: number;
-  totalRevenue: number;
+  madeIconNumber?: number;
+  sales?: number;
+  revenue?: number;
 };
 
 export type IconGroup = {
   id: number;
   title: string;
   iconImages: string[];
-  revenue: number;
+  sales?: number;
+  revenue?: number;
 };
 
 export type CreatorDetailProps = {
@@ -96,6 +98,14 @@ export type IconInfoSectionProps = {
   sales: number;
   revenue: number;
 };
+
+export type SettlementDetailProps = {
+  id: number;
+  title: string;
+  headImage: string;
+  sales: number;
+  revenue: number;
+  iconGroups: IconGroup[];
 
 export type IconUploadSectionProps = {
   iconImages: string[];
