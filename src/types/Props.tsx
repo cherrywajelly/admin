@@ -106,4 +106,8 @@ export type SettlementDetailProps = {
   sales: number;
   revenue: number;
   iconGroups: IconGroup[];
+
+export type IconUploadSectionProps = {
+  iconImages: string[];
+  setIconImages: (iconImages: string[]) => void;
 };
