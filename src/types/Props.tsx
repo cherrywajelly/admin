@@ -96,3 +96,8 @@ export type IconInfoSectionProps = {
   sales: number;
   revenue: number;
 };
+
+export type IconUploadSectionProps = {
+  iconImages: string[];
+  setIconImages: (iconImages: string[]) => void;
+};
