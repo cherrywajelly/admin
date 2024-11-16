@@ -32,7 +32,7 @@ const Router = (): ReactNode => {
             <Route path="/creator/icons" element={<CreatorIconList />} />
             <Route path="/creator/icons/:id" element={<></>} />
             <Route path="/creator/register" element={<></>} />
-            <Route path="/creator/settlement" element={<></>} />
+            <Route path="/creator/settlements" element={<></>} />
             <Route path="/creator/mypage" element={<></>} />
           </Route>
         </Route>

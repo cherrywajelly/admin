@@ -24,7 +24,7 @@ const Sidebar = (): ReactNode => {
 
   const handleSettlementClick = (): void => {
     setSelectedMenu('정산');
-    navigate('/creator/settlement');
+    navigate('/creator/settlements');
   };
 
   const handleMyPageClick = (): void => {
