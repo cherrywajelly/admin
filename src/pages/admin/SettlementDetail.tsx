@@ -1,28 +1,19 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Creator } from '../../types/Props';
 import CreatorSection from '../../sections/CreatorSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
 import { BankName } from '../../types/Enums';
 import Button from '../../components/Button';
-import { useNavigate } from 'react-router-dom';
-import Context from '../../contexts/Context';
-import { ContextProps } from '../../types/Props';
 
-const MyPage = (): ReactNode => {
+const SettlementDetail = (): ReactNode => {
+  const { id } = useParams();
   const [creatorDetail, setCreatorDetail] = useState<Creator>({} as Creator);
-
-  const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
-
-  const handleAccountModification = () => {
-    setSelectedMenu('수정하기');
-    navigate('/creator/modify');
-  };
 
   useEffect(() => {
     setCreatorDetail({
-      id: 0,
-      nickname: 'Cherry',
+      id: Number(id),
+      nickname: '디자이너무빙',
       profilePicture: '/images/empty.png',
       bankName: BankName.IBKOKRSE,
       accountNumber: '1234567890',
@@ -58,7 +49,7 @@ const MyPage = (): ReactNode => {
         },
       ],
     });
-  }, []);
+  }, [id]);
 
   return (
     <div className="flex flex-col min-h-screen p-8">
@@ -67,14 +58,15 @@ const MyPage = (): ReactNode => {
         <div className="mx-4">
           <h1 className="text-2xl font-bold">{creatorDetail.nickname}</h1>
         </div>
-        <Button
-          text="수정하기"
-          styles="!bg-secondary-main !text-white !w-40 border-none ml-auto"
-          onClick={handleAccountModification}
-        />
+        <div className="ml-auto">
+          <Button
+            text="정산하기"
+            onClick={() => alert('정산 완료')}
+            styles="!bg-secondary-main !text-white !w-40 border-none"
+          />
+        </div>
       </div>
       <CreatorSection
-        madeIconNumber={creatorDetail.madeIconNumber}
         soldIconNumber={creatorDetail.soldIconNumber}
         revenue={creatorDetail.revenue}
         bankName={creatorDetail.bankName}
@@ -86,4 +78,4 @@ const MyPage = (): ReactNode => {
   );
 };
 
-export default MyPage;
+export default SettlementDetail;

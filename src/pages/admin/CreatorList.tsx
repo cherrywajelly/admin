@@ -1,12 +1,12 @@
 import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps, ListElemProps } from '../../types/Props';
+import { ContextProps, Creator } from '../../types/Props';
 import ListElem from '../../components/ListElem';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import Context from '../../contexts/Context';
 
 const CreatorList = (): ReactNode => {
-  const [creatorList, setCreatorList] = useState<ListElemProps[]>([]);
+  const [creators, setCreators] = useState<Creator[]>([]);
   const navigate = useNavigate();
   const { setSelectedMenu } = useContext(Context) as ContextProps;
 
@@ -17,27 +17,27 @@ const CreatorList = (): ReactNode => {
   };
 
   useEffect((): void => {
-    setCreatorList([
-      { id: 0, title: 'Cherry', image: '/images/empty.png', buttons: [] },
-      { id: 1, title: 'Wade', image: '/images/empty.png', buttons: [] },
-      { id: 2, title: 'Julia', image: '/images/empty.png', buttons: [] },
-      { id: 3, title: 'Kelly', image: '/images/empty.png', buttons: [] },
+    setCreators([
+      { id: 0, nickname: 'Cherry', profilePicture: '/images/empty.png' },
+      { id: 1, nickname: 'Wade', profilePicture: '/images/empty.png' },
+      { id: 2, nickname: 'Julia', profilePicture: '/images/empty.png' },
+      { id: 3, nickname: 'Kelly', profilePicture: '/images/empty.png' },
     ]);
   }, []);
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      {creatorList.map((creator: ListElemProps, idx: number) => (
+      {creators.map((creator: Creator, idx: number) => (
         <ListElem
           key={idx}
-          title={creator.title}
-          image={creator.image}
-          divider={idx < creatorList.length - 1}
+          title={creator.nickname}
+          image={creator.profilePicture}
+          divider={idx < creators.length - 1}
           buttons={[
             <Button
               text="상세 보기"
               styles="!bg-secondary-main !text-white !w-40 border-none"
-              onClick={() => handleButtonClick(creator.id ?? 0)}
+              onClick={() => handleButtonClick(creator.id)}
             />,
           ]}
         />

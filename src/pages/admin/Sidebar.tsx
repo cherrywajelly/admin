@@ -25,13 +25,13 @@ const Sidebar = (): ReactNode => {
   };
 
   const handleSettlementClick = (): void => {
-    setSelectedMenu('정산');
-    navigate('/admin/settlement');
+    setSelectedMenu('정산하기');
+    navigate('/admin/settlements');
   };
 
-  const handleMyPageClick = (): void => {
-    setSelectedMenu('마이페이지');
-    navigate('/admin/mypage');
+  const handleInquiryClick = (): void => {
+    setSelectedMenu('문의 목록');
+    navigate('/admin/inquiries');
   };
 
   return (
@@ -50,12 +50,12 @@ const Sidebar = (): ReactNode => {
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton onClick={handleSettlementClick}>
-              <ListItemText primary="정산" className="text-white" />
+              <ListItemText primary="정산하기" className="text-white" />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton onClick={handleMyPageClick}>
-              <ListItemText primary="마이페이지" className="text-white" />
+            <ListItemButton onClick={handleInquiryClick}>
+              <ListItemText primary="문의 목록" className="text-white" />
             </ListItemButton>
           </ListItem>
           <Divider sx={{ backgroundColor: 'white' }} />

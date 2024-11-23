@@ -1,18 +1,21 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { SettlementDetailProps } from '../../types/Props';
+import { Creator } from '../../types/Props';
 import CreatorSection from '../../sections/CreatorSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
+import { BankName } from '../../types/Enums';
 
 const SettlementDetail = (): ReactNode => {
-  const [settlementDetail, setSettlementDetail] = useState<SettlementDetailProps>();
+  const [settlementDetail, setSettlementDetail] = useState<Creator>({} as Creator);
 
   useEffect(() => {
     setSettlementDetail({
       id: 0,
-      title: '노노노',
-      headImage: '/images/empty.png',
-      sales: 150,
+      nickname: '노노노',
+      profilePicture: '/images/empty.png',
+      soldIconNumber: 150,
       revenue: 300000,
+      bankName: BankName.IBKOKRSE,
+      accountNumber: '1234567890',
       iconGroups: [
         {
           id: 0,
@@ -24,7 +27,7 @@ const SettlementDetail = (): ReactNode => {
             '/images/empty.png',
             '/images/empty.png',
           ],
-          sales: 50,
+          soldIconNumber: 50,
           revenue: 100000,
         },
         {
@@ -37,7 +40,7 @@ const SettlementDetail = (): ReactNode => {
             '/images/empty.png',
             '/images/empty.png',
           ],
-          sales: 100,
+          soldIconNumber: 100,
           revenue: 200000,
         },
       ],
@@ -47,17 +50,19 @@ const SettlementDetail = (): ReactNode => {
   return (
     <div className="flex flex-col min-h-screen p-8">
       <div className="flex flex-row items-center mb-6">
-        <img src={settlementDetail?.headImage} alt="Profile" className="w-24 h-24 rounded-full mr-8" />
+      <img src={settlementDetail.profilePicture} alt="Profile" className="w-24 h-24 rounded-full mr-8" />
         <div className="mx-4">
-          <h1 className="text-2xl font-bold">{settlementDetail?.title}</h1>
+          <h1 className="text-2xl font-bold">{settlementDetail.nickname}</h1>
         </div>
       </div>
       <CreatorSection
-        sales={settlementDetail?.sales ?? 0}
-        revenue={settlementDetail?.revenue ?? 0}
+        soldIconNumber={settlementDetail.soldIconNumber}
+        revenue={settlementDetail.revenue}
+        bankName={settlementDetail.bankName}
+        accountNumber={settlementDetail.accountNumber}
       />
       <div className="mb-8" />
-      <IconGroupsSection iconGroups={settlementDetail?.iconGroups ?? []} />
+      <IconGroupsSection iconGroups={settlementDetail.iconGroups ?? []} />
     </div>
   );
 };

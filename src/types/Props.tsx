@@ -31,11 +31,10 @@ export type BankInputProps = {
 
 export type ListElemProps = {
   id?: number;
-  title: string;
+  title?: string;
   subtitle?: string;
-  image: string;
+  image?: string;
   divider?: boolean;
-  state?: ApprovalState;
   buttons: ReactNode[];
 };
 
@@ -62,15 +61,21 @@ export type IconsSectionProps = {
 
 export type CreatorSectionProps = {
   madeIconNumber?: number;
-  sales?: number;
+  soldIconNumber?: number;
   revenue?: number;
+  bankName?: BankName | string;
+  accountNumber?: string;
 };
 
 export type IconGroup = {
   id: number;
-  title: string;
-  iconImages: string[];
-  sales?: number;
+  title?: string;
+  headImage?: string;
+  creator?: string;
+  description?: string;
+  approvalState?: ApprovalState;
+  iconImages?: string[];
+  soldIconNumber?: number;
   revenue?: number;
 };
 
@@ -79,7 +84,8 @@ export type CreatorDetailProps = {
   title: string;
   headImage: string;
   madeIconNumber: number;
-  totalRevenue: number;
+  soldIconNumber: number;
+  revenue: number;
   iconGroups: IconGroup[];
 };
 
@@ -87,16 +93,21 @@ export type IconGroupsSectionProps = {
   iconGroups: IconGroup[];
 };
 
-export type UserInfo = {
-  nickname: string;
-  bankName: BankName | string;
-  accountNumber: string;
-  profilePicture: File | null;
+export type Creator = {
+  id: number;
+  nickname?: string;
+  profilePicture?: string;
+  bankName?: BankName | string;
+  accountNumber?: string;
+  madeIconNumber?: number;
+  soldIconNumber?: number;
+  revenue?: number;
+  iconGroups?: IconGroup[];
 };
 
 export type IconInfoSectionProps = {
-  sales: number;
-  revenue: number;
+  soldIconNumber?: number;
+  revenue?: number;
 };
 
 export type SettlementDetailProps = {
@@ -106,8 +117,17 @@ export type SettlementDetailProps = {
   sales: number;
   revenue: number;
   iconGroups: IconGroup[];
+};
 
 export type IconUploadSectionProps = {
   iconImages: string[];
   setIconImages: (iconImages: string[]) => void;
+};
+
+export type Settlement = {
+  year: number;
+  month: number;
+  creator: Creator;
+  isSettled?: boolean;
+  date?: string;
 };

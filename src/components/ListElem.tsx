@@ -7,9 +7,9 @@ const ListElem = (props: ListElemProps): ReactNode => {
 
   return (
     <>
-      <div className="flex items-center justify-between p-4 bg-[#FFFCEC] w-full">
+      <div className="flex items-center justify-between p-4 bg-[#FFFCEC] w-full h-28">
         <div className="flex items-center space-x-4">
-          <img src={image} alt="icon" className="w-20 h-20" />
+          {image && <img src={image} alt="icon" className="w-20 h-20" />}
           <div className="flex flex-col">
             <h2 className="text-lg font-bold">{title}</h2>
             <p className="text-gray-500">{subtitle}</p>

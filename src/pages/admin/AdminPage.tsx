@@ -2,12 +2,14 @@ import { ReactNode, useContext } from 'react';
 import { ContextProps } from '../../types/Props.tsx';
 import Sidebar from './Sidebar.tsx';
 import IconList from './IconList.tsx';
-import CreatorList from './CreatorList.tsx';
-import MyPage from './MyPage.tsx';
-import Settlement from './Settlement.tsx';
 import IconDetail from './IconDetail.tsx';
-import Context from '../../contexts/Context.tsx';
+import CreatorList from './CreatorList.tsx';
 import CreatorDetail from './CreatorDetail.tsx';
+import Settlement from './SettlementList.tsx';
+import SettlementDetail from './SettlementDetail.tsx';
+import InquiryList from './InquiryList.tsx';
+import InquiryDetail from './InquiryDetail.tsx';
+import Context from '../../contexts/Context.tsx';
 
 const AdminPage = (): ReactNode => {
   const { selectedMenu } = useContext(Context) as ContextProps;
@@ -22,10 +24,14 @@ const AdminPage = (): ReactNode => {
         return <CreatorList />;
       case '제작자 상세':
         return <CreatorDetail />;
-      case '정산':
+      case '정산하기':
         return <Settlement />;
-      case '마이페이지':
-        return <MyPage />;
+      case '정산 상세':
+        return <SettlementDetail />;
+      case '문의 목록':
+        return <InquiryList />;
+      case '문의 상세':
+        return <InquiryDetail />;
     }
   };
 

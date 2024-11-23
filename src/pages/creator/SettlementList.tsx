@@ -1,12 +1,12 @@
 import { ReactNode, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ContextProps, ListElemProps } from '../../types/Props';
+import { ContextProps, Settlement } from '../../types/Props';
 import Context from '../../contexts/Context';
 import ListElem from '../../components/ListElem';
 import Button from '../../components/Button';
 
 const SettlementList = (): ReactNode => {
-  const [settlementList, setSettlementList] = useState<ListElemProps[]>([]);
+  const [settlementList, setSettlementList] = useState<Settlement[]>([]);
 
   const navigate = useNavigate();
   const { setSelectedMenu } = useContext(Context) as ContextProps;
@@ -20,53 +20,65 @@ const SettlementList = (): ReactNode => {
   useEffect(() => {
     setSettlementList([
       {
-        id: 0,
-        title: '2024년 12월 정산',
-        image: '/images/empty.png',
-        buttons: [],
+        year: 2024,
+        month: 12,
+        creator: {
+          id: 1,
+          nickname: 'creator1',
+          revenue: 1000000,
+        },
+        date: '2025.01.01',
       },
       {
-        id: 1,
-        title: '2024년 11월 정산',
-        image: '/images/empty.png',
-        buttons: [],
+        year: 2024,
+        month: 11,
+        creator: {
+          id: 2,
+          nickname: 'creator2',
+          revenue: 2000000,
+        },
+        date: '2024.12.01',
       },
       {
-        id: 2,
-        title: '2024년 10월 정산',
-        image: '/images/empty.png',
-        buttons: [],
+        year: 2024,
+        month: 10,
+        creator: {
+          id: 3,
+          nickname: 'creator3',
+          revenue: 3000000,
+        },
+        date: '2024.11.01',
       },
       {
-        id: 3,
-        title: '2024년 09월 정산',
-        image: '/images/empty.png',
-        buttons: [],
+        year: 2024,
+        month: 9,
+        creator: {
+          id: 4,
+          nickname: 'creator4',
+          revenue: 4000000,
+        },
+        date: '2024.10.01',
       },
     ]);
   }, []);
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      {settlementList.map((settlement: ListElemProps, idx: number) => (
+      {settlementList.map((settlement: Settlement, idx: number) => (
         <ListElem
           key={idx}
-          title={settlement.title}
-          image={settlement.image}
+          title={`${settlement.year}년 ${settlement.month}월 정산`}
+          subtitle={`정산금 ${settlement.creator.revenue}원`}
           divider={idx < settlementList.length - 1}
           buttons={[
             <Button
-              text="정산금 4억"
-              styles="!bg-secondary-main !text-white !w-40 border-none"
-            />,
-            <Button
-              text="2025.01.01"
+              text={settlement.date ?? ''}
               styles="!bg-secondary-main !text-white !w-40 border-none"
             />,
             <Button
               text="상세 보기"
               styles="!bg-secondary-main !text-white !w-40 border-none"
-              onClick={(): void => handleButtonClick(settlement.id ?? 0)}
+              onClick={(): void => handleButtonClick(settlement.creator.id)}
             />,
           ]}
         />

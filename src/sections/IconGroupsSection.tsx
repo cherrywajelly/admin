@@ -14,10 +14,13 @@ const IconGroupsSection = (props: IconGroupsSectionProps): ReactNode => {
           <div key={index1}>
             <div className="flex justify-between">
               <div>{iconGroup.title}</div>
-              <div>수익 {iconGroup.revenue}원</div>
+              <div className="flex flex-row">
+                <div className="w-40 text-right">판매량 {iconGroup.soldIconNumber}개</div>
+                <div className="w-40 text-right">수익 {iconGroup.revenue?.toLocaleString()}원</div>
+              </div>
             </div>
             <div className="flex flex-row gap-4">
-              {iconGroup.iconImages.map((image: string, index2: number) => (
+              {(iconGroup.iconImages ?? []).map((image: string, index2: number) => (
                 <div key={index2} className="w-fit">
                   <img src={image} alt={`Icon ${index2 + 1}`} className="w-32 h-32 rounded-lg" />
                 </div>

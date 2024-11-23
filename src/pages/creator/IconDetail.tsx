@@ -1,12 +1,12 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { ApprovalState } from '../../types/Enums';
-import { IconDetailProps } from '../../types/Props';
+import { IconGroup } from '../../types/Props';
 import Button from '../../components/Button';
 import IconsSection from '../../sections/IconsSection';
 import IconInfoSection from '../../sections/IconInfoSection';
 
 const IconDetail = (): ReactNode => {
-  const [iconDetail, setIconDetail] = useState<IconDetailProps>();
+  const [iconDetail, setIconDetail] = useState<IconGroup>({} as IconGroup);
 
   useEffect((): void => {
     setIconDetail({
@@ -24,7 +24,7 @@ const IconDetail = (): ReactNode => {
         '/images/empty.png',
       ],
       approvalState: ApprovalState.PENDING,
-      sales: 100,
+      soldIconNumber: 100,
       revenue: 200000,
     });
   }, []);
@@ -32,23 +32,22 @@ const IconDetail = (): ReactNode => {
   return (
     <div className="flex flex-col min-h-screen p-8">
       <div className="flex flex-row items-center mb-6">
-        <img src={iconDetail?.headImage} alt="Profile" className="w-24 h-24 rounded-full mr-8" />
+        <img src={iconDetail.headImage} alt="Profile" className="w-24 h-24 rounded-full mr-8" />
         <div className="mx-4">
-          <h1 className="text-2xl font-bold">{iconDetail?.title}</h1>
-          <p className="text-gray-500">{iconDetail?.creator}</p>
-          <p className="mt-2">{iconDetail?.description}</p>
+          <h1 className="text-2xl font-bold">{iconDetail.title}</h1>
+          <p className="text-gray-500">{iconDetail.creator}</p>
+          <p className="mt-2">{iconDetail.description}</p>
         </div>
         <div className="flex flex-row justify-end w-full mb-4">
           <Button
-            text={iconDetail?.approvalState ?? ''}
+            text={iconDetail.approvalState ?? ApprovalState.PENDING}
             styles="!bg-secondary-main !text-white !w-40 border-none ml-4"
-            onClick={() => {}}
           />
         </div>
       </div>
-      <IconInfoSection sales={iconDetail?.sales ?? 0} revenue={iconDetail?.revenue ?? 0} />
+      <IconInfoSection soldIconNumber={iconDetail.soldIconNumber} revenue={iconDetail.revenue} />
       <div className="mb-4"></div>
-      <IconsSection iconImages={iconDetail?.iconImages ?? []} />
+      <IconsSection iconImages={iconDetail.iconImages ?? []} />
     </div>
   );
 };

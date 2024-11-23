@@ -1,13 +1,13 @@
 import { ReactNode, useContext, useEffect, useState } from 'react';
 import ListElem from '../../components/ListElem';
-import { ContextProps, ListElemProps } from '../../types/Props';
+import { ContextProps, IconGroup } from '../../types/Props';
 import { ApprovalState } from '../../types/Enums';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import Context from '../../contexts/Context';
 
 const IconList = (): ReactNode => {
-  const [iconList, setIconList] = useState<ListElemProps[]>([]);
+  const [icons, setIcons] = useState<IconGroup[]>([]);
 
   const navigate = useNavigate();
   const { setSelectedMenu } = useContext(Context) as ContextProps;
@@ -19,69 +19,63 @@ const IconList = (): ReactNode => {
   };
 
   useEffect((): void => {
-    setIconList([
+    setIcons([
       {
         id: 0,
         title: '노노노',
-        subtitle: '에이핑크',
-        image: '/images/empty.png',
-        state: ApprovalState.PENDING,
-        buttons: [],
+        creator: '에이핑크',
+        headImage: '/images/empty.png',
+        approvalState: ApprovalState.PENDING,
       },
       {
         id: 1,
         title: '반짝반짝',
-        subtitle: '걸스데이',
-        image: '/images/empty.png',
-        state: ApprovalState.APPROVED,
-        buttons: [],
+        creator: '걸스데이',
+        headImage: '/images/empty.png',
+        approvalState: ApprovalState.APPROVED,
       },
       {
         id: 2,
         title: '럽미라잇',
-        subtitle: '엑소',
-        image: '/images/empty.png',
-        state: ApprovalState.REJECTED,
-        buttons: [],
+        creator: '엑소',
+        headImage: '/images/empty.png',
+        approvalState: ApprovalState.REJECTED,
       },
       {
         id: 3,
         title: '고속도로 로망스',
-        subtitle: '윤종신',
-        image: '/images/empty.png',
-        state: ApprovalState.PENDING,
-        buttons: [],
+        creator: '윤종신',
+        headImage: '/images/empty.png',
+        approvalState: ApprovalState.PENDING,
       },
       {
         id: 4,
         title: '행운을 빌어줘어어',
-        subtitle: '원필',
-        image: '/images/empty.png',
-        state: ApprovalState.APPROVED,
-        buttons: [],
+        creator: '원필',
+        headImage: '/images/empty.png',
+        approvalState: ApprovalState.APPROVED,
       },
     ]);
   }, []);
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      {iconList.map((icon: ListElemProps, idx: number) => (
+      {icons.map((icon: IconGroup, idx: number) => (
         <ListElem
           key={idx}
           title={icon.title}
-          subtitle={icon.subtitle}
-          image={icon.image}
-          state={icon.state}
-          divider={idx < iconList.length - 1}
+          subtitle={icon.creator}
+          image={icon.headImage}
+          divider={idx < icons.length - 1}
           buttons={[
             <Button
-              text={icon.state as string}
+              text={icon.approvalState as string}
               styles="!bg-secondary-main !text-white !w-40 border-none"
             />,
             <Button
               text="상세 보기"
               styles="!bg-secondary-main !text-white !w-40 border-none"
-              onClick={(): void => handleButtonClick(icon.id ?? 0)}
+              onClick={(): void => handleButtonClick(icon.id)}
             />,
           ]}
         />
