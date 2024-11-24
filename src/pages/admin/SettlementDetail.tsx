@@ -62,7 +62,6 @@ const SettlementDetail = (): ReactNode => {
           <Button
             text="정산하기"
             onClick={() => alert('정산 완료')}
-            styles="!bg-secondary-main !text-white !w-40 border-none"
           />
         </div>
       </div>

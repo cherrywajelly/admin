@@ -70,11 +70,9 @@ const IconList = (): ReactNode => {
           buttons={[
             <Button
               text={icon.approvalState as string}
-              styles="!bg-secondary-main !text-white !w-40 border-none"
             />,
             <Button
               text="상세 보기"
-              styles="!bg-secondary-main !text-white !w-40 border-none"
               onClick={(): void => handleButtonClick(icon.id)}
             />,
           ]}

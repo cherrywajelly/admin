@@ -73,11 +73,9 @@ const SettlementList = (): ReactNode => {
           buttons={[
             <Button
               text={settlement.date ?? ''}
-              styles="!bg-secondary-main !text-white !w-40 border-none"
             />,
             <Button
               text="상세 보기"
-              styles="!bg-secondary-main !text-white !w-40 border-none"
               onClick={(): void => handleButtonClick(settlement.creator.id)}
             />,
           ]}

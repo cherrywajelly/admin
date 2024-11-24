@@ -23,18 +23,18 @@ const IconRegister = (): ReactNode => {
             label="아이콘 이름"
             value={title}
             onChange={(e): void => setTitle(e.target.value)}
-            textStyles="!w-1/6"
-            inputStyles="!w-5/6"
+            textStyles="w-20"
+            inputStyles="flex-1"
           />
           <TextInput
             label="아이콘 설명"
             value={description}
             onChange={(e): void => setDescription(e.target.value)}
-            textStyles="!w-1/6"
-            inputStyles="!w-5/6"
+            textStyles="w-20"
+            inputStyles="flex-1"
           />
         </div>
-        <Button text="등록하기" styles="!w-1/4" />
+        <Button text="등록하기"/>
       </div>
 
       <IconUploadSection iconImages={iconImages} setIconImages={setIconImages} />

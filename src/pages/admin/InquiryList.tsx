@@ -43,11 +43,9 @@ const InquiryList = (): ReactNode => {
           buttons={[
             <Button
               text={inquiry.isResolved ? '해결 완료' : '미해결'}
-              styles="!bg-secondary-main !text-white !w-40 border-none"
             />,
             <Button
               text="상세 보기"
-              styles="!bg-secondary-main !text-white !w-40 border-none"
               onClick={() => handleButtonClick(inquiry.id ?? 0)}
             />,
           ]}

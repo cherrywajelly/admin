@@ -10,6 +10,10 @@ const IconDetail = (): ReactNode => {
   const { id } = useParams();
   const [iconDetail, setIconDetail] = useState<IconGroup>({} as IconGroup);
 
+  const handleSave = (): void => {
+    console.log('save');
+  };
+
   useEffect((): void => {
     setIconDetail({
       id: Number(id),
@@ -38,7 +42,7 @@ const IconDetail = (): ReactNode => {
           <p className="text-gray-500">{iconDetail.creator}</p>
           <p className="mt-2">{iconDetail.description}</p>
         </div>
-        <div className="flex flex-row justify-end w-full mb-4">
+        <div className="flex flex-row justify-end items-center w-full">
           <Select
             value={iconDetail.approvalState ?? ApprovalState.PENDING}
             onChange={(e: SelectChangeEvent): void =>
@@ -57,8 +61,8 @@ const IconDetail = (): ReactNode => {
           </Select>
           <Button
             text="저장"
-            styles="!bg-secondary-main !text-white !w-40 border-none ml-4"
-            onClick={() => {}}
+            styles="ml-4"
+            onClick={handleSave}
           />
         </div>
       </div>

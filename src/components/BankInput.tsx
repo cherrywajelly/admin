@@ -12,7 +12,7 @@ const BankInput = (props: BankInputProps): ReactNode => {
       <Select
         value={bankName}
         onChange={onBankNameChange}
-        className={`border-gray-300 !rounded-lg w-full ${bankNameInputStyles}`}
+        className={`border-gray-300 !rounded-lg ${bankNameInputStyles}`}
       >
         {Object.values(BankName).map((bank: BankName) => (
           <MenuItem key={bank} value={bank}>{bank}</MenuItem>
@@ -22,7 +22,7 @@ const BankInput = (props: BankInputProps): ReactNode => {
         type="text"
         value={accountNumber}
         onChange={onAccountNumberChange}
-        className={`border border-gray-300 p-2 rounded-lg w-full ${accountNumberInputStyles}`}
+        className={`border border-gray-300 p-2 rounded-lg ${accountNumberInputStyles}`}
       />
     </div>
   );
