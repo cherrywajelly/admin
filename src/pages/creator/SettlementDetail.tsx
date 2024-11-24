@@ -14,8 +14,6 @@ const SettlementDetail = (): ReactNode => {
       profilePicture: '/images/empty.png',
       soldIconNumber: 150,
       revenue: 300000,
-      bankName: BankName.IBKOKRSE,
-      accountNumber: '1234567890',
       iconGroups: [
         {
           id: 0,
@@ -58,8 +56,6 @@ const SettlementDetail = (): ReactNode => {
       <CreatorSection
         soldIconNumber={settlementDetail.soldIconNumber}
         revenue={settlementDetail.revenue}
-        bankName={settlementDetail.bankName}
-        accountNumber={settlementDetail.accountNumber}
       />
       <div className="mb-8" />
       <IconGroupsSection iconGroups={settlementDetail.iconGroups ?? []} />

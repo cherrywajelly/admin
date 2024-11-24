@@ -23,10 +23,12 @@ const CreatorSection = (props: CreatorSectionProps): ReactNode => {
         <div className="!w-40">총 수익</div>
         <div>{revenue?.toLocaleString() ?? 0}원</div>
       </div>
-      <div className="flex flex-row items-center w-full">
-        <div className="!w-40">계좌 정보</div>
-        <div>{bankName ?? ''} {accountNumber ?? ''}</div>
-      </div>
+      {bankName && accountNumber && 
+        <div className="flex flex-row items-center w-full">
+          <div className="!w-40">계좌 정보</div>
+          <div>{bankName} {accountNumber}</div>
+        </div>
+      }
     </div>
   );
 };
