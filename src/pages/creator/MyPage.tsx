@@ -69,7 +69,7 @@ const MyPage = (): ReactNode => {
         </div>
         <Button
           text="수정하기"
-          styles="!bg-secondary-main !text-white !w-40 border-none ml-auto"
+          styles="ml-auto"
           onClick={handleAccountModification}
         />
       </div>

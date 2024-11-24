@@ -30,21 +30,21 @@ const SignupPage = (): ReactNode => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen space-y-4 mx-auto">
+    <div className="flex flex-col items-center justify-center min-h-screen space-y-4">
       <h1 className="text-4xl font-bold">회원가입</h1>
-      <div className="flex flex-row space-x-4 w-1/2">
+      <div className="flex flex-row space-x-4">
         <ProfileInput
           profilePicture={profilePicture}
           setProfilePicture={setProfilePicture}
           styles="!w-1/3"
         />
-        <div className="flex flex-col justify-around w-2/3">
+        <div className="flex flex-col justify-around">
           <TextInput
             label="닉네임"
             value={nickname}
             onChange={(e): void => setNickname(e.target.value)}
-            textStyles="!w-1/6"
-            inputStyles="!w-5/6"
+            textStyles="w-20"
+            inputStyles="flex-1"
           />
           <BankInput
             label="계좌 정보"
@@ -52,18 +52,14 @@ const SignupPage = (): ReactNode => {
             accountNumber={accountNumber}
             onBankNameChange={(e): void => setBankName(e.target.value as BankName)}
             onAccountNumberChange={(e): void => setAccountNumber(e.target.value)}
-            textStyles="!w-1/6"
-            bankNameInputStyles="!w-2/6 h-[42px]"
-            accountNumberInputStyles="!w-3/6"
+            textStyles="w-20"
+            bankNameInputStyles="w-36 h-[42px]"
+            accountNumberInputStyles="flex-1"
           />
         </div>
       </div>
-      <div className="w-1/3">
-        <Button text="회원가입" onClick={handleSignupClick} />
-      </div>
-      <div className="w-1/3">
-        <Button text="로그인" onClick={handleLoginClick} />
-      </div>
+      <Button text="회원가입" onClick={handleSignupClick} />
+      <Button text="로그인" onClick={handleLoginClick} />
     </div>
   );
 };

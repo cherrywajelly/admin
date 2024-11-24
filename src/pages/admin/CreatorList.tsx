@@ -36,7 +36,6 @@ const CreatorList = (): ReactNode => {
           buttons={[
             <Button
               text="상세 보기"
-              styles="!bg-secondary-main !text-white !w-40 border-none"
               onClick={() => handleButtonClick(creator.id)}
             />,
           ]}

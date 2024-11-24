@@ -63,12 +63,10 @@ const SettlementList = (): ReactNode => {
             buttons={[
               <Button
                 text={`${settlement.isSettled ? '정산 완료' : '정산 미완료'}`}
-                styles="!bg-secondary-main !text-white !w-40 border-none"
               />,
               <Button
-                text={'상세 보기'}
+                text='상세 보기'
                 onClick={() => handleButtonClick(index)}
-                styles="!bg-secondary-main !text-white !w-40 border-none"
               />,
             ]}
             // divider={creatorIndex < settlement.creators.length - 1}

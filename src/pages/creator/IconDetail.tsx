@@ -41,7 +41,6 @@ const IconDetail = (): ReactNode => {
         <div className="flex flex-row justify-end w-full mb-4">
           <Button
             text={iconDetail.approvalState ?? ApprovalState.PENDING}
-            styles="!bg-secondary-main !text-white !w-40 border-none ml-4"
           />
         </div>
       </div>

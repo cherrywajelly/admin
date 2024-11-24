@@ -11,7 +11,7 @@ import Context from '../../contexts/Context';
 const AccountModification = (): ReactNode => {
   const navigate = useNavigate();
   const { setSelectedMenu } = useContext(Context) as ContextProps;
-  
+
   const [nickname, setNickname] = useState<string>('');
   const [bankName, setBankName] = useState<BankName | string>('');
   const [accountNumber, setAccountNumber] = useState<string>('');
@@ -33,8 +33,8 @@ const AccountModification = (): ReactNode => {
   };
 
   return (
-    <div className="flex items-center justify-center space-y-4 mx-auto">
-      <div className="flex flex-row items-center justify-center space-x-4 w-1/2">
+    <div className="flex justify-center">
+      <div className="flex flex-row items-center space-y-4 space-x-4">
         <ProfileInput
           profilePicture={profilePicture}
           setProfilePicture={setProfilePicture}
@@ -45,8 +45,8 @@ const AccountModification = (): ReactNode => {
             label="닉네임"
             value={nickname}
             onChange={(e): void => setNickname(e.target.value)}
-            textStyles="!w-1/6"
-            inputStyles="!w-5/6"
+            textStyles="w-20"
+            inputStyles="flex-1"
           />
           <BankInput
             label="계좌 정보"
@@ -54,14 +54,13 @@ const AccountModification = (): ReactNode => {
             accountNumber={accountNumber}
             onBankNameChange={(e): void => setBankName(e.target.value as BankName)}
             onAccountNumberChange={(e): void => setAccountNumber(e.target.value)}
-            textStyles="!w-1/6"
-            bankNameInputStyles="!w-2/6 h-[42px]"
-            accountNumberInputStyles="!w-3/6"
+            textStyles="w-20"
+            bankNameInputStyles="w-36 h-[42px]"
+            accountNumberInputStyles="flex-1"
           />
         </div>
         <Button
           text="수정하기"
-          styles="!bg-secondary-main !text-white !w-40 h-10 border-none mx-auto"
           onClick={handleModifyClick}
         />
       </div>
