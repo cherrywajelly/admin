@@ -2,7 +2,6 @@ import { ReactNode, useEffect, useState } from 'react';
 import { Creator } from '../../types/Props';
 import CreatorSection from '../../sections/CreatorSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
-import { BankName } from '../../types/Enums';
 
 const SettlementDetail = (): ReactNode => {
   const [settlementDetail, setSettlementDetail] = useState<Creator>({} as Creator);
