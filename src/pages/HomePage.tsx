@@ -11,8 +11,8 @@ const HomePage = (): ReactNode => {
     switch (role) {
       case 'creator':
         return <CreatorPage />;
-      case 'admin':
-        return <AdminPage />;
+      // case 'admin':
+      //   return <AdminPage />;
     }
   };
 

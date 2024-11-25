@@ -42,7 +42,7 @@ const LoginPage = (): ReactNode => {
       return;
     }
 
-    navigate(`/${role}`);
+    navigate(`/${role}/icons`);
   };
 
   const handleGoogleLogin = (): void => {
@@ -55,8 +55,16 @@ const LoginPage = (): ReactNode => {
       <div className="flex flex-col items-center justify-center min-h-screen space-y-4 w-1/3">
         <h1 className="text-8xl text-[#D4985C] font-bold">Time Toast</h1>
         <div className="flex flex-row justify-between space-x-4 w-full">
-          <SelectButton text="제작자 로그인" onClick={handleCreatorClick} isClicked={isCreatorClicked} />
-          <SelectButton text="관리자 로그인" onClick={handleAdminClick} isClicked={isAdminClicked} />
+          <SelectButton
+            text="제작자 로그인"
+            onClick={handleCreatorClick}
+            isClicked={isCreatorClicked}
+          />
+          <SelectButton
+            text="관리자 로그인"
+            onClick={handleAdminClick}
+            isClicked={isAdminClicked}
+          />
         </div>
         <SocialLoginButton
           styles="bg-[#FEE500] border-none"

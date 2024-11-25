@@ -60,7 +60,7 @@ const IconList = (): ReactNode => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full">
-      {icons.map((icon: IconGroup, idx: number) => (
+      {/* {icons.map((icon: IconGroup, idx: number) => (
         <ListElem
           key={idx}
           title={icon.title}
@@ -68,16 +68,12 @@ const IconList = (): ReactNode => {
           image={icon.headImage}
           divider={idx < icons.length - 1}
           buttons={[
-            <Button
-              text={icon.approvalState as string}
-            />,
-            <Button
-              text="상세 보기"
-              onClick={(): void => handleButtonClick(icon.id)}
-            />,
+            <Button text={icon.approvalState as string} />,
+            <Button text="상세 보기" onClick={(): void => handleButtonClick(icon.id)} />,
           ]}
         />
-      ))}
+      ))} */}
+      안녕하세요 아이콘 목록 페이지
     </div>
   );
 };
