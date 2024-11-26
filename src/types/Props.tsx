@@ -131,3 +131,13 @@ export type Settlement = {
   isSettled?: boolean;
   date?: string;
 };
+
+export type SidebarMenu = {
+  menu: string;
+  url: string;
+};
+
+export type SidebarMenusProps = {
+  sidebarMenus: SidebarMenu[];
+  externalLinks?: SidebarMenu[];
+};
