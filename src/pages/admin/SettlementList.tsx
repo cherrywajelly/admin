@@ -14,12 +14,12 @@ const SettlementList = (): ReactNode => {
   const [month, setMonth] = useState<number>(0);
   
   const handleYearChange = (_: React.SyntheticEvent, newValue: number) => {
-    console.log(`year: ${newValue}`);
+    console.log(`year: ${newValue + 2023}`);
     setYear(newValue);
   };
-
+  
   const handleMonthChange = (_: React.SyntheticEvent, newValue: number) => {
-    console.log(`month: ${newValue}`);
+    console.log(`month: ${newValue + 1}`);
     setMonth(newValue);
   };
 
@@ -37,6 +37,9 @@ const SettlementList = (): ReactNode => {
       { year: 2023, month: 12, creator: { id: 1, nickname: '디자이너너너', profilePicture: '/images/empty.png', revenue: 100000 }, isSettled: false },
       { year: 2024, month: 2, creator: { id: 0, nickname: '디자이너무빙', profilePicture: '/images/empty.png', revenue: 100000 }, isSettled: true },
       { year: 2024, month: 3, creator: { id: 0, nickname: '디자이너무빙', profilePicture: '/images/empty.png', revenue: 100000 }, isSettled: false },
+      { year: 2024, month: 10, creator: { id: 0, nickname: '박하준', profilePicture: '/images/test/1.jpeg', revenue: 36960 }, isSettled: false },
+      { year: 2024, month: 10, creator: { id: 0, nickname: '정지현', profilePicture: '/images/test/3.jpeg', revenue: 70840 }, isSettled: true },
+      { year: 2024, month: 10, creator: { id: 0, nickname: '이타원', profilePicture: '/images/test/2.jpeg', revenue: 22330 }, isSettled: true },
     ]);
   }, []);
 
@@ -49,7 +52,7 @@ const SettlementList = (): ReactNode => {
       </Tabs>
       <Tabs value={month} onChange={handleMonthChange} aria-label="month settlements tabs">
         {Array.from({ length: 12 }, (_, i) => i).map((month) => (
-          <Tab key={month} label={`${month + 1}월`} />
+          <Tab key={month} label={`${month + 1}월`} sx={{ minWidth: '60px' }} />
         ))}
       </Tabs>
       {settlements.map((settlement: Settlement, index: number) => (
@@ -69,7 +72,7 @@ const SettlementList = (): ReactNode => {
                 onClick={() => handleButtonClick(index)}
               />,
             ]}
-            // divider={creatorIndex < settlement.creators.length - 1}
+            divider
           />
         </div>
       ))}
