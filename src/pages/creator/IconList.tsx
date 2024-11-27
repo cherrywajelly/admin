@@ -22,32 +22,26 @@ const IconList = (): ReactNode => {
     setIconList([
       {
         id: 0,
-        title: '노노노',
-        headImage: '/images/empty.png',
+        title: '루돌프 토스트',
+        headImage: '/images/christmas/r1.png',
         approvalState: ApprovalState.PENDING,
       },
       {
         id: 1,
-        title: '반짝반짝',
-        headImage: '/images/empty.png',
+        title: '산타 토스트',
+        headImage: '/images/christmas/s1.png',
         approvalState: ApprovalState.APPROVED,
       },
       {
         id: 2,
-        title: '럽미라잇',
-        headImage: '/images/empty.png',
+        title: '홀리 잼',
+        headImage: '/images/christmas/h1.png',
         approvalState: ApprovalState.REJECTED,
       },
       {
         id: 3,
-        title: '고속도로 로망스',
-        headImage: '/images/empty.png',
-        approvalState: ApprovalState.PENDING,
-      },
-      {
-        id: 4,
-        title: '행운을 빌어줘어어',
-        headImage: '/images/empty.png',
+        title: '몰리 잼',
+        headImage: '/images/christmas/m1.png',
         approvalState: ApprovalState.APPROVED,
       },
     ]);

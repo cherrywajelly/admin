@@ -21,7 +21,7 @@ const IconGroupsSection = (props: IconGroupsSectionProps): ReactNode => {
             </div>
             <div className="flex flex-row gap-4">
               {(iconGroup.iconImages ?? []).map((image: string, index2: number) => (
-                <div key={index2} className="w-fit">
+                <div key={index2} className="w-fit mb-10">
                   <img src={image} alt={`Icon ${index2 + 1}`} className="w-32 h-32 rounded-lg" />
                 </div>
               ))}

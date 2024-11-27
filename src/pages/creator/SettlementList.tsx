@@ -21,43 +21,23 @@ const SettlementList = (): ReactNode => {
     setSettlementList([
       {
         year: 2024,
-        month: 12,
-        creator: {
-          id: 1,
-          nickname: 'creator1',
-          revenue: 1000000,
-        },
-        date: '2025.01.01',
-      },
-      {
-        year: 2024,
-        month: 11,
-        creator: {
-          id: 2,
-          nickname: 'creator2',
-          revenue: 2000000,
-        },
-        date: '2024.12.01',
-      },
-      {
-        year: 2024,
         month: 10,
         creator: {
           id: 3,
-          nickname: 'creator3',
-          revenue: 3000000,
+          nickname: '박하준',
+          revenue: 36960,
         },
-        date: '2024.11.01',
+        date: '2024.11.27',
       },
       {
         year: 2024,
         month: 9,
         creator: {
           id: 4,
-          nickname: 'creator4',
-          revenue: 4000000,
+          nickname: '박하준',
+          revenue: 31280,
         },
-        date: '2024.10.01',
+        date: '2024.10.30',
       },
     ]);
   }, []);
@@ -68,7 +48,7 @@ const SettlementList = (): ReactNode => {
         <ListElem
           key={idx}
           title={`${settlement.year}년 ${settlement.month}월 정산`}
-          subtitle={`정산금 ${settlement.creator.revenue}원`}
+          subtitle={`정산금: ${settlement.creator.revenue?.toLocaleString()}원`}
           divider={idx < settlementList.length - 1}
           buttons={[
             <Button

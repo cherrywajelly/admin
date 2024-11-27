@@ -40,6 +40,7 @@ const SettlementList = (): ReactNode => {
       { year: 2024, month: 10, creator: { id: 0, nickname: '박하준', profilePicture: '/images/test/1.jpeg', revenue: 36960 }, isSettled: false },
       { year: 2024, month: 10, creator: { id: 0, nickname: '정지현', profilePicture: '/images/test/3.jpeg', revenue: 70840 }, isSettled: true },
       { year: 2024, month: 10, creator: { id: 0, nickname: '이타원', profilePicture: '/images/test/2.jpeg', revenue: 22330 }, isSettled: true },
+      { year: 2023, month: 1, creator: { id: 0, nickname: '원해영', profilePicture: '/images/test/4.jpeg', revenue: 22330 }, isSettled: true },
     ]);
   }, []);
 
@@ -61,7 +62,7 @@ const SettlementList = (): ReactNode => {
             key={index}
             id={index}
             title={settlement.creator.nickname}
-            subtitle={`정산 금액: ${settlement.creator.revenue}원`}
+            subtitle={`정산 금액: ${settlement.creator.revenue?.toLocaleString()}원`}
             image={settlement.creator.profilePicture}
             buttons={[
               <Button

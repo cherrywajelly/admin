@@ -34,7 +34,7 @@ const IconRegister = (): ReactNode => {
             inputStyles="flex-1"
           />
         </div>
-        <Button text="등록하기"/>
+        <Button text="등록하기" onClick={() => {alert('아이콘 등록 신청되었습니다.');}}/>
       </div>
 
       <div className="w-5/6 mx-auto mt-10">

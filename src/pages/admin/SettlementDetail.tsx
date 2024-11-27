@@ -13,39 +13,39 @@ const SettlementDetail = (): ReactNode => {
   useEffect(() => {
     setCreatorDetail({
       id: Number(id),
-      nickname: '디자이너무빙',
-      profilePicture: '/images/empty.png',
+      nickname: '박하준',
+      profilePicture: '/images/test/1.jpeg',
       bankName: BankName.IBKOKRSE,
-      accountNumber: '1234567890',
+      accountNumber: '974-039950-01-013',
       madeIconNumber: 2,
-      soldIconNumber: 50,
-      revenue: 100000,
+      soldIconNumber: 48,
+      revenue: 52800,
       iconGroups: [
         {
           id: 0,
-          title: '아이콘 그룹 1',
+          title: '루돌프 토스트',
           iconImages: [
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
+            '/images/christmas/r1.png',
+            '/images/christmas/r2.png',
+            '/images/christmas/r3.png',
+            '/images/christmas/r4.png',
+            // '/images/christmas/r5.png',
           ],
-          soldIconNumber: 20,
-          revenue: 40000,
+          soldIconNumber: 21,
+          revenue: 23100,
         },
         {
           id: 1,
-          title: '아이콘 그룹 2',
+          title: '산타 토스트',
           iconImages: [
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
+            '/images/christmas/s1.png',
+            '/images/christmas/s2.png',
+            '/images/christmas/s3.png',
+            '/images/christmas/s4.png',
+            // '/images/christmas/s5.png',
           ],
-          soldIconNumber: 30,
-          revenue: 60000,
+          soldIconNumber: 27,
+          revenue: 29700,
         },
       ],
     });
@@ -61,7 +61,7 @@ const SettlementDetail = (): ReactNode => {
         <div className="ml-auto">
           <Button
             text="정산하기"
-            onClick={() => alert('정산 완료')}
+            onClick={() => alert('정산이 완료되었습니다.')}
           />
         </div>
       </div>

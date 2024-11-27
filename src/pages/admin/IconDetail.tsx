@@ -12,24 +12,28 @@ const IconDetail = (): ReactNode => {
 
   const handleSave = (): void => {
     console.log('save');
+    alert('아이콘이 승인되었습니다.');
   };
 
   useEffect((): void => {
     setIconDetail({
       id: Number(id),
-      title: '노노노',
-      creator: '에이핑크',
-      headImage: '/images/empty.png',
+      title: '루돌프 토스트',
+      creator: 'cherry',
+      headImage: '/images/christmas/r1.png',
       description:
-        '이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요',
+        '크리스마스 기념 루돌프 토스트',
       iconImages: [
-        '/images/empty.png',
-        '/images/empty.png',
-        '/images/empty.png',
-        '/images/empty.png',
-        '/images/empty.png',
+        '/images/christmas/r1.png',
+        '/images/christmas/r2.png',
+        '/images/christmas/r3.png',
+        '/images/christmas/r4.png',
+        '/images/christmas/r5.png',
+        '/images/christmas/r7.png',
+        '/images/christmas/r8.png',
+        '/images/christmas/r9.png',
       ],
-      approvalState: ApprovalState.APPROVED,
+      approvalState: ApprovalState.PENDING,
     });
   }, [id]);
 
@@ -38,7 +42,7 @@ const IconDetail = (): ReactNode => {
       <div className="flex flex-row items-center mb-6">
         <img src={iconDetail.headImage} alt="Profile" className="w-24 h-24 rounded-full mr-8" />
         <div className="mx-4">
-          <h1 className="text-2xl font-bold">{iconDetail.title}</h1>
+          <h1 className="text-2xl font-bold w-40">{iconDetail.title}</h1>
           <p className="text-gray-500">{iconDetail.creator}</p>
           <p className="mt-2">{iconDetail.description}</p>
         </div>
