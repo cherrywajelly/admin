@@ -61,7 +61,7 @@ const AdminPage = (): ReactNode => {
     setExternalLinks([
       {
         menu: AdminMenu.PROMETHEUS,
-        url: 'https://prometheus.io',
+        url: 'https://prometheus.timetoast.app',
       },
       {
         menu: AdminMenu.LOKI,
