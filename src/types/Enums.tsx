@@ -18,3 +18,28 @@ export const ApprovalState = {
   REJECTED: '반려',
 } as const;
 export type ApprovalState = (typeof ApprovalState)[keyof typeof ApprovalState];
+
+export const AdminMenu = {
+  ICON_LIST: '아이콘 목록',
+  ICON_DETAIL: '아이콘 상세',
+  CREATOR_LIST: '제작자 목록',
+  CREATOR_DETAIL: '제작자 상세',
+  SETTLEMENT_LIST: '정산하기',
+  SETTLEMENT_DETAIL: '정산 상세',
+  INQUIRY_LIST: '문의 목록',
+  INQUIRY_DETAIL: '문의 상세',
+  PROMETHEUS: 'Prometheus',
+  LOKI: 'Loki',
+} as const;
+export type AdminMenu = (typeof AdminMenu)[keyof typeof AdminMenu];
+
+export const CreatorMenu = {
+  ICON_LIST: '아이콘 목록',
+  ICON_DETAIL: '아이콘 상세',
+  ICON_REGISTER: '아이콘 등록',
+  SETTLEMENT_LIST: '정산하기',
+  SETTLEMENT_DETAIL: '정산 상세',
+  MY_PAGE: '마이페이지',
+  ACCOUNT_MODIFICATION: '수정하기',
+} as const;
+export type CreatorMenu = (typeof CreatorMenu)[keyof typeof CreatorMenu];

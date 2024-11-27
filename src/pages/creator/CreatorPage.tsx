@@ -1,6 +1,6 @@
-import { ReactNode, useContext } from 'react';
-import { ContextProps } from '../../types/Props.tsx';
-import Sidebar from './Sidebar.tsx';
+import { ReactNode, useContext, useEffect, useState } from 'react';
+import { ContextProps, SidebarMenu } from '../../types/Props.tsx';
+import Sidebar from '../../components/Sidebar.tsx';
 import IconList from './IconList.tsx';
 import IconDetail from './IconDetail.tsx';
 import IconRegister from './IconRegister.tsx';
@@ -9,35 +9,58 @@ import SettlementDetail from './SettlementDetail.tsx';
 import MyPage from './MyPage.tsx';
 import Context from '../../contexts/Context.tsx';
 import AccountModification from './AccountModification.tsx';
+import { CreatorMenu } from '../../types/Enums.tsx';
 
-const AdminPage = (): ReactNode => {
+const CreatorPage = (): ReactNode => {
+  const [sidebarMenus, setSidebarMenus] = useState<SidebarMenu[]>();
   const { selectedMenu } = useContext(Context) as ContextProps;
 
   const renderContent = (): ReactNode => {
     switch (selectedMenu) {
-      case '아이콘 목록':
+      case CreatorMenu.ICON_LIST:
         return <IconList />;
-      case '아이콘 상세':
+      case CreatorMenu.ICON_DETAIL:
         return <IconDetail />;
-      case '아이콘 등록':
+      case CreatorMenu.ICON_REGISTER:
         return <IconRegister />;
-      case '정산 목록':
+      case CreatorMenu.SETTLEMENT_LIST:
         return <SettlementList />;
-      case '정산 상세':
+      case CreatorMenu.SETTLEMENT_DETAIL:
         return <SettlementDetail />;
-      case '마이페이지':
+      case CreatorMenu.MY_PAGE:
         return <MyPage />;
-      case '수정하기':
+      case CreatorMenu.ACCOUNT_MODIFICATION:
         return <AccountModification />;
     }
   };
 
+  useEffect((): void => {
+    setSidebarMenus([
+      {
+        menu: CreatorMenu.ICON_LIST,
+        url: '/creator/icons',
+      },
+      {
+        menu: CreatorMenu.ICON_REGISTER,
+        url: '/creator/register',
+      },
+      {
+        menu: CreatorMenu.SETTLEMENT_LIST,
+        url: '/creator/settlements',
+      },
+      {
+        menu: CreatorMenu.MY_PAGE,
+        url: '/creator/mypage',
+      },
+    ]);
+  }, []);
+
   return (
     <div className="flex flex-row">
-      <Sidebar />
+      {sidebarMenus && <Sidebar sidebarMenus={sidebarMenus} />}
       <div className="w-full">{renderContent()}</div>
     </div>
   );
 };
 
-export default AdminPage;
+export default CreatorPage;
