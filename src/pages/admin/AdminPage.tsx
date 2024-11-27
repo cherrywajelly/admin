@@ -1,6 +1,6 @@
 import { ReactNode, useContext, useState, useEffect } from 'react';
 import { ContextProps, SidebarMenu } from '../../types/Props.tsx';
-import Sidebar from '../../components/Sidebar.tsx';
+import Sidebar from '../../layout/Sidebar.tsx';
 import IconList from './IconList.tsx';
 import IconDetail from './IconDetail.tsx';
 import CreatorList from './CreatorList.tsx';
