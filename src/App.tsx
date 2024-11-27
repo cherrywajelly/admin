@@ -1,10 +1,15 @@
+import { ReactNode, useState } from 'react';
 import Router from './router/Router.tsx';
+import Context from './contexts/Context.tsx';
 
-function App() {
+function App(): ReactNode {
+  const [selectedMenu, setSelectedMenu] = useState<string>('');
+
   return (
     <>
-      <div className="font-bold text-red-500">Hello World! This is TimeToast.</div>
-      <Router />
+      <Context.Provider value={{ selectedMenu, setSelectedMenu }}>
+        <Router />
+      </Context.Provider>
     </>
   );
 }
