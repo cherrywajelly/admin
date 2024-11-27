@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../components/Header';
-import Sidebar from '../components/Sidebar';
+import Header from './Header.tsx';
+import Sidebar from './Sidebar.tsx';
 import Divider from '@mui/material/Divider';
 import { SidebarMenu } from '../types/Props.tsx';
 import { AdminMenu, CreatorMenu } from '../types/Enums.tsx';
@@ -70,7 +70,7 @@ const Layout = (): ReactNode => {
         setExternalLinks([
           {
             menu: AdminMenu.PROMETHEUS,
-            url: 'https://prometheus.io',
+            url: 'https://prometheus.timetoast.app/graph?g0.expr=100%20-%20(avg%20by%20(instance)%20(irate(node_cpu_seconds_total%7Bmode%3D%22idle%22%7D%5B5m%5D))%20*%20100)&g0.tab=0&g0.display_mode=lines&g0.show_exemplars=1&g0.range_input=12h&g1.expr=node_memory_MemTotal_bytes%20-%20node_memory_MemAvailable_bytes&g1.tab=0&g1.display_mode=lines&g1.show_exemplars=0&g1.range_input=12h',
           },
           {
             menu: AdminMenu.LOKI,

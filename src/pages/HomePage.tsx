@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import Header from '../components/Header';
+import Header from '../layout/Header.tsx';
 import CreatorPage from './creator/CreatorPage.tsx';
 import AdminPage from './admin/AdminPage.tsx';
 import { Divider } from '@mui/material';
