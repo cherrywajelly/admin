@@ -71,7 +71,7 @@ const Layout = (): ReactNode => {
         setExternalLinks([
           {
             menu: AdminMenu.PROMETHEUS,
-            url: getEnv('VITE_APP_PROMETHEUS_URL'),
+            url: getEnv('VITE_PROMETHEUS_URL'),
           },
           {
             menu: AdminMenu.LOKI,
