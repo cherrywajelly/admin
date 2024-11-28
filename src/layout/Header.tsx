@@ -3,7 +3,7 @@ import { ReactNode, useState, useEffect } from 'react';
 const Header = (): ReactNode => {
   const [nickname, setNickname] = useState<string>();
 
-  useEffect(() => {
+  useEffect((): void => {
     switch (localStorage.getItem('role')) {
       case 'admin':
         setNickname('cherry');
@@ -15,7 +15,7 @@ const Header = (): ReactNode => {
   }, []);
 
   return (
-    <header className="bg-white p-4">
+    <header className="p-4 w-full">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <img src="/images/timetoast.png" alt="Time Toast" className="w-12 h-12" />

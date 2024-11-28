@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SignupPage from '../pages/SignupPage.tsx';
-import LoginPage from '../pages/LoginPage.tsx';
+import SignupPage from '../pages/auth/SignupPage.tsx';
+import LoginPage from '../pages/auth/LoginPage.tsx';
 import AdminIconList from '../pages/admin/IconList.tsx';
 import AdminIconDetail from '../pages/admin/IconDetail.tsx';
 import AdminCreatorList from '../pages/admin/CreatorList.tsx';

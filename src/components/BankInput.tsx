@@ -15,7 +15,9 @@ const BankInput = (props: BankInputProps): ReactNode => {
         className={`border-gray-300 !rounded-lg ${bankNameInputStyles}`}
       >
         {Object.values(BankName).map((bank: BankName) => (
-          <MenuItem key={bank} value={bank}>{bank}</MenuItem>
+          <MenuItem key={bank} value={bank}>
+            {bank}
+          </MenuItem>
         ))}
       </Select>
       <input

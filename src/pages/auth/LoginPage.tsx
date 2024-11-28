@@ -1,8 +1,8 @@
 import { ReactNode, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import SelectButton from '../components/SelectButton';
-import SocialLoginButton from '../components/SocialLoginButton';
+import SelectButton from '../../components/SelectButton';
+import SocialLoginButton from '../../components/SocialLoginButton';
 
 const LoginPage = (): ReactNode => {
   const [isCreatorClicked, setIsCreatorClicked] = useState<boolean>(false);

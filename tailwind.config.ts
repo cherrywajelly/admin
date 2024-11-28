@@ -19,6 +19,7 @@ const config: Config = {
         'warning-main': '#FFD66A',
         'error-main': '#FF6A6A',
         'black-main': '#272222',
+        'ivory': '#FFFCEC',
 
         // gray scale
         'gray-05': '#F4F2F1',

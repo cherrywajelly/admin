@@ -2,15 +2,13 @@ import { ReactNode } from 'react';
 import { Divider } from '@mui/material';
 import { IconUploadSectionProps } from '../types/Props';
 
-const IconUploadSection = (props: IconUploadSectionProps): ReactNode => {
+const IconGroupUploadSection = (props: IconUploadSectionProps): ReactNode => {
   const { iconImages, setIconImages } = props;
 
   return (
-    <>
-      <h2 className="text-xl font-bold mb-2">ICONS</h2>
-      <Divider
-        sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }}
-      />
+    <div>
+      <h2 className="text-xl font-bold">ICONS</h2>
+      <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
       <div className="grid grid-cols-4 gap-4 w-full justify-items-center">
         {iconImages.map((image: string, index: number) => (
           <div key={index} className="flex flex-col items-center w-fit relative group">
@@ -65,8 +63,8 @@ const IconUploadSection = (props: IconUploadSectionProps): ReactNode => {
           </svg>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default IconUploadSection;
+export default IconGroupUploadSection;

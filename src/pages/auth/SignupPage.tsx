@@ -1,10 +1,10 @@
 import { ReactNode, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BankName } from '../types/Enums';
-import Button from '../components/Button';
-import TextInput from '../components/TextInput';
-import ProfileInput from '../components/ProfileInput';
-import BankInput from '../components/BankInput';
+import { BankName } from '../../types/Enums';
+import Button from '../../components/Button';
+import TextInput from '../../components/TextInput';
+import ProfileInput from '../../components/ProfileInput';
+import BankInput from '../../components/BankInput';
 
 const SignupPage = (): ReactNode => {
   const navigate = useNavigate();
@@ -14,7 +14,11 @@ const SignupPage = (): ReactNode => {
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
 
   const handleSignupClick = (): void => {
-    if ([nickname, bankName, accountNumber, profilePicture].some((field: string | BankName | File | null | undefined) => !field)) {
+    if (
+      [nickname, bankName, accountNumber, profilePicture].some(
+        (field: string | BankName | File | null | undefined) => !field
+      )
+    ) {
       alert('모든 필드를 입력해야 합니다.');
       return;
     }

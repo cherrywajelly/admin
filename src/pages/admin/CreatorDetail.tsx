@@ -1,13 +1,13 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Creator } from '../../types/Props';
-import CreatorSection from '../../sections/CreatorSection';
+import CreatorInfoSection from '../../sections/CreatorInfoSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
-import { BankName } from '../../types/Enums';
+import { ApprovalState, BankName } from '../../types/Enums';
 
 const CreatorDetail = (): ReactNode => {
   const { id } = useParams();
-  const [creatorDetail, setCreatorDetail] = useState<Creator>({} as Creator);
+  const [creatorDetail, setCreatorDetail] = useState<Creator>();
 
   useEffect(() => {
     setCreatorDetail({
@@ -23,7 +23,15 @@ const CreatorDetail = (): ReactNode => {
         {
           id: 0,
           title: '아이콘 그룹 1',
+          headImage: '/images/empty.png',
+          creator: 'cherry',
+          description: '아이콘 그룹 1',
+          approvalState: ApprovalState.APPROVED,
           iconImages: [
+            '/images/empty.png',
+            '/images/empty.png',
+            '/images/empty.png',
+            '/images/empty.png',
             '/images/empty.png',
             '/images/empty.png',
             '/images/empty.png',
@@ -36,7 +44,15 @@ const CreatorDetail = (): ReactNode => {
         {
           id: 1,
           title: '아이콘 그룹 2',
+          headImage: '/images/empty.png',
+          creator: 'cherry',
+          description: '아이콘 그룹 2',
+          approvalState: ApprovalState.APPROVED,
           iconImages: [
+            '/images/empty.png',
+            '/images/empty.png',
+            '/images/empty.png',
+            '/images/empty.png',
             '/images/empty.png',
             '/images/empty.png',
             '/images/empty.png',
@@ -51,23 +67,27 @@ const CreatorDetail = (): ReactNode => {
   }, [id]);
 
   return (
-    <div className="flex flex-col min-h-screen p-8">
-      <div className="flex flex-row items-center mb-6">
-        <img src={creatorDetail.profilePicture} alt="Profile" className="w-24 h-24 rounded-full mr-8" />
-        <div className="mx-4">
-          <h1 className="text-2xl font-bold">{creatorDetail.nickname}</h1>
+    creatorDetail && (
+      <div className="min-h-screen p-8 space-y-8">
+        <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center space-x-4">
+            <img src={creatorDetail.profilePicture} alt="Profile" className="w-24 h-24" />
+            <div className="flex flex-col justify-center">
+              <h1 className="text-2xl font-bold">{creatorDetail.nickname}</h1>
+            </div>
+          </div>
+          <div className="flex flex-row items-center space-x-4"></div>
         </div>
+        <CreatorInfoSection
+          madeIconNumber={creatorDetail.madeIconNumber}
+          soldIconNumber={creatorDetail.soldIconNumber}
+          revenue={creatorDetail.revenue}
+          bankName={creatorDetail.bankName}
+          accountNumber={creatorDetail.accountNumber}
+        />
+        <IconGroupsSection iconGroups={creatorDetail.iconGroups} />
       </div>
-      <CreatorSection
-        madeIconNumber={creatorDetail.madeIconNumber}
-        soldIconNumber={creatorDetail.soldIconNumber}
-        revenue={creatorDetail.revenue}
-        bankName={creatorDetail.bankName}
-        accountNumber={creatorDetail.accountNumber}
-      />
-      <div className="mb-8" />
-      <IconGroupsSection iconGroups={creatorDetail.iconGroups ?? []} />
-    </div>
+    )
   );
 };
 

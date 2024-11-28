@@ -33,6 +33,7 @@ export type ListElemProps = {
   id?: number;
   title?: string;
   subtitle?: string;
+  background?: string;
   image?: string;
   divider?: boolean;
   buttons: ReactNode[];
@@ -61,22 +62,22 @@ export type IconsSectionProps = {
 
 export type CreatorSectionProps = {
   madeIconNumber?: number;
-  soldIconNumber?: number;
-  revenue?: number;
+  soldIconNumber: number;
+  revenue: number;
   bankName?: BankName | string;
   accountNumber?: string;
 };
 
 export type IconGroup = {
   id: number;
-  title?: string;
-  headImage?: string;
-  creator?: string;
-  description?: string;
-  approvalState?: ApprovalState;
-  iconImages?: string[];
-  soldIconNumber?: number;
-  revenue?: number;
+  title: string;
+  headImage: string;
+  creator: string;
+  description: string;
+  approvalState: ApprovalState;
+  iconImages: string[];
+  soldIconNumber: number;
+  revenue: number;
 };
 
 export type CreatorDetailProps = {
@@ -95,19 +96,19 @@ export type IconGroupsSectionProps = {
 
 export type Creator = {
   id: number;
-  nickname?: string;
-  profilePicture?: string;
-  bankName?: BankName | string;
-  accountNumber?: string;
-  madeIconNumber?: number;
-  soldIconNumber?: number;
-  revenue?: number;
-  iconGroups?: IconGroup[];
+  nickname: string;
+  profilePicture: string;
+  bankName: BankName | string;
+  accountNumber: string;
+  madeIconNumber: number;
+  soldIconNumber: number;
+  revenue: number;
+  iconGroups: IconGroup[];
 };
 
 export type IconInfoSectionProps = {
-  soldIconNumber?: number;
-  revenue?: number;
+  soldIconNumber: number;
+  revenue: number;
 };
 
 export type SettlementDetailProps = {
@@ -128,8 +129,8 @@ export type Settlement = {
   year: number;
   month: number;
   creator: Creator;
-  isSettled?: boolean;
-  date?: string;
+  isSettled: boolean;
+  date: string;
 };
 
 export type SidebarMenu = {
@@ -140,4 +141,20 @@ export type SidebarMenu = {
 export type SidebarMenusProps = {
   sidebarMenus: SidebarMenu[];
   externalLinks?: SidebarMenu[];
+};
+
+export type InquiryDetailType = {
+  id: number;
+  author: string;
+  title: string;
+  content: string;
+  createdAt: string;
+  images: string[];
+  isResolved: boolean;
+};
+
+export type ProfileInputProps = {
+  profilePicture: File | null;
+  setProfilePicture: (file: File | null) => void;
+  styles?: string;
 };

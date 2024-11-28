@@ -7,9 +7,9 @@ const IconGroupsSection = (props: IconGroupsSectionProps): ReactNode => {
   
   return (
     <div>
-      <h2 className="text-xl font-bold mb-2">ICONS</h2>
+      <h2 className="text-xl font-bold">ICONS</h2>
       <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
-      <div className="flex flex-col w-full">
+      <div className="space-y-8">
         {iconGroups.map((iconGroup: IconGroup, index1: number) => (
           <div key={index1}>
             <div className="flex justify-between">
@@ -20,11 +20,13 @@ const IconGroupsSection = (props: IconGroupsSectionProps): ReactNode => {
               </div>
             </div>
             <div className="flex flex-row gap-4">
-              {(iconGroup.iconImages ?? []).map((image: string, index2: number) => (
-                <div key={index2} className="w-fit mb-10">
-                  <img src={image} alt={`Icon ${index2 + 1}`} className="w-32 h-32 rounded-lg" />
-                </div>
-              ))}
+              <div className="flex overflow-x-auto">
+                {(iconGroup.iconImages ?? []).map((image: string, index2: number) => (
+                  <div key={index2} className="w-fit flex-shrink-0">
+                    <img src={image} alt={`Icon ${index2 + 1}`} className="w-32 h-32 rounded-lg" />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ))}

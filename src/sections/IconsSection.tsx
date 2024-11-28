@@ -7,7 +7,7 @@ const IconsSection = (props: IconsSectionProps): ReactNode => {
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-2">ICONS</h2>
+      <h2 className="text-xl font-bold">ICONS</h2>
       <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
       <div className="grid grid-cols-3 gap-4 w-full justify-items-center">
         {iconImages.map((image: string, index: number) => (
