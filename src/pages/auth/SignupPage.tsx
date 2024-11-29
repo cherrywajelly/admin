@@ -27,9 +27,8 @@ const SignupPage = (): ReactNode => {
     console.log('bankName: ', bankName);
     console.log('accountNumber: ', accountNumber);
     console.log('profilePicture: ', profilePicture);
-  };
 
-  const handleLoginClick = (): void => {
+    alert('회원가입이 완료되었습니다.');
     navigate('/login');
   };
 
@@ -63,7 +62,6 @@ const SignupPage = (): ReactNode => {
         </div>
       </div>
       <Button text="회원가입" onClick={handleSignupClick} />
-      <Button text="로그인" onClick={handleLoginClick} />
     </div>
   );
 };
