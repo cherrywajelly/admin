@@ -18,6 +18,7 @@ import CreatorSettlementDetail from '../pages/creator/SettlementDetail.tsx';
 import CreatorMyPage from '../pages/creator/MyPage.tsx';
 import CreatorAccountModification from '../pages/creator/AccountModification.tsx';
 import Layout from '../layout/Layout.tsx';
+import SocialAuthCallback from '../pages/auth/SocialAuthCallback.tsx';
 
 const Router = (): ReactNode => {
   return (
@@ -25,6 +26,10 @@ const Router = (): ReactNode => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/api/v2/login/kakao" element={<SocialAuthCallback social="kakao" role="creator" version="v2" />} />
+        <Route path="/api/v3/login/kakao" element={<SocialAuthCallback social="kakao" role="admin" version="v3" />} />
+        <Route path="/api/v2/login/google" element={<SocialAuthCallback social="google" role="creator" version="v2" />} />
+        <Route path="/api/v3/login/google" element={<SocialAuthCallback social="google" role="admin" version="v3" />} />
         <Route path="/" element={<Layout />}>
           <Route path="admin">
             <Route index path="icons" element={<AdminIconList />} />

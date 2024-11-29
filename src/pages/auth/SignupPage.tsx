@@ -5,31 +5,28 @@ import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
 import ProfileInput from '../../components/ProfileInput';
 import BankInput from '../../components/BankInput';
+import { isAllFieldsFilled } from '../../utils/utils';
 
 const SignupPage = (): ReactNode => {
   const navigate = useNavigate();
-  const [nickname, setNickname] = useState<string>('');
-  const [bankName, setBankName] = useState<BankName | string>('');
-  const [accountNumber, setAccountNumber] = useState<string>('');
+  const [nickname, setNickname] = useState<string>();
+  const [bankName, setBankName] = useState<BankName | string>();
+  const [accountNumber, setAccountNumber] = useState<string>();
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
 
   const handleSignupClick = (): void => {
-    if (
-      [nickname, bankName, accountNumber, profilePicture].some(
-        (field: string | BankName | File | null | undefined) => !field
-      )
-    ) {
+    if (!isAllFieldsFilled([nickname, bankName, accountNumber, profilePicture])) {
       alert('모든 필드를 입력해야 합니다.');
       return;
     }
 
-    console.log('nickname: ', nickname);
-    console.log('bankName: ', bankName);
-    console.log('accountNumber: ', accountNumber);
-    console.log('profilePicture: ', profilePicture);
-  };
+    const nicknameRegex = /^[가-힣a-zA-Z]{1,10}$/;
+    if (!nicknameRegex.test(nickname!)) {
+      alert('닉네임은 한글 또는 영문으로 10글자 이하여야 합니다.');
+      return;
+    }
 
-  const handleLoginClick = (): void => {
+    alert('회원가입이 완료되었습니다.');
     navigate('/login');
   };
 
@@ -63,7 +60,6 @@ const SignupPage = (): ReactNode => {
         </div>
       </div>
       <Button text="회원가입" onClick={handleSignupClick} />
-      <Button text="로그인" onClick={handleLoginClick} />
     </div>
   );
 };

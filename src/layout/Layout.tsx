@@ -5,7 +5,7 @@ import Sidebar from './Sidebar.tsx';
 import Divider from '@mui/material/Divider';
 import { SidebarMenu } from '../types/Props.tsx';
 import { AdminMenu, CreatorMenu } from '../types/Enums.tsx';
-import { getEnv } from '../utils/utils.tsx';
+import { getEnv } from '../utils/utils';
 
 const Layout = (): ReactNode => {
   const [sidebarMenus, setSidebarMenus] = useState<SidebarMenu[]>();

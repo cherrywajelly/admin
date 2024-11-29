@@ -158,3 +158,17 @@ export type ProfileInputProps = {
   setProfilePicture: (file: File | null) => void;
   styles?: string;
 };
+
+export type SocialLoginButtonProps = {
+  social: string;
+  role: string;
+  styles: string;
+  icon: string;
+  text: string;
+};
+
+export type SocialAuthCallbackProps = {
+  social: string;
+  role: string;
+  version: string;
+};
