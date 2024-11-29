@@ -2,6 +2,7 @@ import { ReactNode, useEffect } from 'react';
 import { getEnv } from '../../utils/utils';
 import { SocialAuthCallbackProps } from '../../types/Props';
 import Cookies from 'js-cookie';
+import { getAuthToken } from '../../api/login';
 
 const SocialAuthCallback = (props: SocialAuthCallbackProps): ReactNode => {
   const { social, role, version } = props;
@@ -13,11 +14,7 @@ const SocialAuthCallback = (props: SocialAuthCallbackProps): ReactNode => {
 
         if (!code) throw new Error('인증 코드가 없습니다.');
 
-        const response = await fetch(`${getEnv('VITE_API_URL')}/api/${version}/login/${social}?code=${code}`);
-
-        if (!response.ok) throw new Error('로그인에 실패했습니다.');
-
-        const { accessToken, refreshToken, isNew } = await response.json();
+        const { accessToken, refreshToken, isNew } = await getAuthToken(social, code, version);
 
         if (accessToken && refreshToken) {
           sessionStorage.setItem('accessToken', accessToken);
