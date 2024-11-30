@@ -10,9 +10,9 @@ export const getInquiryList = async (): Promise<any> => {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
 
-    const data = await res.json();
+    const data: InquiriesElemResponse[] = (await res.json()).inquiryResponses;
 
-    const mappedData = data.inquiryResponses.map((inquiriesElem: InquiriesElemResponse) => ({
+    const mappedData = data.map((inquiriesElem: InquiriesElemResponse) => ({
       id: inquiriesElem.inquiryId,
       title: inquiriesElem.title,
       isResolved: inquiriesElem.inquiryState === 'RESOLVED',
