@@ -6,6 +6,9 @@ import Button from '../../components/Button';
 import { postIconGroup } from '../../api/creator/iconGroup';
 import { IconGroupRequestBody } from '../../types/API';
 import { useNavigate } from 'react-router-dom';
+import { Radio } from '@mui/material';
+import { FormControlLabel } from '@mui/material';
+import { RadioGroup } from '@mui/material';
 
 const IconRegister = (): ReactNode => {
   const navigate = useNavigate();
@@ -14,6 +17,8 @@ const IconRegister = (): ReactNode => {
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
+  const [price, setPrice] = useState<string>('');
+  const [iconType, setIconType] = useState<string>('JAM');
 
   const handleRegisterIcon = async (requestBody: IconGroupRequestBody): Promise<void> => {
     await postIconGroup(requestBody);
@@ -43,14 +48,42 @@ const IconRegister = (): ReactNode => {
               inputStyles="flex-1"
             />
           </div>
+          <div className="flex flex-col justify-center space-y-4 w-full">
+            <TextInput
+              label="아이콘 가격"
+              value={price}
+              onChange={(e): void => setPrice(e.target.value)}
+              textStyles="w-20"
+              inputStyles="flex-1"
+            />
+            <div className="flex flex-row items-center space-x-4">
+              <span className="font-bold w-20">아이콘 타입</span>
+              <RadioGroup
+                row
+                value={iconType}
+                onChange={(e): void => setIconType(e.target.value)}
+              >
+                <FormControlLabel 
+                  value="JAM" 
+                  control={<Radio />} 
+                  label="잼"
+                />
+                <FormControlLabel 
+                  value="ICON" 
+                  control={<Radio />} 
+                  label="아이콘" 
+                />
+              </RadioGroup>
+            </div>
+          </div>
         </div>
         <div className="flex flex-row items-center space-x-4">
           <Button
             text="등록하기"
             onClick={() => handleRegisterIcon({
               name: title,
-              price: 1500,
-              iconType: 'JAM',
+              price: Number(price),
+              iconType: iconType,
               iconBuiltin: 'NONBUILTIN',
               description: description,
             })}
