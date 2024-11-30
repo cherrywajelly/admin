@@ -37,7 +37,7 @@ const refreshAccessToken = async (refreshToken: string): Promise<string> => {
 
 export const apiRequest = async (
   endpoint: string,
-  method: MethodType | undefined = MethodType.GET,
+  method: MethodType | undefined = 'GET',
   body?: BodyInit | object | null | undefined
 ): Promise<Response> => {
   const accessToken = sessionStorage.getItem('accessToken') ?? undefined;

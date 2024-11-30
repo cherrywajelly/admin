@@ -1,4 +1,4 @@
-export type InquiryElemResponse = {
+export type InquiriesElemResponse = {
   inquiryId: number;
   title: string;
   inquiryState: string;

@@ -1,6 +1,5 @@
 import { apiRequest } from '..';
-import { InquiryElemResponse, InquiryResponse } from '../../types/API';
-import { MethodType } from '../../types/Enums';
+import { InquiriesElemResponse, InquiryResponse } from '../../types/API';
 import { fetchText } from '../../utils/utils';
 
 export const getInquiryList = async (): Promise<any> => {
@@ -13,10 +12,10 @@ export const getInquiryList = async (): Promise<any> => {
 
     const data = await res.json();
 
-    const mappedData = data.inquiryResponses.map((inquiryElem: InquiryElemResponse) => ({
-      id: inquiryElem.inquiryId,
-      title: inquiryElem.title,
-      isResolved: inquiryElem.inquiryState === 'RESOLVED',
+    const mappedData = data.inquiryResponses.map((inquiriesElem: InquiriesElemResponse) => ({
+      id: inquiriesElem.inquiryId,
+      title: inquiriesElem.title,
+      isResolved: inquiriesElem.inquiryState === 'RESOLVED',
     }));
     
     return mappedData;
@@ -52,7 +51,7 @@ export const getInquiryDetail = async (inquiryId: string): Promise<any> => {
 
 export const putInquiryResolve = async (inquiryId: string): Promise<any> => {
   try {
-    await apiRequest(`/api/v3/inquiries/${inquiryId}`, MethodType.PUT);
+    await apiRequest(`/api/v3/inquiries/${inquiryId}`, 'PUT');
   } catch (error) {
     console.error('Failed to resolve inquiry:', error);
   }
