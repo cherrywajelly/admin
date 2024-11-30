@@ -12,3 +12,11 @@ export type InquiryResponse = {
   email: string;
   contentsUrl: string;
 };
+
+export type IconGroupRequestBody = {
+  name: string;
+  price: number;
+  iconType: string;
+  iconBuiltin: string;
+  description: string;
+}
