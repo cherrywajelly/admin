@@ -43,3 +43,12 @@ export const CreatorMenu = {
   ACCOUNT_MODIFICATION: '수정하기',
 } as const;
 export type CreatorMenu = (typeof CreatorMenu)[keyof typeof CreatorMenu];
+
+export const MethodType = {
+  GET: 'GET',
+  POST: 'POST',
+  DELETE: 'DELETE',
+  PATCH: 'PATCH',
+  PUT: 'PUT',
+} as const;
+export type MethodType = (typeof MethodType)[keyof typeof MethodType];

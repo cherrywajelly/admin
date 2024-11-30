@@ -1,26 +1,31 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { InquiryDetailType } from '../../types/Props';
+import { InquiryDetail } from '../../types/Types';
 import Button from '../../components/Button';
+import { getInquiryDetail, putInquiryResolve } from '../../api/admin/inquiry';
 
-const InquiryDetail = (): ReactNode => {
-  const { id } = useParams();
-  const [inquiry, setInquiry] = useState<InquiryDetailType>();
+const InquiryDetailPage = (): ReactNode => {
+  const { id } = useParams<string>();
+  const [inquiry, setInquiry] = useState<InquiryDetail>();
+  const [isResolved, setIsResolved] = useState<boolean>();
 
   useEffect(() => {
-    setInquiry({
-      id: Number(id),
-      author: '홍길동',
-      title: '이미지가 안 올라갑니다',
-      content: '제가 찍은 사진을 올렸는데 계속 에러가 발생합니다. 어떻게 해결할 수 있을까요?',
-      createdAt: '2024-02-14',
-      images: ['/images/empty.png', '/images/empty.png'],
-      isResolved: false,
-    });
-  }, [id]);
+    const fetchInquiryDetail = async () => {
+      if (!id) return;
+      
+      const data = await getInquiryDetail(id);
+      setInquiry(data);
+      setIsResolved(data.isResolved);
+    };
 
-  const handleResolve = () => {
-    alert('문의가 해결되었습니다.');
+    fetchInquiryDetail();
+  }, [id, isResolved]);
+
+  const handleResolve = async () => {
+    if (!id) return;
+
+    await putInquiryResolve(id);
+    setIsResolved(true);
   };
 
   return (
@@ -61,4 +66,4 @@ const InquiryDetail = (): ReactNode => {
   );
 };
 
-export default InquiryDetail;
+export default InquiryDetailPage;

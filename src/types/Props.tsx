@@ -143,16 +143,6 @@ export type SidebarMenusProps = {
   externalLinks?: SidebarMenu[];
 };
 
-export type InquiryDetailType = {
-  id: number;
-  author: string;
-  title: string;
-  content: string;
-  createdAt: string;
-  images: string[];
-  isResolved: boolean;
-};
-
 export type ProfileInputProps = {
   profilePicture: File | null;
   setProfilePicture: (file: File | null) => void;
