@@ -1,14 +1,15 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ApprovalState } from '../../types/Enums';
-import { IconGroupDetail } from '../../types/Types';
+import { IconGroupDetail2 } from '../../types/Types';
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import Button from '../../components/Button';
 import IconsSection from '../../sections/IconsSection';
+import { getIconGroup } from '../../api/admin/iconGroup';
 
 const IconDetailPage = (): ReactNode => {
   const { id } = useParams();
-  const [iconDetail, setIconDetail] = useState<IconGroupDetail>();
+  const [iconDetail, setIconDetail] = useState<IconGroupDetail2>();
 
   const handleSave = (approvalState: ApprovalState): void => {
     let message;
@@ -29,25 +30,14 @@ const IconDetailPage = (): ReactNode => {
   };
 
   useEffect((): void => {
-    setIconDetail({
-      title: '루돌프 토스트',
-      headImage: '/images/christmas/r1.png',
-      creator: 'cherry',
-      description: '크리스마스 기념 루돌프 토스트',
-      approvalState: ApprovalState.PENDING,
-      iconImages: [
-        '/images/christmas/r1.png',
-        '/images/christmas/r2.png',
-        '/images/christmas/r3.png',
-        '/images/christmas/r4.png',
-        '/images/christmas/r5.png',
-        '/images/christmas/r7.png',
-        '/images/christmas/r8.png',
-        '/images/christmas/r9.png',
-      ],
-      soldIconNumber: 10,
-      revenue: 10000,
-    });
+    const fetchIconDetail = async () => {
+      if (!id) return;
+      
+      const data = await getIconGroup(id);
+      setIconDetail(data);
+    };
+
+    fetchIconDetail();
   }, [id]);
 
   return (
@@ -59,7 +49,6 @@ const IconDetailPage = (): ReactNode => {
             <div className="flex flex-col space-y-1">
               <h1 className="text-2xl font-bold w-40">{iconDetail.title}</h1>
               <p className="text-gray-500">{iconDetail.creator}</p>
-              <p className="flex-1">{iconDetail.description}</p>
             </div>
           </div>
           <div className="flex flex-row items-center space-x-4">

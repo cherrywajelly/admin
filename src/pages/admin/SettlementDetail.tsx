@@ -5,7 +5,7 @@ import IconGroupsSection from '../../sections/IconGroupsSection';
 import Button from '../../components/Button';
 import { SettlementDetail } from '../../types/Types';
 import { getSettlement, postSettlement } from '../../api/admin/Settlement';
-import { SettlementRequestBody } from '../../types/API';
+import { SettlementRequestBody } from '../../types/api/admin/API';
 
 const SettlementDetailPage = (): ReactNode => {
   const { id, year, month } = useParams<{ id: string; year: string; month: string }>();

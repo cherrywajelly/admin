@@ -1,5 +1,5 @@
 import { apiRequest } from '..';
-import { CreatorSettlementsResponse, SettlementResponse, SettlementRequestBody } from '../../types/API';
+import { SettlementsResponse, SettlementResponse, SettlementRequestBody } from '../../types/api/admin/API';
 import { ApprovalState } from '../../types/Enums';
 
 export const getSettlements = async (year: number, month: number): Promise<any> => {
@@ -10,7 +10,7 @@ export const getSettlements = async (year: number, month: number): Promise<any> 
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
 
-    const data: CreatorSettlementsResponse[] = (await res.json()).settlementResponses;
+    const data: SettlementsResponse[] = (await res.json()).settlementResponses;
 
     const mappedData = data.map((settlement) => ({
       id: settlement.memberId,

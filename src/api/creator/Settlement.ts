@@ -1,5 +1,5 @@
 import { apiRequest } from '..';
-import { SettlementResponse, SettlementsElemResponse } from '../../types/API';
+import { SettlementResponse, SettlementsElemResponse } from '../../types/api/creator/API';
 
 export const getSettlements = async (): Promise<any> => {
   try {
