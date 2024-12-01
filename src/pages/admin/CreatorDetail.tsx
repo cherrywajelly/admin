@@ -21,7 +21,6 @@ const CreatorDetail = (): ReactNode => {
       revenue: 100000,
       iconGroups: [
         {
-          id: 0,
           title: '아이콘 그룹 1',
           headImage: '/images/empty.png',
           creator: 'cherry',
@@ -42,7 +41,6 @@ const CreatorDetail = (): ReactNode => {
           revenue: 40000,
         },
         {
-          id: 1,
           title: '아이콘 그룹 2',
           headImage: '/images/empty.png',
           creator: 'cherry',

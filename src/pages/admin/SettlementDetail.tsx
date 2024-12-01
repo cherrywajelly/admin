@@ -22,7 +22,6 @@ const SettlementDetail = (): ReactNode => {
       revenue: 52800,
       iconGroups: [
         {
-          id: 0,
           title: '루돌프 토스트',
           iconImages: [
             '/images/christmas/r1.png',
@@ -39,7 +38,6 @@ const SettlementDetail = (): ReactNode => {
           revenue: 23100,
         },
         {
-          id: 1,
           title: '산타 토스트',
           iconImages: [
             '/images/christmas/s1.png',

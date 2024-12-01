@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Divider } from "@mui/material";
-import { IconGroup, IconGroupsSectionProps } from "../types/Props";
+import { IconGroupsSectionProps } from "../types/Props";
+import { IconGroupDetail } from "../types/Types";
 
 const IconGroupsSection = (props: IconGroupsSectionProps): ReactNode => {
   const { iconGroups } = props;
@@ -10,7 +11,7 @@ const IconGroupsSection = (props: IconGroupsSectionProps): ReactNode => {
       <h2 className="text-xl font-bold">ICONS</h2>
       <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
       <div className="space-y-8">
-        {iconGroups.map((iconGroup: IconGroup, index1: number) => (
+        {iconGroups.map((iconGroup: IconGroupDetail, index1: number) => (
           <div key={index1}>
             <div className="flex justify-between">
               <div>{iconGroup.title}</div>
