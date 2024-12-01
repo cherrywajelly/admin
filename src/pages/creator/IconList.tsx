@@ -8,7 +8,7 @@ import Context from '../../contexts/Context.tsx';
 import { getIconGroups } from '../../api/creator/iconGroup.ts';
 import { IconGroup } from '../../types/Types.tsx';
 
-const IconList = (): ReactNode => {
+const IconListPage = (): ReactNode => {
   const [iconList, setIconList] = useState<IconGroup[]>([]);
 
   const navigate = useNavigate();
@@ -47,4 +47,4 @@ const IconList = (): ReactNode => {
   );
 };
 
-export default IconList;
+export default IconListPage;

@@ -6,7 +6,7 @@ import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import Button from '../../components/Button';
 import IconsSection from '../../sections/IconsSection';
 
-const IconDetail = (): ReactNode => {
+const IconDetailPage = (): ReactNode => {
   const { id } = useParams();
   const [iconDetail, setIconDetail] = useState<IconGroupDetail>();
 
@@ -88,4 +88,4 @@ const IconDetail = (): ReactNode => {
   );
 };
 
-export default IconDetail;
+export default IconDetailPage;

@@ -6,7 +6,7 @@ import IconInfoSection from '../../sections/IconInfoSection';
 import { useParams } from 'react-router-dom';
 import { getIconGroup } from '../../api/creator/iconGroup';
 
-const IconDetail = (): ReactNode => {
+const IconDetailPage = (): ReactNode => {
   const { id } = useParams();
   const [iconDetail, setIconDetail] = useState<IconGroupDetail>();
 
@@ -44,4 +44,4 @@ const IconDetail = (): ReactNode => {
   );
 };
 
-export default IconDetail;
+export default IconDetailPage;

@@ -10,7 +10,7 @@ import { Radio } from '@mui/material';
 import { FormControlLabel } from '@mui/material';
 import { RadioGroup } from '@mui/material';
 
-const IconRegister = (): ReactNode => {
+const IconRegisterPage = (): ReactNode => {
   const navigate = useNavigate();
   
   const [iconImages, setIconImages] = useState<string[]>([]);
@@ -101,4 +101,4 @@ const IconRegister = (): ReactNode => {
   );
 };
 
-export default IconRegister;
+export default IconRegisterPage;

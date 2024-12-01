@@ -6,7 +6,7 @@ import IconGroupsSection from '../../sections/IconGroupsSection';
 import { ApprovalState, BankName } from '../../types/Enums';
 import Button from '../../components/Button';
 
-const SettlementDetail = (): ReactNode => {
+const SettlementDetailPage = (): ReactNode => {
   const { id } = useParams();
   const [creatorDetail, setCreatorDetail] = useState<Creator>();
 
@@ -83,4 +83,4 @@ const SettlementDetail = (): ReactNode => {
   );
 };
 
-export default SettlementDetail;
+export default SettlementDetailPage;

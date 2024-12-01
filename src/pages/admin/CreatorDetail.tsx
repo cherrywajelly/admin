@@ -5,7 +5,7 @@ import CreatorInfoSection from '../../sections/CreatorInfoSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
 import { ApprovalState, BankName } from '../../types/Enums';
 
-const CreatorDetail = (): ReactNode => {
+const CreatorDetailPage = (): ReactNode => {
   const { id } = useParams();
   const [creatorDetail, setCreatorDetail] = useState<Creator>();
 
@@ -89,4 +89,4 @@ const CreatorDetail = (): ReactNode => {
   );
 };
 
-export default CreatorDetail;
+export default CreatorDetailPage;

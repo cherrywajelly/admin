@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Context from '../../contexts/Context';
 import { AdminMenu, BankName } from '../../types/Enums';
 
-const CreatorList = (): ReactNode => {
+const CreatorListPage = (): ReactNode => {
   const [creators, setCreators] = useState<Creator[]>([]);
   const navigate = useNavigate();
   const { setSelectedMenu } = useContext(Context) as ContextProps;
@@ -82,4 +82,4 @@ const CreatorList = (): ReactNode => {
   );
 };
 
-export default CreatorList;
+export default CreatorListPage;
