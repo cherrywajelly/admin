@@ -46,15 +46,17 @@ export type IconGroupResponse = {
   creatorNickname: string;
 };
 
+export interface creatorRequest {
+  nickname: string;
+  creatorAccountResponse: {
+    bank: string;
+    accountNumber: string;
+  };
+}
+
 export interface CreatorInfoRequestBody {
   profile: File;
-  creatorRequest: {
-    nickname: string;
-    creatorAccountResponse: {
-      bank: string;
-      accountNumber: number;
-    };
-  };
+  creatorRequest: creatorRequest;
 }
 
 export interface CreatorInfoResponse {
