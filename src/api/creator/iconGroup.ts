@@ -1,6 +1,6 @@
 import { apiRequest } from '..';
 import { IconGroupRequestBody, IconGroupResponse, IconGroupsElemResponse } from '../../types/API';
-import { ApprovalState } from '../../types/Enums';
+import { toApprovalState } from '../../utils/utils';
 
 export const postIconGroup = async (requestBody: IconGroupRequestBody): Promise<any> => {
   try {
@@ -30,7 +30,7 @@ export const getIconGroups = async (): Promise<any> => {
       id: iconGroup.iconGroupId,
       title: iconGroup.iconTitle,
       headImage: iconGroup.iconImageUrl,
-      // approvalState: iconGroup.approvalState as ApprovalState,
+      approvalState: toApprovalState(iconGroup.iconState),
     }));
     
     return mappedData;
@@ -51,12 +51,10 @@ export const getIconGroup = async (iconGroupId: string): Promise<any> => {
 
     const mappedData = {
       title: data.iconGroupOrderedResponse.iconName,
-      // headImage: data.iconGroupOrderedResponse.thumbnailImageUrl,
-      headImage: data.iconGroupOrderedResponse.iconImageUrl[0],
+      headImage: data.iconGroupOrderedResponse.thumbnailImageUrl,
       creator: data.creatorNickname,
       description: data.description,
-      // approvalState: data.iconGroupOrderedResponse.iconState,
-      approvalState: ApprovalState.PENDING,
+      approvalState: toApprovalState(data.iconGroupOrderedResponse.iconState),
       iconImages: data.iconGroupOrderedResponse.iconImageUrl,
       soldIconNumber: data.iconGroupOrderedResponse.orderCount,
       revenue: data.iconGroupOrderedResponse.income,

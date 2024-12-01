@@ -22,11 +22,7 @@ const IconList = (): ReactNode => {
   useEffect(() => {
     const fetchIconGroups = async () => {
       const data = await getIconGroups();
-      // setIconList(data);
-      setIconList(data.map((icon: IconGroup) => ({
-        ...icon,
-        approvalState: ApprovalState.PENDING,
-      })));
+      setIconList(data);
     };
 
     fetchIconGroups();

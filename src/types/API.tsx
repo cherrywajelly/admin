@@ -25,6 +25,7 @@ export type IconGroupsElemResponse = {
   iconGroupId: number;
   iconImageUrl: string;
   iconTitle: string;
+  iconState: string;
 };
 
 export type IconGroupResponse = {
@@ -33,6 +34,8 @@ export type IconGroupResponse = {
     iconImageUrl: string[];
     orderCount: number;
     income: number;
+    iconState: string;
+    thumbnailImageUrl: string;
   };
   price: number;
   description: string;
