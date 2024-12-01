@@ -42,3 +42,29 @@ export type IconGroupResponse = {
   creatorProfileUrl: string;
   creatorNickname: string;
 };
+
+export type SettlementsElemResponse = {
+  year: number;
+  month: number;
+  settlementDate: number[];
+};
+
+export type SettlementResponse = {
+  year: number;
+  month: number;
+  creatorNickname: string;
+  salesIconCount: number;
+  totalRevenue: number;
+  settlement: number;
+  bank: string;
+  accountNumber: string;
+  settlementState: string;
+  settlementIcons: [
+    {
+      title: string;
+      revenue: number;
+      salesCount: number;
+      settlementState: string;
+    }
+  ]
+};

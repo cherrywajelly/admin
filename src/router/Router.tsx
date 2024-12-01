@@ -46,7 +46,7 @@ const Router = (): ReactNode => {
             <Route path="icons/:id" element={<CreatorIconDetail />} />
             <Route path="register" element={<CreatorIconRegister />} />
             <Route path="settlements" element={<CreatorSettlement />} />
-            <Route path="settlements/:id" element={<CreatorSettlementDetail />} />
+            <Route path="settlements/:year/:month" element={<CreatorSettlementDetail />} />
             <Route path="mypage" element={<CreatorMyPage />} />
             <Route path="modify" element={<CreatorAccountModification />} />
           </Route>

@@ -65,6 +65,7 @@ export type CreatorSectionProps = {
   madeIconNumber?: number;
   soldIconNumber: number;
   revenue: number;
+  settlement?: number;
   bankName?: BankName | string;
   accountNumber?: string;
 };
@@ -112,14 +113,6 @@ export type SettlementDetailProps = {
 export type IconUploadSectionProps = {
   iconImages: string[];
   setIconImages: (iconImages: string[]) => void;
-};
-
-export type Settlement = {
-  year: number;
-  month: number;
-  creator: Creator;
-  isSettled: boolean;
-  date: string;
 };
 
 export type SidebarMenu = {
