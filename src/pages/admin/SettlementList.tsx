@@ -83,7 +83,7 @@ const SettlementListPage = (): ReactNode => {
             background={settlement.isSettled ? 'bg-white' : 'bg-ivory'}
             buttons={[
               <Button text={`${settlement.isSettled ? '정산 완료' : '정산 미완료'}`} />,
-              <Button text="상세 보기" onClick={() => handleButtonClick(settlement.id, year, month)} />,
+              <Button text="상세 보기" onClick={() => handleButtonClick(settlement.id, year + 2023, month + 1)} />,
             ]}
             divider={index < settlements.length - 1}
           />
