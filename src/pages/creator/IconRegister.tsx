@@ -21,7 +21,12 @@ const IconRegister = (): ReactNode => {
   const [iconType, setIconType] = useState<string>('JAM');
 
   const handleRegisterIcon = async (requestBody: IconGroupRequestBody): Promise<void> => {
-    await postIconGroup(requestBody);
+    const res = await postIconGroup(requestBody);
+
+    if (!res.ok) {
+      alert('아이콘 등록 신청에 실패하였습니다.');
+      return;
+    }
 
     alert('아이콘 등록 신청되었습니다.');
     navigate('/creator/icons');

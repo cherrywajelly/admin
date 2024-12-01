@@ -19,4 +19,23 @@ export type IconGroupRequestBody = {
   iconType: string;
   iconBuiltin: string;
   description: string;
-}
+};
+
+export type IconGroupsElemResponse = {
+  iconGroupId: number;
+  iconImageUrl: string;
+  iconTitle: string;
+};
+
+export type IconGroupResponse = {
+  iconGroupOrderedResponse: {
+    iconName: string;
+    iconImageUrl: string[];
+    orderCount: number;
+    income: number;
+  };
+  price: number;
+  description: string;
+  creatorProfileUrl: string;
+  creatorNickname: string;
+};

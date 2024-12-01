@@ -1,10 +1,12 @@
 import { ReactNode, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ContextProps, IconGroup } from '../../types/Props';
+import { ContextProps } from '../../types/Props';
 import { ApprovalState, CreatorMenu } from '../../types/Enums';
 import ListElem from '../../components/ListElem.tsx';
 import Button from '../../components/Button.tsx';
 import Context from '../../contexts/Context.tsx';
+import { getIconGroups } from '../../api/creator/iconGroup.ts';
+import { IconGroup } from '../../types/Types.tsx';
 
 const IconList = (): ReactNode => {
   const [iconList, setIconList] = useState<IconGroup[]>([]);
@@ -18,52 +20,16 @@ const IconList = (): ReactNode => {
   };
 
   useEffect(() => {
-    setIconList([
-      {
-        id: 0,
-        title: '루돌프 토스트',
-        headImage: '/images/christmas/r1.png',
+    const fetchIconGroups = async () => {
+      const data = await getIconGroups();
+      // setIconList(data);
+      setIconList(data.map((icon: IconGroup) => ({
+        ...icon,
         approvalState: ApprovalState.PENDING,
-        creator: 'creator1',
-        description: '아이콘 그룹 1',
-        iconImages: [],
-        soldIconNumber: 0,
-        revenue: 0,
-      },
-      {
-        id: 1,
-        title: '산타 토스트',
-        headImage: '/images/christmas/s1.png',
-        approvalState: ApprovalState.APPROVED,
-        creator: 'creator1',
-        description: '아이콘 그룹 1',
-        iconImages: [],
-        soldIconNumber: 0,
-        revenue: 0,
-      },
-      {
-        id: 2,
-        title: '홀리 잼',
-        headImage: '/images/christmas/h1.png',
-        approvalState: ApprovalState.REJECTED,
-        creator: 'creator1',
-        description: '아이콘 그룹 1',
-        iconImages: [],
-        soldIconNumber: 0,
-        revenue: 0,
-      },
-      {
-        id: 3,
-        title: '몰리 잼',
-        headImage: '/images/christmas/m1.png',
-        approvalState: ApprovalState.APPROVED,
-        creator: 'creator1',
-        description: '아이콘 그룹 1',
-        iconImages: [],
-        soldIconNumber: 0,
-        revenue: 0,
-      },
-    ]);
+      })));
+    };
+
+    fetchIconGroups();
   }, []);
 
   return (
