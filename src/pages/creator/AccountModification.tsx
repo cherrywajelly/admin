@@ -7,8 +7,7 @@ import ProfileInput from '../../components/ProfileInput';
 import BankInput from '../../components/BankInput';
 import { ContextProps } from '../../types/Props';
 import Context from '../../contexts/Context';
-import { postCreatorInfo } from '../../api/creator/members';
-import { CreatorInfoRequestBody } from '../../types/API';
+import { putCreatorInfo } from '../../api/creator/members';
 
 const AccountModification = (): ReactNode => {
   const navigate = useNavigate();
@@ -40,13 +39,13 @@ const AccountModification = (): ReactNode => {
 
   // 수정하기 버튼 클릭 시 실행되는 api - put
   const handleSubmit = async () => {
-    const res = await postCreatorInfo({
+    const res = await putCreatorInfo({
       profile: profilePicture as File,
       creatorRequest: {
         nickname: nickname,
         creatorAccountResponse: {
           bank: bankName,
-          accountNumber: Number(accountNumber),
+          accountNumber: accountNumber,
         },
       },
     });
