@@ -4,7 +4,7 @@ import ProfileInput from '../../components/ProfileInput';
 import TextInput from '../../components/TextInput';
 import Button from '../../components/Button';
 import { postIconGroup } from '../../api/creator/iconGroup';
-import { IconGroupRequestBody } from '../../types/API';
+import { IconGroupRequestBody } from '../../types/api/creator/API';
 import { useNavigate } from 'react-router-dom';
 import { Radio } from '@mui/material';
 import { FormControlLabel } from '@mui/material';

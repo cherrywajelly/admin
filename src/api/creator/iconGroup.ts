@@ -1,5 +1,5 @@
 import { apiRequest } from '..';
-import { IconGroupRequestBody, IconGroupResponse, IconGroupsElemResponse } from '../../types/API';
+import { IconGroupRequestBody, IconGroupResponse, IconGroupsElemResponse } from '../../types/api/creator/API';
 import { toApprovalState } from '../../utils/utils';
 
 export const postIconGroup = async (requestBody: IconGroupRequestBody): Promise<any> => {

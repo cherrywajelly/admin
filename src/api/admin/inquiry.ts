@@ -1,5 +1,5 @@
 import { apiRequest } from '..';
-import { InquiriesElemResponse, InquiryResponse } from '../../types/API';
+import { InquiriesElemResponse, InquiryResponse } from '../../types/api/admin/API';
 import { fetchText } from '../../utils/utils';
 
 export const getInquiries = async (): Promise<any> => {

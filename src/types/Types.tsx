@@ -34,6 +34,14 @@ export type IconGroupDetail = {
   revenue: number;
 };
 
+export type IconGroupDetail2 = {
+  title: string;
+  headImage: string;
+  creator: string;
+  approvalState: ApprovalState;
+  iconImages: string[];
+};
+
 export type Settlement = {
   year: number;
   month: number;
