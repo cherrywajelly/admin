@@ -13,12 +13,18 @@ export type InquiryResponse = {
   contentsUrl: string;
 };
 
-export type IconGroupRequestBody = {
+export type IconGroupRequestJson = {
   name: string;
   price: number;
   iconType: string;
   iconBuiltin: string;
   description: string;
+};
+
+export type IconGroupRequestBody = {
+  thumbnailIcon: File;
+  files: File[];
+  iconGroupPostRequest: IconGroupRequestJson;
 };
 
 export type IconGroupsElemResponse = {
@@ -39,3 +45,21 @@ export type IconGroupResponse = {
   creatorProfileUrl: string;
   creatorNickname: string;
 };
+
+export interface CreatorInfoRequestBody {
+  profile: File;
+  creatorRequest: {
+    nickname: string;
+    creatorAccountResponse: {
+      bank: string;
+      accountNumber: number;
+    };
+  };
+}
+
+export interface CreatorInfoResponse {
+  nickname: string;
+  bank: string;
+  accountNumber: string;
+  profileUrl: string;
+}
