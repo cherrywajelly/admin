@@ -7,6 +7,8 @@ import ProfileInput from '../../components/ProfileInput';
 import BankInput from '../../components/BankInput';
 import { ContextProps } from '../../types/Props';
 import Context from '../../contexts/Context';
+import { postCreatorInfo } from '../../api/creator/members';
+import { CreatorInfoRequestBody } from '../../types/API';
 
 const AccountModification = (): ReactNode => {
   const navigate = useNavigate();
@@ -36,6 +38,27 @@ const AccountModification = (): ReactNode => {
     navigate('/creator/mypage');
   };
 
+  // 수정하기 버튼 클릭 시 실행되는 api - put
+  const handleSubmit = async () => {
+    const res = await postCreatorInfo({
+      profile: profilePicture as File,
+      creatorRequest: {
+        nickname: nickname,
+        creatorAccountResponse: {
+          bank: bankName,
+          accountNumber: Number(accountNumber),
+        },
+      },
+    });
+
+    if (!res.ok) {
+      alert('fail');
+      return;
+    }
+
+    console.log(res);
+  };
+
   return (
     <div className="min-h-screen p-8 space-y-8">
       <div className="flex flex-row items-center justify-between">
@@ -62,7 +85,7 @@ const AccountModification = (): ReactNode => {
           </div>
         </div>
         <div className="flex flex-row justify-end items-center space-x-4">
-          <Button text="수정하기" onClick={handleModifyClick} />
+          <Button text="수정하기" onClick={handleSubmit} />
         </div>
       </div>
     </div>
