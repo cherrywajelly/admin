@@ -2,7 +2,7 @@ import { apiRequest } from '..';
 import { InquiriesElemResponse, InquiryResponse } from '../../types/API';
 import { fetchText } from '../../utils/utils';
 
-export const getInquiryList = async (): Promise<any> => {
+export const getInquiries = async (): Promise<any> => {
   try {
     const res = await apiRequest('/api/v3/inquiries');
 
@@ -24,7 +24,7 @@ export const getInquiryList = async (): Promise<any> => {
   }
 };
 
-export const getInquiryDetail = async (inquiryId: string): Promise<any> => {
+export const getInquiry = async (inquiryId: string): Promise<any> => {
   try {
     const res = await apiRequest(`/api/v3/inquiries/${inquiryId}`);
 

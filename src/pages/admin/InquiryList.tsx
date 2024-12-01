@@ -6,7 +6,7 @@ import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import Context from '../../contexts/Context';
 import { AdminMenu } from '../../types/Enums';
-import { getInquiryList } from '../../api/admin/inquiry';
+import { getInquiries } from '../../api/admin/inquiry';
 
 const InquiryListPage = (): ReactNode => {
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
@@ -20,7 +20,7 @@ const InquiryListPage = (): ReactNode => {
 
   useEffect(() => {
     const fetchInquiryList = async () => {
-      const data = await getInquiryList();
+      const data = await getInquiries();
       setInquiries(data);
     };
 

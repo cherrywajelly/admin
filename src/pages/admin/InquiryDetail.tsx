@@ -2,7 +2,7 @@ import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { InquiryDetail } from '../../types/Types';
 import Button from '../../components/Button';
-import { getInquiryDetail, putInquiryResolve } from '../../api/admin/inquiry';
+import { getInquiry, putInquiryResolve } from '../../api/admin/inquiry';
 
 const InquiryDetailPage = (): ReactNode => {
   const { id } = useParams<string>();
@@ -13,7 +13,7 @@ const InquiryDetailPage = (): ReactNode => {
     const fetchInquiryDetail = async () => {
       if (!id) return;
       
-      const data = await getInquiryDetail(id);
+      const data = await getInquiry(id);
       setInquiry(data);
       setIsResolved(data.isResolved);
     };

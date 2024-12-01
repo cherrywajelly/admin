@@ -1,6 +1,7 @@
 import { SelectChangeEvent } from '@mui/material';
 import { BankName, ApprovalState } from './Enums';
 import { ReactNode } from 'react';
+import { IconGroupDetail } from './Types';
 
 export type ButtonProps = {
   styles?: string;
@@ -68,18 +69,6 @@ export type CreatorSectionProps = {
   accountNumber?: string;
 };
 
-export type IconGroup = {
-  id: number;
-  title: string;
-  headImage: string;
-  creator: string;
-  description: string;
-  approvalState: ApprovalState;
-  iconImages: string[];
-  soldIconNumber: number;
-  revenue: number;
-};
-
 export type CreatorDetailProps = {
   id: number;
   title: string;
@@ -87,11 +76,11 @@ export type CreatorDetailProps = {
   madeIconNumber: number;
   soldIconNumber: number;
   revenue: number;
-  iconGroups: IconGroup[];
+  iconGroups: IconGroupDetail[];
 };
 
 export type IconGroupsSectionProps = {
-  iconGroups: IconGroup[];
+  iconGroups: IconGroupDetail[];
 };
 
 export type Creator = {
@@ -103,7 +92,7 @@ export type Creator = {
   madeIconNumber: number;
   soldIconNumber: number;
   revenue: number;
-  iconGroups: IconGroup[];
+  iconGroups: IconGroupDetail[];
 };
 
 export type IconInfoSectionProps = {
@@ -117,7 +106,7 @@ export type SettlementDetailProps = {
   headImage: string;
   sales: number;
   revenue: number;
-  iconGroups: IconGroup[];
+  iconGroups: IconGroupDetail[];
 };
 
 export type IconUploadSectionProps = {
