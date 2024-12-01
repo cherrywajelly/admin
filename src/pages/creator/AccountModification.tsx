@@ -8,7 +8,7 @@ import BankInput from '../../components/BankInput';
 import { ContextProps } from '../../types/Props';
 import Context from '../../contexts/Context';
 
-const AccountModification = (): ReactNode => {
+const AccountModificationPage = (): ReactNode => {
   const navigate = useNavigate();
   const { setSelectedMenu } = useContext(Context) as ContextProps;
 
@@ -69,4 +69,4 @@ const AccountModification = (): ReactNode => {
   );
 };
 
-export default AccountModification;
+export default AccountModificationPage;

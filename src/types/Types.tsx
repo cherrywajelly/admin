@@ -33,3 +33,19 @@ export type IconGroupDetail = {
   soldIconNumber: number;
   revenue: number;
 };
+
+export type Settlement = {
+  year: number;
+  month: number;
+  settlementDate: string;
+};
+
+export type SettlementDetail = {
+  year: number;
+  month: number;
+  nickname: string;
+  soldIconNumber: number;
+  revenue: number;
+  settlement: number;
+  iconGroups: IconGroupDetail[];
+};

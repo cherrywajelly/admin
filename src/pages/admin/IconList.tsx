@@ -7,7 +7,7 @@ import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import Context from '../../contexts/Context';
 
-const IconList = (): ReactNode => {
+const IconListPage = (): ReactNode => {
   const [icons, setIcons] = useState<IconGroupDetail[]>([]);
 
   const navigate = useNavigate();
@@ -84,4 +84,4 @@ const IconList = (): ReactNode => {
   );
 };
 
-export default IconList;
+export default IconListPage;
