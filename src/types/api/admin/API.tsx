@@ -64,3 +64,8 @@ export type IconGroupResponse = {
     iconImageUrl: string;
   }[];
 };
+
+export type IconGroupRequestBody = {
+  iconGroupId: number;
+  iconState: string;
+};

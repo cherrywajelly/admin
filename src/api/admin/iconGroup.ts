@@ -1,5 +1,6 @@
 import { apiRequest } from '..';
 import { IconGroupsElemResponse, IconGroupResponse } from '../../types/api/admin/API';
+import { IconGroupRequestBody } from '../../types/api/admin/API';
 import { toApprovalState } from '../../utils/utils';
 
 export const getIconGroups = async (): Promise<any> => {
@@ -46,5 +47,19 @@ export const getIconGroup = async (iconGroupId: string): Promise<any> => {
     return mappedData;
   } catch (error) {
     console.error('Failed to get inquiry detail:', error);
+  }
+};
+
+export const postIconGroup = async (requestBody: IconGroupRequestBody): Promise<any> => {
+  try {
+    const res = await apiRequest('/api/v3/iconGroups', 'POST', requestBody);
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    return res;
+  } catch (error) {
+    console.error('Failed to post icon group:', error);
   }
 };

@@ -5,28 +5,47 @@ import { IconGroupDetail2 } from '../../types/Types';
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import Button from '../../components/Button';
 import IconsSection from '../../sections/IconsSection';
-import { getIconGroup } from '../../api/admin/iconGroup';
+import { getIconGroup, postIconGroup } from '../../api/admin/iconGroup';
+import { IconGroupRequestBody } from '../../types/api/admin/API';
 
 const IconDetailPage = (): ReactNode => {
   const { id } = useParams();
   const [iconDetail, setIconDetail] = useState<IconGroupDetail2>();
 
   const handleSave = (approvalState: ApprovalState): void => {
+    let iconState;
     let message;
     switch (approvalState) {
       case ApprovalState.APPROVED:
+        iconState = 'REGISTERED';
         message = '아이콘이 승인되었습니다.';
         break;
 
       case ApprovalState.REJECTED:
+        iconState = 'REJECTED';
         message = '아이콘이 반려되었습니다.';
         break;
 
       case ApprovalState.PENDING:
+        iconState = 'WAITING';
         message = '아이콘이 보류되었습니다.';
         break;
     }
-    alert(message);
+
+    const requestBody: IconGroupRequestBody = {
+      iconGroupId: Number(id),
+      iconState: iconState,
+    };
+
+    const uploadIconGroup = async () => {
+      const res = await postIconGroup(requestBody);
+      
+      if (res.ok) {
+        alert(message);
+      }
+    };
+
+    uploadIconGroup();
   };
 
   useEffect((): void => {
