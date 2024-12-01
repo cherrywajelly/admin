@@ -2,18 +2,39 @@ import { apiRequest } from '..';
 import { IconGroupRequestBody, IconGroupResponse, IconGroupsElemResponse } from '../../types/API';
 import { ApprovalState } from '../../types/Enums';
 
-export const postIconGroup = async (requestBody: IconGroupRequestBody): Promise<any> => {
-  try {
-    const res = await apiRequest('/api/v2/iconGroups', 'POST', requestBody);
+export const postIconGroup = async ({
+  thumbnailIcon,
+  files,
+  iconGroupPostRequest,
+}: IconGroupRequestBody): Promise<any> => {
+  const formData = new FormData();
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`);
-    }
+  formData.append('thumbnailIcon', thumbnailIcon);
 
-    return res;
-  } catch (error) {
-    console.error('Failed to post icon group:', error);
-  }
+  files?.forEach((item) => {
+    formData.append('files', item);
+  });
+
+  const requestBlob = new Blob([JSON.stringify(iconGroupPostRequest)], {
+    type: 'application/json',
+  });
+
+  formData.append('iconGroupPostRequest', requestBlob);
+
+  await apiRequest(`/api/v2/iconGroups`, 'POST', formData)
+    .then((res) => {
+      if (res.status === 500) {
+        throw new Error('Internal Server Error');
+      }
+
+      if (res.status === 200) {
+        return res;
+      }
+    })
+    .catch((err) => {
+      // console.log(err);
+      throw err;
+    });
 };
 
 export const getIconGroups = async (): Promise<any> => {
@@ -32,7 +53,7 @@ export const getIconGroups = async (): Promise<any> => {
       headImage: iconGroup.iconImageUrl,
       // approvalState: iconGroup.approvalState as ApprovalState,
     }));
-    
+
     return mappedData;
   } catch (error) {
     console.error('Failed to get inquiry list:', error);
@@ -61,7 +82,7 @@ export const getIconGroup = async (iconGroupId: string): Promise<any> => {
       soldIconNumber: data.iconGroupOrderedResponse.orderCount,
       revenue: data.iconGroupOrderedResponse.income,
     };
-    
+
     return mappedData;
   } catch (error) {
     console.error('Failed to get inquiry detail:', error);

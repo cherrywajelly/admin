@@ -2,34 +2,23 @@ import { ReactNode } from 'react';
 import { Divider } from '@mui/material';
 import { IconUploadSectionProps } from '../types/Props';
 
-const IconGroupUploadSection = (props: IconUploadSectionProps): ReactNode => {
-  const { iconImages, setIconImages } = props;
-
+const IconGroupUploadSection = ({
+  iconImages,
+  setIconFiles,
+}: {
+  iconImages: string[];
+  setIconFiles: (files: File[]) => void;
+}): ReactNode => {
   return (
     <div>
       <h2 className="text-xl font-bold">ICONS</h2>
-      <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
+      <Divider
+        sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }}
+      />
       <div className="grid grid-cols-4 gap-4 w-full justify-items-center">
         {iconImages.map((image: string, index: number) => (
           <div key={index} className="flex flex-col items-center w-fit relative group">
             <img src={image} alt={`Icon ${index + 1}`} className="w-32 h-32 rounded-lg shadow-md" />
-            <button
-              onClick={(): void => {
-                const newImages = [...iconImages];
-                newImages.splice(index, 1);
-                setIconImages(newImages);
-              }}
-              className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
           </div>
         ))}
         <div
@@ -46,9 +35,7 @@ const IconGroupUploadSection = (props: IconUploadSectionProps): ReactNode => {
             multiple
             onChange={(e): void => {
               if (e.target.files) {
-                const files = Array.from(e.target.files);
-                const newImageUrls = files.map((file) => URL.createObjectURL(file));
-                setIconImages([...iconImages, ...newImageUrls]);
+                setIconFiles(Array.from(e.target.files)); // File[] 추가
               }
             }}
           />

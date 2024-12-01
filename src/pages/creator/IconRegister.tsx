@@ -12,13 +12,22 @@ import { RadioGroup } from '@mui/material';
 
 const IconRegister = (): ReactNode => {
   const navigate = useNavigate();
-  
+
   const [iconImages, setIconImages] = useState<string[]>([]);
+  const [iconFiles, setIconFiles] = useState<File[]>([]);
+
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
+
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [price, setPrice] = useState<string>('');
   const [iconType, setIconType] = useState<string>('JAM');
+
+  const handleAddIconFiles = (files: File[]): void => {
+    const newFilePreviews = files.map((file) => URL.createObjectURL(file));
+    setIconFiles((prev) => [...prev, ...files]);
+    setIconImages((prev) => [...prev, ...newFilePreviews]);
+  };
 
   const handleRegisterIcon = async (requestBody: IconGroupRequestBody): Promise<void> => {
     const res = await postIconGroup(requestBody);
@@ -31,7 +40,7 @@ const IconRegister = (): ReactNode => {
     alert('아이콘 등록 신청되었습니다.');
     navigate('/creator/icons');
   };
-  
+
   return (
     <div className="min-h-screen p-8 space-y-8">
       <div className="flex flex-row items-center justify-between">
@@ -63,21 +72,9 @@ const IconRegister = (): ReactNode => {
             />
             <div className="flex flex-row items-center space-x-4">
               <span className="font-bold w-20">아이콘 타입</span>
-              <RadioGroup
-                row
-                value={iconType}
-                onChange={(e): void => setIconType(e.target.value)}
-              >
-                <FormControlLabel 
-                  value="JAM" 
-                  control={<Radio />} 
-                  label="잼"
-                />
-                <FormControlLabel 
-                  value="ICON" 
-                  control={<Radio />} 
-                  label="아이콘" 
-                />
+              <RadioGroup row value={iconType} onChange={(e): void => setIconType(e.target.value)}>
+                <FormControlLabel value="JAM" control={<Radio />} label="잼" />
+                <FormControlLabel value="ICON" control={<Radio />} label="아이콘" />
               </RadioGroup>
             </div>
           </div>
@@ -85,18 +82,25 @@ const IconRegister = (): ReactNode => {
         <div className="flex flex-row items-center space-x-4">
           <Button
             text="등록하기"
-            onClick={() => handleRegisterIcon({
-              name: title,
-              price: Number(price),
-              iconType: iconType,
-              iconBuiltin: 'NONBUILTIN',
-              description: description,
-            })}
+            onClick={() =>
+              handleRegisterIcon({
+                thumbnailIcon: profilePicture as File,
+                files: iconFiles,
+                iconGroupPostRequest: {
+                  name: title,
+                  price: Number(price),
+                  iconType: iconType,
+                  iconBuiltin: 'NONBUILTIN',
+                  description: description,
+                },
+              })
+            }
           />
         </div>
       </div>
 
-      <IconUploadSection iconImages={iconImages} setIconImages={setIconImages} />
+      <IconUploadSection iconImages={iconImages} setIconFiles={handleAddIconFiles} />
+      {/* <IconUploadSection iconImages={iconImages} setIconImages={setIconImages} /> */}
     </div>
   );
 };
