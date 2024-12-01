@@ -37,7 +37,7 @@ const Router = (): ReactNode => {
             <Route path="creators" element={<AdminCreatorList />} />
             <Route path="creators/:id" element={<AdminCreatorDetail />} />
             <Route path="settlements" element={<AdminSettlement />} />
-            <Route path="settlements/:id" element={<AdminSettlementDetail />} />
+            <Route path="settlements/:id/:year/:month" element={<AdminSettlementDetail />} />
             <Route path="inquiries" element={<AdminInquiryList />} />
             <Route path="inquiries/:id" element={<AdminInquiryDetail />} />
           </Route>

@@ -49,3 +49,10 @@ export type SettlementDetail = {
   settlement: number;
   iconGroups: IconGroupDetail[];
 };
+
+export type CreatorSettlement = {
+  id: number;
+  nickname: string;
+  profileUrl: string;
+  isSettled: boolean;
+};

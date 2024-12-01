@@ -68,3 +68,15 @@ export type SettlementResponse = {
     }
   ]
 };
+
+export type CreatorSettlementsResponse = {
+  memberId: number;
+  nickname: string;
+  profileUrl: string;
+  settlementState: string;
+};
+
+export type SettlementRequestBody = {
+  year: number;
+  month: number;
+};
