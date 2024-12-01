@@ -1,14 +1,14 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ApprovalState } from '../../types/Enums';
-import { IconGroup } from '../../types/Props';
+import { IconGroupDetail } from '../../types/Types';
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import Button from '../../components/Button';
 import IconsSection from '../../sections/IconsSection';
 
 const IconDetail = (): ReactNode => {
   const { id } = useParams();
-  const [iconDetail, setIconDetail] = useState<IconGroup>();
+  const [iconDetail, setIconDetail] = useState<IconGroupDetail>();
 
   const handleSave = (approvalState: ApprovalState): void => {
     let message;
@@ -30,7 +30,6 @@ const IconDetail = (): ReactNode => {
 
   useEffect((): void => {
     setIconDetail({
-      id: Number(id),
       title: '루돌프 토스트',
       headImage: '/images/christmas/r1.png',
       creator: 'cherry',

@@ -31,7 +31,6 @@ const MyPage = (): ReactNode => {
       revenue: 100000,
       iconGroups: [
         {
-          id: 0,
           title: '아이콘 그룹 1',
           headImage: '/images/empty.png',
           creator: 'Cherry',
@@ -48,7 +47,6 @@ const MyPage = (): ReactNode => {
           revenue: 40000,
         },
         {
-          id: 1,
           title: '아이콘 그룹 2',
           headImage: '/images/empty.png',
           creator: 'Cherry',
