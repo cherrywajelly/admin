@@ -3,8 +3,14 @@ import { SocialLoginButtonProps } from '../types/Props';
 import { getEnv } from '../utils/utils';
 
 const getAuthURL = (social: string, role: string): string => {
+  console.log(`VITE_${social.toUpperCase()}_CLIENT_ID`);
+  console.log(`VITE_${role.toUpperCase()}_${social.toUpperCase()}_REDIRECT_URI`);
+  
   const clientId = getEnv(`VITE_${social.toUpperCase()}_CLIENT_ID`);
   const redirectUri = getEnv(`VITE_${role.toUpperCase()}_${social.toUpperCase()}_REDIRECT_URI`);
+
+  console.log(getEnv(`VITE_${social.toUpperCase()}_CLIENT_ID`));
+  console.log(getEnv(`VITE_${role.toUpperCase()}_${social.toUpperCase()}_REDIRECT_URI`));
 
   let authURL: string = '';
   switch (social) {
