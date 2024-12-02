@@ -6,12 +6,13 @@ import TextInput from '../../components/TextInput';
 import ProfileInput from '../../components/ProfileInput';
 import BankInput from '../../components/BankInput';
 import { isAllFieldsFilled } from '../../utils/utils';
+import { postCreatorInfo } from '../../api/creator/member';
 
 const SignupPage = (): ReactNode => {
   const navigate = useNavigate();
-  const [nickname, setNickname] = useState<string>();
-  const [bankName, setBankName] = useState<BankName | string>();
-  const [accountNumber, setAccountNumber] = useState<string>();
+  const [nickname, setNickname] = useState<string>('');
+  const [bankName, setBankName] = useState<BankName | string>('');
+  const [accountNumber, setAccountNumber] = useState<string>('');
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
 
   const handleSignupClick = (): void => {
@@ -28,6 +29,27 @@ const SignupPage = (): ReactNode => {
 
     alert('회원가입이 완료되었습니다.');
     navigate('/login');
+  };
+
+  // 회원가입 버튼 클릭 시 실행되는 api - put
+  const handleSubmit = async () => {
+    const res = await postCreatorInfo({
+      profile: profilePicture as File,
+      creatorRequest: {
+        nickname: nickname,
+        creatorAccountResponse: {
+          bank: bankName,
+          accountNumber: accountNumber,
+        },
+      },
+    });
+
+    if (!res.ok) {
+      alert('fail');
+      return;
+    }
+
+    console.log(res);
   };
 
   return (

@@ -65,6 +65,7 @@ export type CreatorSettlement = {
   isSettled: boolean;
 };
 
+
 export type Creator = {
   id: number;
   nickname: string;

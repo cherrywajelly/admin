@@ -47,10 +47,36 @@ export type IconGroupResponse = {
   creatorNickname: string;
 };
 
-export type IconGroupRequestBody = {
+export type IconGroupRequestJson = {
   name: string;
   price: number;
   iconType: string;
   iconBuiltin: string;
   description: string;
 };
+
+export type IconGroupRequestBody = {
+  thumbnailIcon: File;
+  files: File[];
+  iconGroupPostRequest: IconGroupRequestJson;
+};
+
+export type creatorRequest = {
+  nickname: string;
+  creatorAccountResponse: {
+    bank: string;
+    accountNumber: string;
+  };
+}
+
+export type CreatorInfoRequestBody = {
+  profile: File;
+  creatorRequest: creatorRequest;
+}
+
+export type CreatorInfoResponse = {
+  nickname: string;
+  bank: string;
+  accountNumber: string;
+  profileUrl: string;
+}

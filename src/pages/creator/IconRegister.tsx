@@ -14,12 +14,19 @@ const IconRegisterPage = (): ReactNode => {
   const navigate = useNavigate();
   
   const [iconImages, setIconImages] = useState<string[]>([]);
+  const [iconFiles, setIconFiles] = useState<File[]>([]);
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [price, setPrice] = useState<string>('');
   const [iconType, setIconType] = useState<string>('JAM');
 
+  const handleAddIconFiles = (files: File[]): void => {
+    const newFilePreviews = files.map((file: File) => URL.createObjectURL(file));
+    setIconFiles((prev) => [...prev, ...files]);
+    setIconImages((prev) => [...prev, ...newFilePreviews]);
+  };
+  
   const handleRegisterIcon = async (requestBody: IconGroupRequestBody): Promise<void> => {
     const res = await postIconGroup(requestBody);
 
@@ -74,9 +81,9 @@ const IconRegisterPage = (): ReactNode => {
                   label="잼"
                 />
                 <FormControlLabel 
-                  value="ICON" 
+                  value="TOAST" 
                   control={<Radio />} 
-                  label="아이콘" 
+                  label="토스트" 
                 />
               </RadioGroup>
             </div>
@@ -86,17 +93,21 @@ const IconRegisterPage = (): ReactNode => {
           <Button
             text="등록하기"
             onClick={() => handleRegisterIcon({
-              name: title,
-              price: Number(price),
-              iconType: iconType,
-              iconBuiltin: 'NONBUILTIN',
-              description: description,
+              thumbnailIcon: profilePicture as File,
+              files: iconFiles,
+              iconGroupPostRequest: {
+                name: title,
+                price: Number(price),
+                iconType: iconType,
+                iconBuiltin: 'NONBUILTIN',
+                description: description,
+              },
             })}
           />
         </div>
       </div>
 
-      <IconUploadSection iconImages={iconImages} setIconImages={setIconImages} />
+      <IconUploadSection iconImages={iconImages} setIconFiles={handleAddIconFiles} />
     </div>
   );
 };

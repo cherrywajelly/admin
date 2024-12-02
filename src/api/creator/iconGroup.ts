@@ -2,18 +2,39 @@ import { apiRequest } from '..';
 import { IconGroupRequestBody, IconGroupResponse, IconGroupsElemResponse } from '../../types/api/creator/API';
 import { toApprovalState } from '../../utils/utils';
 
-export const postIconGroup = async (requestBody: IconGroupRequestBody): Promise<any> => {
-  try {
-    const res = await apiRequest('/api/v2/iconGroups', 'POST', requestBody);
+export const postIconGroup = async ({
+  thumbnailIcon,
+  files,
+  iconGroupPostRequest,
+}: IconGroupRequestBody): Promise<any> => {
+  const formData = new FormData();
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`);
-    }
+  formData.append('thumbnailIcon', thumbnailIcon);
 
-    return res;
-  } catch (error) {
-    console.error('Failed to post icon group:', error);
-  }
+  files?.forEach((file: File) => {
+    formData.append('files', file);
+  });
+
+  const requestBlob = new Blob([JSON.stringify(iconGroupPostRequest)], {
+    type: 'application/json'
+  });
+
+  formData.append('iconGroupPostRequest', requestBlob);
+
+  await apiRequest('/api/v2/iconGroups', 'POST', formData)
+    .then((res) => {
+      if (res.status === 500) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+
+      if (res.status === 200) {
+        console.log('good')
+        return res;
+      }
+    })
+    .catch((error) => {
+      console.error('Failed to post icon group:', error);
+    });
 };
 
 export const getIconGroups = async (): Promise<any> => {
