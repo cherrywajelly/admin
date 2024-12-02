@@ -64,3 +64,27 @@ export type CreatorSettlement = {
   profileUrl: string;
   isSettled: boolean;
 };
+
+export type Creator = {
+  id: number;
+  nickname: string;
+  profilePicture: string;
+};
+
+export type CreatorDetail = {
+  profilePicture: string;
+  nickname: string;
+  bankName: string;
+  accountNumber: string;
+  madeIconNumber: number;
+  soldIconNumber: number;
+  revenue: number;
+  iconGroups: IconGroupShort[];
+};
+
+export type IconGroupShort = {
+  title: string;
+  salesCount: number;
+  revenue: number;
+  iconImageUrl: string[];
+}
