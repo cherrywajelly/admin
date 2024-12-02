@@ -7,6 +7,7 @@ import Context from '../../contexts/Context';
 import { ContextProps } from '../../types/Props';
 import { CreatorMember } from '../../types/Types';
 import { getCreatorInfo } from '../../api/creator/member';
+import IconGroupsSection from '../../sections/IconGroupsSection';
 
 const MyPage = (): ReactNode => {
   const [creatorDetail, setCreatorDetail] = useState<CreatorMember>();
@@ -20,59 +21,13 @@ const MyPage = (): ReactNode => {
   };
 
   useEffect(() => {
-    // setCreatorDetail({
-    //   id: 0,
-    //   nickname: '박하준',
-    //   profilePicture: '/images/test/1.jpeg',
-    //   bankName: BankName.IBKOKRSE,
-    //   accountNumber: '1234567890',
-    //   madeIconNumber: 2,
-    //   soldIconNumber: 50,
-    //   revenue: 100000,
-    //   iconGroups: [
-    //     {
-    //       title: '아이콘 그룹 1',
-    //       headImage: '/images/empty.png',
-    //       creator: 'Cherry',
-    //       description: '아이콘 그룹 1 설명',
-    //       approvalState: ApprovalState.PENDING,
-    //       iconImages: [
-    //         '/images/empty.png',
-    //         '/images/empty.png',
-    //         '/images/empty.png',
-    //         '/images/empty.png',
-    //         '/images/empty.png',
-    //       ],
-    //       soldIconNumber: 20,
-    //       revenue: 40000,
-    //     },
-    //     {
-    //       title: '아이콘 그룹 2',
-    //       headImage: '/images/empty.png',
-    //       creator: 'Cherry',
-    //       description: '아이콘 그룹 2 설명',
-    //       approvalState: ApprovalState.PENDING,
-    //       iconImages: [
-    //         '/images/empty.png',
-    //         '/images/empty.png',
-    //         '/images/empty.png',
-    //         '/images/empty.png',
-    //         '/images/empty.png',
-    //       ],
-    //       soldIconNumber: 30,
-    //       revenue: 60000,
-    //     },
-    //   ],
-    // });
-    useEffect(() => {
-      const fetchCreatorInfo = async () => {
-        const data = await getCreatorInfo();
-        console.log(data);
-        setCreatorDetail(data);
-      };
-  
-      fetchCreatorInfo();
-    }, []);
+    const fetchCreatorInfo = async () => {
+      const data = await getCreatorInfo();
+      console.log(data);
+      setCreatorDetail(data);
+    };
+
+    fetchCreatorInfo();
   }, []);
 
   return (
@@ -96,7 +51,7 @@ const MyPage = (): ReactNode => {
           bankName={creatorDetail.bankName}
           accountNumber={creatorDetail.accountNumber}
         />
-        {/* <IconGroupsSection iconGroups={creatorDetail.iconGroups} /> */}
+        <IconGroupsSection iconGroups={creatorDetail.iconGroups} />
       </div>
     )
   );

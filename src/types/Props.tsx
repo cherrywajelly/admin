@@ -9,6 +9,7 @@ export type ButtonProps = {
   text: string;
   onClick?: () => void;
   isClicked?: boolean;
+  disabled?: boolean;
 };
 
 export type TextInputProps = {

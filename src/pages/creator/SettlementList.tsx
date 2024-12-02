@@ -5,7 +5,7 @@ import Context from '../../contexts/Context';
 import ListElem from '../../components/ListElem';
 import Button from '../../components/Button';
 import { CreatorMenu } from '../../types/Enums';
-import { getSettlements } from '../../api/creator/Settlement';
+import { getSettlements } from '../../api/creator/settlement';
 import { Settlement } from '../../types/Types';
 
 const SettlementListPage = (): ReactNode => {

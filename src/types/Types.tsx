@@ -38,6 +38,7 @@ export type IconGroupDetail2 = {
   title: string;
   headImage: string;
   creator: string;
+  description: string;
   approvalState: ApprovalState;
   iconImages: string[];
 };
@@ -55,7 +56,9 @@ export type SettlementDetail = {
   soldIconNumber: number;
   revenue: number;
   settlement: number;
-  iconGroups: IconGroupDetail[];
+  bankName: string;
+  accountNumber: string;
+  iconGroups: IconGroupShort[];
 };
 
 export type CreatorSettlement = {
@@ -63,13 +66,6 @@ export type CreatorSettlement = {
   nickname: string;
   profileUrl: string;
   isSettled: boolean;
-};
-
-
-export type Creator = {
-  id: number;
-  nickname: string;
-  profilePicture: string;
 };
 
 export type CreatorDetail = {
@@ -83,9 +79,21 @@ export type CreatorDetail = {
   iconGroups: IconGroupShort[];
 };
 
+export type CreatorMember = {
+  nickname: string;
+  profilePicture: string;
+  bankName: string;
+  accountNumber: string;
+  madeIconNumber: number;
+  soldIconNumber: number;
+  revenue: number;
+  settlement: number;
+  iconGroups: IconGroupShort[];
+};
+
 export type IconGroupShort = {
   title: string;
   salesCount: number;
   revenue: number;
   iconImageUrl: string[];
-}
+};

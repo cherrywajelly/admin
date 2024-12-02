@@ -28,14 +28,8 @@ const IconRegisterPage = (): ReactNode => {
   };
   
   const handleRegisterIcon = async (requestBody: IconGroupRequestBody): Promise<void> => {
-    const res = await postIconGroup(requestBody);
+    await postIconGroup(requestBody);
 
-    if (!res.ok) {
-      alert('아이콘 등록 신청에 실패하였습니다.');
-      return;
-    }
-
-    alert('아이콘 등록 신청되었습니다.');
     navigate('/creator/icons');
   };
   

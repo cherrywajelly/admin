@@ -12,7 +12,7 @@ const ProfileInput = (props: ProfileInputProps): ReactNode => {
           <img
             src={URL.createObjectURL(profilePicture)}
             alt="Profile Preview"
-            className="w-3/4 h-3/4 object-cover"
+            className="w-full h-full object-cover"
           />
         ) : (
           <img src="/images/empty.png" alt="Profile Preview" className="w-3/4 h-3/4 object-cover" />

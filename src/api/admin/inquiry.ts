@@ -17,7 +17,7 @@ export const getInquiries = async (): Promise<any> => {
       title: inquiriesElem.title,
       isResolved: inquiriesElem.inquiryState === 'RESOLVED',
     }));
-    
+
     return mappedData;
   } catch (error) {
     console.error('Failed to get inquiry list:', error);
