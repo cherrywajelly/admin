@@ -1,6 +1,6 @@
 import { apiRequest } from '..';
 import { SettlementsResponse, SettlementResponse, SettlementRequestBody } from '../../types/api/admin/API';
-import { ApprovalState } from '../../types/Enums';
+import { ApprovalState, BankName } from '../../types/Enums';
 
 export const getSettlements = async (year: number, month: number): Promise<any> => {
   try {
@@ -44,6 +44,8 @@ export const getSettlement = async (id: number, year: number, month: number): Pr
       soldIconNumber: data.salesIconCount,
       revenue: data.totalRevenue,
       settlement: data.settlement,
+      bankName: BankName[data.bank as keyof typeof BankName],
+      accountNumber: data.accountNumber,
       iconGroups: data.settlementIcons,
     };
     
