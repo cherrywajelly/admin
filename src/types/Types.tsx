@@ -64,3 +64,22 @@ export type CreatorSettlement = {
   profileUrl: string;
   isSettled: boolean;
 };
+
+export type CreatorMember = {
+  nickname: string;
+  profilePicture: string;
+  bankName: string;
+  accountNumber: string;
+  madeIconNumber: number;
+  soldIconNumber: number;
+  revenue: number;
+  settlement: number;
+  iconGroups: {
+    iconName: string;
+    thumbnailImageUrl: string;
+    iconImageUrl: string[];
+    orderCount: number;
+    income: number;
+    iconState: string;
+  }[];
+};

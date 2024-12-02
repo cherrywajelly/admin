@@ -28,6 +28,7 @@ export const postIconGroup = async ({
       }
 
       if (res.status === 200) {
+        console.log('good')
         return res;
       }
     })

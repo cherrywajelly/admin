@@ -81,9 +81,9 @@ const IconRegisterPage = (): ReactNode => {
                   label="잼"
                 />
                 <FormControlLabel 
-                  value="ICON" 
+                  value="TOAST" 
                   control={<Radio />} 
-                  label="아이콘" 
+                  label="토스트" 
                 />
               </RadioGroup>
             </div>
