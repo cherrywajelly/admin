@@ -3,7 +3,7 @@ import { SettlementDetail } from '../../types/Types';
 import CreatorSection from '../../sections/CreatorInfoSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
 import { useParams } from 'react-router-dom';
-import { getSettlement } from '../../api/creator/Settlement';
+import { getSettlement } from '../../api/creator/settlement';
 
 const SettlementDetailPage = (): ReactNode => {
   const { year, month } = useParams<{ year: string; month: string }>();

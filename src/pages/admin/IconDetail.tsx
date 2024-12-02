@@ -68,6 +68,7 @@ const IconDetailPage = (): ReactNode => {
             <div className="flex flex-col space-y-1">
               <h1 className="text-2xl font-bold w-40">{iconDetail.title}</h1>
               <p className="text-gray-500">{iconDetail.creator}</p>
+              <p>{iconDetail.description}</p>
             </div>
           </div>
           <div className="flex flex-row items-center space-x-4">

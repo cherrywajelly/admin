@@ -59,6 +59,7 @@ export type IconGroupResponse = {
   creatorNickname: string;
   iconState: string;
   price: number;
+  description: string;
   iconResponses: {
     iconId: number;
     iconImageUrl: string;

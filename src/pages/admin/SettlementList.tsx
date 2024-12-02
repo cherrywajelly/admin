@@ -7,7 +7,7 @@ import { ContextProps } from '../../types/Props';
 import Context from '../../contexts/Context';
 import { AdminMenu } from '../../types/Enums';
 import { CreatorSettlement } from '../../types/Types';
-import { getSettlements } from '../../api/admin/Settlement';
+import { getSettlements } from '../../api/admin/settlement';
 
 const SettlementListPage = (): ReactNode => {
   const { setSelectedMenu } = useContext(Context) as ContextProps;

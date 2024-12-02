@@ -4,7 +4,7 @@ import CreatorSection from '../../sections/CreatorInfoSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
 import Button from '../../components/Button';
 import { SettlementDetail } from '../../types/Types';
-import { getSettlement, postSettlement } from '../../api/admin/Settlement';
+import { getSettlement, postSettlement } from '../../api/admin/settlement';
 import { SettlementRequestBody } from '../../types/api/admin/API';
 
 const SettlementDetailPage = (): ReactNode => {
@@ -51,7 +51,7 @@ const SettlementDetailPage = (): ReactNode => {
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center space-x-4">
             <div className="flex flex-col justify-center">
-              <h1 className="text-2xl font-bold">{`${settlementDetail.year}년 ${settlementDetail.month}월 ${settlementDetail.nickname}님의 정산 내역`}</h1>
+              <h1 className="text-2xl font-bold">{`${settlementDetail.year}년 ${settlementDetail.month}월 ${settlementDetail.nickname}님의 정산`}</h1>
             </div>
           </div>
           <div className="flex flex-row items-center space-x-4">
@@ -62,6 +62,8 @@ const SettlementDetailPage = (): ReactNode => {
           soldIconNumber={settlementDetail.soldIconNumber}
           revenue={settlementDetail.revenue}
           settlement={settlementDetail.settlement}
+          bankName={settlementDetail.bankName}
+          accountNumber={settlementDetail.accountNumber}
         />
         <IconGroupsSection iconGroups={settlementDetail.iconGroups} />
       </div>

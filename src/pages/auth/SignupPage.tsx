@@ -6,33 +6,18 @@ import TextInput from '../../components/TextInput';
 import ProfileInput from '../../components/ProfileInput';
 import BankInput from '../../components/BankInput';
 import { isAllFieldsFilled } from '../../utils/utils';
-import { postCreatorInfo } from '../../api/creator/member';
+import { getNicknameCheck, postCreatorInfo } from '../../api/creator/member';
 
 const SignupPage = (): ReactNode => {
   const navigate = useNavigate();
+  
   const [nickname, setNickname] = useState<string>('');
   const [bankName, setBankName] = useState<BankName | string>('');
   const [accountNumber, setAccountNumber] = useState<string>('');
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
+  const [isValidNickname, setIsValidNickname] = useState<boolean>(false);
 
-  const handleSignupClick = (): void => {
-    if (!isAllFieldsFilled([nickname, bankName, accountNumber, profilePicture])) {
-      alert('모든 필드를 입력해야 합니다.');
-      return;
-    }
-
-    const nicknameRegex = /^[가-힣a-zA-Z]{1,10}$/;
-    if (!nicknameRegex.test(nickname!)) {
-      alert('닉네임은 한글 또는 영문으로 10글자 이하여야 합니다.');
-      return;
-    }
-
-    alert('회원가입이 완료되었습니다.');
-    navigate('/login');
-  };
-
-  // 회원가입 버튼 클릭 시 실행되는 api - put
-  const handleSubmit = async () => {
+  const handleSignupClick = async (): Promise<void> => {
     const res = await postCreatorInfo({
       profile: profilePicture as File,
       creatorRequest: {
@@ -49,7 +34,23 @@ const SignupPage = (): ReactNode => {
       return;
     }
 
-    console.log(res);
+    alert('회원가입이 완료되었습니다.');
+    navigate('/login');
+  };
+
+  const handleNicknameCheck = async (): Promise<void> => {
+    const nicknameRegex = /^[가-힣a-zA-Z0-9]{1,10}$/;
+    if (!nicknameRegex.test(nickname!)) {
+      alert('닉네임은 한글, 영문 또는 숫자로 10글자 이하여야 합니다.');
+      return;
+    }
+    
+    const isValidNicknameCheck = await getNicknameCheck(nickname);
+    if (!isValidNicknameCheck) {
+      return;
+    }
+
+    setIsValidNickname(isValidNicknameCheck);
   };
 
   return (
@@ -62,13 +63,16 @@ const SignupPage = (): ReactNode => {
           styles="!w-1/3"
         />
         <div className="flex flex-col justify-around">
-          <TextInput
-            label="닉네임"
-            value={nickname}
-            onChange={(e): void => setNickname(e.target.value)}
-            textStyles="w-20"
-            inputStyles="flex-1"
-          />
+          <div className="flex flex-row space-x-2">
+            <TextInput
+              label="닉네임"
+              value={nickname}
+              onChange={(e): void => setNickname(e.target.value)}
+              textStyles="w-20"
+              inputStyles="flex-1"
+            />
+            <Button text="닉네임 확인" onClick={handleNicknameCheck}/>
+          </div>
           <BankInput
             label="계좌 정보"
             bankName={bankName}
@@ -81,7 +85,7 @@ const SignupPage = (): ReactNode => {
           />
         </div>
       </div>
-      <Button text="회원가입" onClick={handleSignupClick} />
+      <Button text="회원가입" onClick={handleSignupClick} disabled={!isValidNickname || !isAllFieldsFilled([nickname, bankName, accountNumber, profilePicture])} />
     </div>
   );
 };

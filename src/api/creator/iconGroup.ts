@@ -24,15 +24,18 @@ export const postIconGroup = async ({
   await apiRequest('/api/v2/iconGroups', 'POST', formData)
     .then((res) => {
       if (res.status === 500) {
+        alert('아이콘 등록 신청에 실패하였습니다.');
         throw new Error(`HTTP error! Status: ${res.status}`);
       }
 
       if (res.status === 200) {
-        console.log('good')
+        alert('아이콘 등록 신청되었습니다.');
+        console.log(res);
         return res;
       }
     })
     .catch((error) => {
+      alert('아이콘 등록 신청에 실패하였습니다.');
       console.error('Failed to post icon group:', error);
     });
 };

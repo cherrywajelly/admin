@@ -7,7 +7,8 @@ import ProfileInput from '../../components/ProfileInput';
 import BankInput from '../../components/BankInput';
 import { ContextProps } from '../../types/Props';
 import Context from '../../contexts/Context';
-import { putCreatorInfo } from '../../api/creator/member';
+import { getNicknameCheck, putCreatorInfo } from '../../api/creator/member';
+import { isAllFieldsFilled } from '../../utils/utils';
 
 const AccountModificationPage = (): ReactNode => {
   const navigate = useNavigate();
@@ -17,29 +18,15 @@ const AccountModificationPage = (): ReactNode => {
   const [bankName, setBankName] = useState<BankName | string>('');
   const [accountNumber, setAccountNumber] = useState<string>('');
   const [profilePicture, setProfilePicture] = useState<File | null>(null);
+  const [isValidNickname, setIsValidNickname] = useState<boolean>(false);
 
-  const handleModifyClick = (): void => {
-    if (
-      [nickname, bankName, accountNumber, profilePicture].some(
-        (field: string | BankName | File | null | undefined) => !field
-      )
-    ) {
+  const handleModifyClick = async (): Promise<void> => {
+    if (!isAllFieldsFilled([nickname, bankName, accountNumber, profilePicture])) {
       alert('모든 필드를 입력해야 합니다.');
       return;
     }
 
-    console.log('nickname: ', nickname);
-    console.log('bankName: ', bankName);
-    console.log('accountNumber: ', accountNumber);
-    console.log('profilePicture: ', profilePicture);
-
-    setSelectedMenu(CreatorMenu.MY_PAGE);
-    navigate('/creator/mypage');
-  };
-
-  // 수정하기 버튼 클릭 시 실행되는 api - put
-  const handleSubmit = async () => {
-    const res = await putCreatorInfo({
+    await putCreatorInfo({
       profile: profilePicture as File,
       creatorRequest: {
         nickname: nickname,
@@ -50,27 +37,42 @@ const AccountModificationPage = (): ReactNode => {
       },
     });
 
-    if (!res.ok) {
-      alert('fail');
+    alert('수정이 완료되었습니다.');
+    setSelectedMenu(CreatorMenu.MY_PAGE);
+    navigate('/creator/mypage');
+  };
+
+  const handleNicknameCheck = async (): Promise<void> => {
+    const nicknameRegex = /^[가-힣a-zA-Z0-9]{1,10}$/;
+    if (!nicknameRegex.test(nickname!)) {
+      alert('닉네임은 한글, 영문 또는 숫자로 10글자 이하여야 합니다.');
+      return;
+    }
+    
+    const isValidNicknameCheck = await getNicknameCheck(nickname);
+    if (!isValidNicknameCheck) {
       return;
     }
 
-    console.log(res);
+    setIsValidNickname(isValidNicknameCheck);
   };
 
   return (
     <div className="min-h-screen p-8 space-y-8">
-      <div className="flex flex-row items-center justify-between">
+      <div className="flex flex-col items-center justify-between">
         <div className="flex flex-row space-x-4">
           <ProfileInput profilePicture={profilePicture} setProfilePicture={setProfilePicture} />
           <div className="flex flex-col justify-center space-y-4 w-full">
-            <TextInput
-              label="닉네임"
-              value={nickname}
-              onChange={(e): void => setNickname(e.target.value)}
-              textStyles="w-20"
-              inputStyles="flex-1"
-            />
+            <div className="flex flex-row space-x-2">
+              <TextInput
+                label="닉네임"
+                value={nickname}
+                onChange={(e): void => setNickname(e.target.value)}
+                textStyles="w-20"
+                inputStyles="flex-1"
+              />
+              <Button text="닉네임 확인" onClick={handleNicknameCheck}/>
+            </div>
             <BankInput
               label="계좌 정보"
               bankName={bankName}
@@ -84,7 +86,7 @@ const AccountModificationPage = (): ReactNode => {
           </div>
         </div>
         <div className="flex flex-row justify-end items-center space-x-4">
-          <Button text="수정하기" onClick={handleSubmit} />
+          <Button text="수정하기" onClick={handleModifyClick} disabled={!isValidNickname || !isAllFieldsFilled([nickname, bankName, accountNumber, profilePicture])} />
         </div>
       </div>
     </div>

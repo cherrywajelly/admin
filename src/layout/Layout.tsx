@@ -26,6 +26,11 @@ const Layout = (): ReactNode => {
   };
 
   useEffect(() => {
+    if (!localStorage.getItem('role')) {
+      window.location.href = '/login';
+      return;
+    }
+    
     switch (localStorage.getItem('role')) {
       case 'creator':
         setSidebarMenus([

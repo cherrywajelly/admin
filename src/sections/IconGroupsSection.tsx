@@ -21,9 +21,9 @@ const IconGroupsSection = (props: IconGroupsSectionProps): ReactNode => {
               </div>
             </div>
             <div className="flex flex-row gap-4">
-              <div className="flex overflow-x-auto">
+              <div className="flex overflow-x-auto space-x-4">
                 {(iconGroup.iconImageUrl ?? []).map((image: string, index2: number) => (
-                  <div key={index2} className="w-fit flex-shrink-0">
+                  <div key={index2} className="flex-shrink-0">
                     <img src={image} alt={`Icon ${index2 + 1}`} className="w-32 h-32 rounded-lg" />
                   </div>
                 ))}
