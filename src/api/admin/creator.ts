@@ -1,6 +1,5 @@
 import { apiRequest } from '..';
-import { CreatorResponse, CreatorsElemResponse } from '../../types/api/admin/API';
-import { fetchText } from '../../utils/utils';
+import { CreatorIconResponse, CreatorInfoResponse, CreatorsElemResponse } from '../../types/api/admin/API';
 
 export const getCreators = async (): Promise<any> => {
   try {
@@ -24,23 +23,40 @@ export const getCreators = async (): Promise<any> => {
   }
 };
 
-export const getCreator = async (creatorId: number): Promise<any> => {
+export const getCreator = async (creatorId: string): Promise<any> => {
   try {
-    const res = await apiRequest(`/api/v3/creators/${creatorId}`);
+    const resInfo = await apiRequest(`/api/v3/creators/${creatorId}`);
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! Status: ${res.status}`);
+    if (!resInfo.ok) {
+      throw new Error(`HTTP error! Status: ${resInfo.status}`);
     }
 
-    const data: CreatorResponse = await res.json();
+    const dataInfo: CreatorInfoResponse = await resInfo.json();
 
-    const mappedData = {
-      profilePicture: data.profileUrl,
-      nickname: data.nickname,
-      bank: data.bank,
-      accountNumber: data.accountNumber,
+    const mappedDataInfo = {
+      profilePicture: dataInfo.profileUrl,
+      nickname: dataInfo.nickname,
+      bankName: dataInfo.bank,
+      accountNumber: dataInfo.accountNumber,
     };
-    
+
+    const resIcon = await apiRequest(`/api/v3/creators/${creatorId}/iconGroups`);
+
+    if (!resIcon.ok) {
+      throw new Error(`HTTP error! Status: ${resIcon.status}`);
+    }
+
+    const dataIcon: CreatorIconResponse = await resIcon.json();
+
+    const mappedDataIcon = {
+      soldIconNumber: dataIcon.salesIconCount,
+      revenue: dataIcon.totalRevenue,
+      madeIconNumber: dataIcon.createdIconCount,
+      iconGroups: dataIcon.creatorIconInfos,
+    };
+
+    const mappedData = { ...mappedDataInfo, ...mappedDataIcon };
+
     return mappedData;
   } catch (error) {
     console.error('Failed to get inquiry detail:', error);

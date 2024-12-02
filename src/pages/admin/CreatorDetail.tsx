@@ -1,14 +1,13 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Creator } from '../../types/Props';
 import CreatorInfoSection from '../../sections/CreatorInfoSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
-import { ApprovalState, BankName } from '../../types/Enums';
+import { CreatorDetail } from '../../types/Types';
 import { getCreator } from '../../api/admin/creator';
 
 const CreatorDetailPage = (): ReactNode => {
   const { id } = useParams();
-  const [creatorDetail, setCreatorDetail] = useState<Creator>();
+  const [creatorDetail, setCreatorDetail] = useState<CreatorDetail>();
 
   useEffect(() => {
     // setCreatorDetail({
@@ -65,12 +64,13 @@ const CreatorDetailPage = (): ReactNode => {
     // });
     const fetchCreatorDetail = async () => {
       if (!id) return;
-
-      const data = await getCreator(Number(id));
+      
+      const data = await getCreator(id);
+      console.log(data);
       setCreatorDetail(data);
     };
 
-    fetchCreatorDetail();
+    fetchCreatorDetail();   
   }, [id]);
 
   return (

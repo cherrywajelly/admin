@@ -74,6 +74,17 @@ export type Creator = {
 export type CreatorDetail = {
   profilePicture: string;
   nickname: string;
-  bank: string;
+  bankName: string;
   accountNumber: string;
+  madeIconNumber: number;
+  soldIconNumber: number;
+  revenue: number;
+  iconGroups: IconGroupShort[];
 };
+
+export type IconGroupShort = {
+  title: string;
+  salesCount: number;
+  revenue: number;
+  iconImageUrl: string[];
+}

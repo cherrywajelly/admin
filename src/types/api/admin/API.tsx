@@ -76,9 +76,21 @@ export type CreatorsElemResponse = {
   nickname: string;
 };
 
-export type CreatorResponse = {
+export type CreatorInfoResponse = {
   profileUrl: string;
   nickname: string;
   bank: string;
   accountNumber: string;
+};
+
+export type CreatorIconResponse = {
+  salesIconCount: number;
+  totalRevenue: number;
+  createdIconCount: number;
+  creatorIconInfos: {
+    title: string;
+    revenue: number;
+    salesCount: number;
+    iconImageUrl: string[];
+  }[];
 };
