@@ -4,64 +4,73 @@ import { Creator } from '../../types/Props';
 import CreatorInfoSection from '../../sections/CreatorInfoSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
 import { ApprovalState, BankName } from '../../types/Enums';
+import { getCreator } from '../../api/admin/creator';
 
 const CreatorDetailPage = (): ReactNode => {
   const { id } = useParams();
   const [creatorDetail, setCreatorDetail] = useState<Creator>();
 
   useEffect(() => {
-    setCreatorDetail({
-      id: Number(id),
-      nickname: 'Cherry',
-      profilePicture: '/images/empty.png',
-      bankName: BankName.IBKOKRSE,
-      accountNumber: '1234567890',
-      madeIconNumber: 2,
-      soldIconNumber: 50,
-      revenue: 100000,
-      iconGroups: [
-        {
-          title: '아이콘 그룹 1',
-          headImage: '/images/empty.png',
-          creator: 'cherry',
-          description: '아이콘 그룹 1',
-          approvalState: ApprovalState.APPROVED,
-          iconImages: [
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-          ],
-          soldIconNumber: 20,
-          revenue: 40000,
-        },
-        {
-          title: '아이콘 그룹 2',
-          headImage: '/images/empty.png',
-          creator: 'cherry',
-          description: '아이콘 그룹 2',
-          approvalState: ApprovalState.APPROVED,
-          iconImages: [
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-          ],
-          soldIconNumber: 30,
-          revenue: 60000,
-        },
-      ],
-    });
+    // setCreatorDetail({
+    //   id: Number(id),
+    //   nickname: 'Cherry',
+    //   profilePicture: '/images/empty.png',
+    //   bankName: BankName.IBKOKRSE,
+    //   accountNumber: '1234567890',
+    //   madeIconNumber: 2,
+    //   soldIconNumber: 50,
+    //   revenue: 100000,
+    //   iconGroups: [
+    //     {
+    //       title: '아이콘 그룹 1',
+    //       headImage: '/images/empty.png',
+    //       creator: 'cherry',
+    //       description: '아이콘 그룹 1',
+    //       approvalState: ApprovalState.APPROVED,
+    //       iconImages: [
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //       ],
+    //       soldIconNumber: 20,
+    //       revenue: 40000,
+    //     },
+    //     {
+    //       title: '아이콘 그룹 2',
+    //       headImage: '/images/empty.png',
+    //       creator: 'cherry',
+    //       description: '아이콘 그룹 2',
+    //       approvalState: ApprovalState.APPROVED,
+    //       iconImages: [
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //         '/images/empty.png',
+    //       ],
+    //       soldIconNumber: 30,
+    //       revenue: 60000,
+    //     },
+    //   ],
+    // });
+    const fetchCreatorDetail = async () => {
+      if (!id) return;
+
+      const data = await getCreator(Number(id));
+      setCreatorDetail(data);
+    };
+
+    fetchCreatorDetail();
   }, [id]);
 
   return (

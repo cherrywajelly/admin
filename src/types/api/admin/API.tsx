@@ -69,3 +69,16 @@ export type IconGroupRequestBody = {
   iconGroupId: number;
   iconState: string;
 };
+
+export type CreatorsElemResponse = {
+  memberId: number;
+  profileUrl: string;
+  nickname: string;
+};
+
+export type CreatorResponse = {
+  profileUrl: string;
+  nickname: string;
+  bank: string;
+  accountNumber: string;
+};
