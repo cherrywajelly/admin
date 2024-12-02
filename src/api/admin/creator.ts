@@ -1,5 +1,6 @@
 import { apiRequest } from '..';
 import { CreatorIconResponse, CreatorInfoResponse, CreatorsElemResponse } from '../../types/api/admin/API';
+import { BankName } from '../../types/Enums';
 
 export const getCreators = async (): Promise<any> => {
   try {
@@ -36,8 +37,7 @@ export const getCreator = async (creatorId: string): Promise<any> => {
     const mappedDataInfo = {
       profilePicture: dataInfo.profileUrl,
       nickname: dataInfo.nickname,
-      bankName: dataInfo.bank,
-      // bankName: BankName[dataInfo.bank as keyof typeof BankName],
+      bankName: BankName[dataInfo.bank as keyof typeof BankName],
       accountNumber: dataInfo.accountNumber,
     };
 

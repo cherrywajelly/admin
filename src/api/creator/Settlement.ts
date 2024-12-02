@@ -19,7 +19,7 @@ export const getSettlements = async (): Promise<any> => {
 
     return mappedData;
   } catch (error) {
-    console.error('Failed to get inquiry list:', error);
+    console.error('Failed to get settlement list:', error);
   }
 };
 
@@ -42,9 +42,9 @@ export const getSettlement = async (year: number, month: number): Promise<any> =
       settlement: data.settlement,
       iconGroups: data.settlementIcons,
     };
-    
+
     return mappedData;
   } catch (error) {
-    console.error('Failed to get inquiry detail:', error);
+    console.error('Failed to get settlement detail:', error);
   }
 };
