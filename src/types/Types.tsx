@@ -65,21 +65,27 @@ export type CreatorSettlement = {
   isSettled: boolean;
 };
 
-export type CreatorMember = {
+
+export type Creator = {
+  id: number;
   nickname: string;
   profilePicture: string;
+};
+
+export type CreatorDetail = {
+  profilePicture: string;
+  nickname: string;
   bankName: string;
   accountNumber: string;
   madeIconNumber: number;
   soldIconNumber: number;
   revenue: number;
-  settlement: number;
-  iconGroups: {
-    iconName: string;
-    thumbnailImageUrl: string;
-    iconImageUrl: string[];
-    orderCount: number;
-    income: number;
-    iconState: string;
-  }[];
+  iconGroups: IconGroupShort[];
 };
+
+export type IconGroupShort = {
+  title: string;
+  salesCount: number;
+  revenue: number;
+  iconImageUrl: string[];
+}

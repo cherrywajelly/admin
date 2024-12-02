@@ -1,7 +1,7 @@
 import { SelectChangeEvent } from '@mui/material';
 import { BankName, ApprovalState } from './Enums';
 import { ReactNode } from 'react';
-import { IconGroupDetail } from './Types';
+import { IconGroupDetail, IconGroupShort } from './Types';
 
 export type ButtonProps = {
   styles?: string;
@@ -81,7 +81,7 @@ export type CreatorDetailProps = {
 };
 
 export type IconGroupsSectionProps = {
-  iconGroups: IconGroupDetail[];
+  iconGroups: IconGroupShort[];
 };
 
 export type Creator = {

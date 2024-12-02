@@ -4,7 +4,8 @@ import ListElem from '../../components/ListElem';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import Context from '../../contexts/Context';
-import { AdminMenu, BankName } from '../../types/Enums';
+import { AdminMenu } from '../../types/Enums';
+import { getCreators } from '../../api/admin/creator';
 
 const CreatorListPage = (): ReactNode => {
   const [creators, setCreators] = useState<Creator[]>([]);
@@ -17,52 +18,12 @@ const CreatorListPage = (): ReactNode => {
   };
 
   useEffect((): void => {
-    setCreators([
-      {
-        id: 0,
-        nickname: 'Cherry',
-        profilePicture: '/images/empty.png',
-        bankName: BankName.IBKOKRSE,
-        accountNumber: '1234567890',
-        madeIconNumber: 2,
-        soldIconNumber: 50,
-        revenue: 100000,
-        iconGroups: [],
-      },
-      {
-        id: 1,
-        nickname: 'Wade',
-        profilePicture: '/images/empty.png',
-        bankName: BankName.IBKOKRSE,
-        accountNumber: '1234567890',
-        madeIconNumber: 2,
-        soldIconNumber: 50,
-        revenue: 100000,
-        iconGroups: [],
-      },
-      {
-        id: 2,
-        nickname: 'Julia',
-        profilePicture: '/images/empty.png',
-        bankName: BankName.IBKOKRSE,
-        accountNumber: '1234567890',
-        madeIconNumber: 2,
-        soldIconNumber: 50,
-        revenue: 100000,
-        iconGroups: [],
-      },
-      {
-        id: 3,
-        nickname: 'Kelly',
-        profilePicture: '/images/empty.png',
-        bankName: BankName.IBKOKRSE,
-        accountNumber: '1234567890',
-        madeIconNumber: 2,
-        soldIconNumber: 50,
-        revenue: 100000,
-        iconGroups: [],
-      },
-    ]);
+    const fetchCreators = async () => {
+      const data = await getCreators();
+      setCreators(data);
+    };
+
+    fetchCreators();
   }, []);
 
   return (
