@@ -1,6 +1,7 @@
 import { SelectChangeEvent } from '@mui/material';
 import { BankName, ApprovalState } from './Enums';
 import { ReactNode } from 'react';
+import { IconGroupDetail, IconGroupShort } from './Types';
 
 export type ButtonProps = {
   styles?: string;
@@ -8,6 +9,7 @@ export type ButtonProps = {
   text: string;
   onClick?: () => void;
   isClicked?: boolean;
+  disabled?: boolean;
 };
 
 export type TextInputProps = {
@@ -33,6 +35,7 @@ export type ListElemProps = {
   id?: number;
   title?: string;
   subtitle?: string;
+  background?: string;
   image?: string;
   divider?: boolean;
   buttons: ReactNode[];
@@ -61,22 +64,11 @@ export type IconsSectionProps = {
 
 export type CreatorSectionProps = {
   madeIconNumber?: number;
-  soldIconNumber?: number;
-  revenue?: number;
+  soldIconNumber: number;
+  revenue: number;
+  settlement?: number;
   bankName?: BankName | string;
   accountNumber?: string;
-};
-
-export type IconGroup = {
-  id: number;
-  title?: string;
-  headImage?: string;
-  creator?: string;
-  description?: string;
-  approvalState?: ApprovalState;
-  iconImages?: string[];
-  soldIconNumber?: number;
-  revenue?: number;
 };
 
 export type CreatorDetailProps = {
@@ -86,28 +78,28 @@ export type CreatorDetailProps = {
   madeIconNumber: number;
   soldIconNumber: number;
   revenue: number;
-  iconGroups: IconGroup[];
+  iconGroups: IconGroupDetail[];
 };
 
 export type IconGroupsSectionProps = {
-  iconGroups: IconGroup[];
+  iconGroups: IconGroupShort[];
 };
 
 export type Creator = {
   id: number;
-  nickname?: string;
-  profilePicture?: string;
-  bankName?: BankName | string;
-  accountNumber?: string;
-  madeIconNumber?: number;
-  soldIconNumber?: number;
-  revenue?: number;
-  iconGroups?: IconGroup[];
+  nickname: string;
+  profilePicture: string;
+  bankName: BankName | string;
+  accountNumber: string;
+  madeIconNumber: number;
+  soldIconNumber: number;
+  revenue: number;
+  iconGroups: IconGroupDetail[];
 };
 
 export type IconInfoSectionProps = {
-  soldIconNumber?: number;
-  revenue?: number;
+  soldIconNumber: number;
+  revenue: number;
 };
 
 export type SettlementDetailProps = {
@@ -116,20 +108,12 @@ export type SettlementDetailProps = {
   headImage: string;
   sales: number;
   revenue: number;
-  iconGroups: IconGroup[];
+  iconGroups: IconGroupDetail[];
 };
 
 export type IconUploadSectionProps = {
   iconImages: string[];
   setIconImages: (iconImages: string[]) => void;
-};
-
-export type Settlement = {
-  year: number;
-  month: number;
-  creator: Creator;
-  isSettled?: boolean;
-  date?: string;
 };
 
 export type SidebarMenu = {
@@ -140,4 +124,24 @@ export type SidebarMenu = {
 export type SidebarMenusProps = {
   sidebarMenus: SidebarMenu[];
   externalLinks?: SidebarMenu[];
+};
+
+export type ProfileInputProps = {
+  profilePicture: File | null;
+  setProfilePicture: (file: File | null) => void;
+  styles?: string;
+};
+
+export type SocialLoginButtonProps = {
+  social: string;
+  role: string;
+  styles: string;
+  icon: string;
+  text: string;
+};
+
+export type SocialAuthCallbackProps = {
+  social: string;
+  role: string;
+  version: string;
 };

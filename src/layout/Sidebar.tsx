@@ -17,12 +17,13 @@ const Sidebar = (props: SidebarMenusProps): ReactNode => {
   const navigate = useNavigate();
 
   return (
-    <Box className={`bg-gray-80 w-48 p-4 flex flex-col justify-between h-dvh`}>
+    <Box className={`bg-gray-80 w-56 p-4 flex flex-col justify-between h-dvh`}>
       <nav aria-label="sidebar navigation">
-        <List className="!pt-0">
+        <List className="!py-0">
           {sidebarMenus.map((sidebarMenu: SidebarMenu, idx: number) => (
             <ListItem disablePadding key={idx}>
               <ListItemButton
+                className="!p-2"
                 onClick={(): void => {
                   setSelectedMenu(sidebarMenu.menu);
                   navigate(sidebarMenu.url);
@@ -34,11 +35,12 @@ const Sidebar = (props: SidebarMenusProps): ReactNode => {
           ))}
 
           {externalLinks && (
-            <>
+            <div>
               <Divider sx={{ backgroundColor: 'white' }} />
               {externalLinks.map((externalLink: SidebarMenu, idx: number) => (
                 <ListItem disablePadding key={idx}>
                   <ListItemButton
+                    className="!p-2"
                     component="a"
                     href={externalLink.url}
                     target="_blank"
@@ -49,7 +51,7 @@ const Sidebar = (props: SidebarMenusProps): ReactNode => {
                   </ListItemButton>
                 </ListItem>
               ))}
-            </>
+            </div>
           )}
         </List>
       </nav>

@@ -1,88 +1,59 @@
 import { ReactNode, useContext, useEffect, useState } from 'react';
-import { Creator } from '../../types/Props';
-import CreatorSection from '../../sections/CreatorSection';
-import IconGroupsSection from '../../sections/IconGroupsSection';
-import { BankName } from '../../types/Enums';
+import CreatorSection from '../../sections/CreatorInfoSection';
+import { CreatorMenu } from '../../types/Enums';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import Context from '../../contexts/Context';
 import { ContextProps } from '../../types/Props';
+import { CreatorMember } from '../../types/Types';
+import { getCreatorInfo } from '../../api/creator/member';
+import IconGroupsSection from '../../sections/IconGroupsSection';
 
 const MyPage = (): ReactNode => {
-  const [creatorDetail, setCreatorDetail] = useState<Creator>({} as Creator);
+  const [creatorDetail, setCreatorDetail] = useState<CreatorMember>();
 
   const navigate = useNavigate();
   const { setSelectedMenu } = useContext(Context) as ContextProps;
 
   const handleAccountModification = () => {
-    setSelectedMenu('수정하기');
+    setSelectedMenu(CreatorMenu.ACCOUNT_MODIFICATION);
     navigate('/creator/modify');
   };
 
   useEffect(() => {
-    setCreatorDetail({
-      id: 0,
-      nickname: 'Cherry',
-      profilePicture: '/images/empty.png',
-      bankName: BankName.IBKOKRSE,
-      accountNumber: '1234567890',
-      madeIconNumber: 2,
-      soldIconNumber: 50,
-      revenue: 100000,
-      iconGroups: [
-        {
-          id: 0,
-          title: '아이콘 그룹 1',
-          iconImages: [
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-          ],
-          soldIconNumber: 20,
-          revenue: 40000,
-        },
-        {
-          id: 1,
-          title: '아이콘 그룹 2',
-          iconImages: [
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-            '/images/empty.png',
-          ],
-          soldIconNumber: 30,
-          revenue: 60000,
-        },
-      ],
-    });
+    const fetchCreatorInfo = async () => {
+      const data = await getCreatorInfo();
+      console.log(data);
+      setCreatorDetail(data);
+    };
+
+    fetchCreatorInfo();
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen p-8">
-      <div className="flex flex-row items-center mb-6">
-        <img src={creatorDetail.profilePicture} alt="Profile" className="w-24 h-24 rounded-full mr-8" />
-        <div className="mx-4">
-          <h1 className="text-2xl font-bold">{creatorDetail.nickname}</h1>
+    creatorDetail && (
+      <div className="min-h-screen p-8 space-y-8">
+        <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center space-x-4">
+            <img src={creatorDetail.profilePicture} alt="Profile" className="w-24 h-24" />
+            <div className="flex flex-col justify-center">
+              <h1 className="text-2xl font-bold">{creatorDetail.nickname}</h1>
+            </div>
+          </div>
+          <div className="flex flex-row items-center space-x-4">
+            <Button text="수정하기" onClick={handleAccountModification} />
+          </div>
         </div>
-        <Button
-          text="수정하기"
-          styles="ml-auto"
-          onClick={handleAccountModification}
+        <CreatorSection
+          madeIconNumber={creatorDetail.madeIconNumber}
+          soldIconNumber={creatorDetail.soldIconNumber}
+          revenue={creatorDetail.revenue}
+          bankName={creatorDetail.bankName}
+          accountNumber={creatorDetail.accountNumber}
         />
+        <IconGroupsSection iconGroups={creatorDetail.iconGroups} />
       </div>
-      <CreatorSection
-        madeIconNumber={creatorDetail.madeIconNumber}
-        soldIconNumber={creatorDetail.soldIconNumber}
-        revenue={creatorDetail.revenue}
-        bankName={creatorDetail.bankName}
-        accountNumber={creatorDetail.accountNumber}
-      />
-      <div className="mb-8" />
-      <IconGroupsSection iconGroups={creatorDetail.iconGroups ?? []} />
-    </div>
+    )
   );
 };
 

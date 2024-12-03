@@ -1,78 +1,100 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ApprovalState } from '../../types/Enums';
-import { IconGroup } from '../../types/Props';
+import { IconGroupDetail2 } from '../../types/Types';
 import { Select, MenuItem, SelectChangeEvent } from '@mui/material';
 import Button from '../../components/Button';
 import IconsSection from '../../sections/IconsSection';
+import { getIconGroup, postIconGroup } from '../../api/admin/iconGroup';
+import { IconGroupRequestBody } from '../../types/api/admin/API';
 
-const IconDetail = (): ReactNode => {
+const IconDetailPage = (): ReactNode => {
   const { id } = useParams();
-  const [iconDetail, setIconDetail] = useState<IconGroup>({} as IconGroup);
+  const [iconDetail, setIconDetail] = useState<IconGroupDetail2>();
 
-  const handleSave = (): void => {
-    console.log('save');
-    alert('아이콘이 승인되었습니다.');
+  const handleSave = (approvalState: ApprovalState): void => {
+    let iconState;
+    let message;
+    switch (approvalState) {
+      case ApprovalState.APPROVED:
+        iconState = 'REGISTERED';
+        message = '아이콘이 승인되었습니다.';
+        break;
+
+      case ApprovalState.REJECTED:
+        iconState = 'REJECTED';
+        message = '아이콘이 반려되었습니다.';
+        break;
+
+      case ApprovalState.PENDING:
+        iconState = 'WAITING';
+        message = '아이콘이 보류되었습니다.';
+        break;
+    }
+
+    const requestBody: IconGroupRequestBody = {
+      iconGroupId: Number(id),
+      iconState: iconState,
+    };
+
+    const uploadIconGroup = async () => {
+      const res = await postIconGroup(requestBody);
+      
+      if (res.ok) {
+        alert(message);
+      }
+    };
+
+    uploadIconGroup();
   };
 
   useEffect((): void => {
-    setIconDetail({
-      id: Number(id),
-      title: '루돌프 토스트',
-      creator: 'cherry',
-      headImage: '/images/christmas/r1.png',
-      description:
-        '크리스마스 기념 루돌프 토스트',
-      iconImages: [
-        '/images/christmas/r1.png',
-        '/images/christmas/r2.png',
-        '/images/christmas/r3.png',
-        '/images/christmas/r4.png',
-        '/images/christmas/r5.png',
-        '/images/christmas/r7.png',
-        '/images/christmas/r8.png',
-        '/images/christmas/r9.png',
-      ],
-      approvalState: ApprovalState.PENDING,
-    });
+    const fetchIconDetail = async () => {
+      if (!id) return;
+      
+      const data = await getIconGroup(id);
+      setIconDetail(data);
+    };
+
+    fetchIconDetail();
   }, [id]);
 
   return (
-    <div className="flex flex-col min-h-screen p-8">
-      <div className="flex flex-row items-center mb-6">
-        <img src={iconDetail.headImage} alt="Profile" className="w-24 h-24 rounded-full mr-8" />
-        <div className="mx-4">
-          <h1 className="text-2xl font-bold w-40">{iconDetail.title}</h1>
-          <p className="text-gray-500">{iconDetail.creator}</p>
-          <p className="mt-2">{iconDetail.description}</p>
+    iconDetail && (
+      <div className="min-h-screen p-8 space-y-8">
+        <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center space-x-4">
+            <img src={iconDetail.headImage} alt="Profile" className="w-24 h-24" />
+            <div className="flex flex-col space-y-1">
+              <h1 className="text-2xl font-bold w-40">{iconDetail.title}</h1>
+              <p className="text-gray-500">{iconDetail.creator}</p>
+              <p>{iconDetail.description}</p>
+            </div>
+          </div>
+          <div className="flex flex-row items-center space-x-4">
+            <Select
+              value={iconDetail.approvalState}
+              onChange={(e: SelectChangeEvent): void =>
+                setIconDetail({
+                  ...iconDetail,
+                  approvalState: e.target.value as ApprovalState,
+                })
+              }
+              className={`border-gray-300 !rounded-lg h-10`}
+            >
+              {Object.values(ApprovalState).map((state: ApprovalState) => (
+                <MenuItem key={state} value={state}>
+                  {state}
+                </MenuItem>
+              ))}
+            </Select>
+            <Button text="저장" onClick={() => handleSave(iconDetail.approvalState)} />
+          </div>
         </div>
-        <div className="flex flex-row justify-end items-center w-full">
-          <Select
-            value={iconDetail.approvalState ?? ApprovalState.PENDING}
-            onChange={(e: SelectChangeEvent): void =>
-              setIconDetail({
-                ...iconDetail,
-                approvalState: e.target.value as ApprovalState,
-              })
-            }
-            className={`border-gray-300 !rounded-lg`}
-          >
-            {Object.values(ApprovalState).map((state: ApprovalState) => (
-              <MenuItem key={state} value={state}>
-                {state}
-              </MenuItem>
-            ))}
-          </Select>
-          <Button
-            text="저장"
-            styles="ml-4"
-            onClick={handleSave}
-          />
-        </div>
+        <IconsSection iconImages={iconDetail.iconImages} />
       </div>
-      <IconsSection iconImages={iconDetail.iconImages ?? []} />
-    </div>
+    )
   );
 };
 
-export default IconDetail;
+export default IconDetailPage;

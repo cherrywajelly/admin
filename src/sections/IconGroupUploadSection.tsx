@@ -1,21 +1,23 @@
 import { ReactNode } from 'react';
 import { Divider } from '@mui/material';
-import { IconUploadSectionProps } from '../types/Props';
 
-const IconUploadSection = (props: IconUploadSectionProps): ReactNode => {
-  const { iconImages, setIconImages } = props;
+const IconGroupUploadSection = ({
+  iconImages,
+  setIconFiles,
+}: {
+  iconImages: string[];
+  setIconFiles: (files: File[]) => void;
+}): ReactNode => {
 
   return (
-    <>
-      <h2 className="text-xl font-bold mb-2">ICONS</h2>
-      <Divider
-        sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }}
-      />
+    <div>
+      <h2 className="text-xl font-bold">ICONS</h2>
+      <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
       <div className="grid grid-cols-4 gap-4 w-full justify-items-center">
         {iconImages.map((image: string, index: number) => (
           <div key={index} className="flex flex-col items-center w-fit relative group">
             <img src={image} alt={`Icon ${index + 1}`} className="w-32 h-32 rounded-lg shadow-md" />
-            <button
+            {/* <button
               onClick={(): void => {
                 const newImages = [...iconImages];
                 newImages.splice(index, 1);
@@ -31,7 +33,7 @@ const IconUploadSection = (props: IconUploadSectionProps): ReactNode => {
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
-            </button>
+            </button> */}
           </div>
         ))}
         <div
@@ -48,9 +50,10 @@ const IconUploadSection = (props: IconUploadSectionProps): ReactNode => {
             multiple
             onChange={(e): void => {
               if (e.target.files) {
-                const files = Array.from(e.target.files);
-                const newImageUrls = files.map((file) => URL.createObjectURL(file));
-                setIconImages([...iconImages, ...newImageUrls]);
+                // const files = Array.from(e.target.files);
+                // const newImageUrls = files.map((file) => URL.createObjectURL(file));
+                // setIconImages([...iconImages, ...newImageUrls]);
+                setIconFiles(Array.from(e.target.files));
               }
             }}
           />
@@ -65,8 +68,8 @@ const IconUploadSection = (props: IconUploadSectionProps): ReactNode => {
           </svg>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default IconUploadSection;
+export default IconGroupUploadSection;

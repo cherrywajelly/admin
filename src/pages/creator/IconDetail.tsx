@@ -1,54 +1,47 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { ApprovalState } from '../../types/Enums';
-import { IconGroup } from '../../types/Props';
+import { IconGroupDetail } from '../../types/Types';
 import Button from '../../components/Button';
 import IconsSection from '../../sections/IconsSection';
 import IconInfoSection from '../../sections/IconInfoSection';
+import { useParams } from 'react-router-dom';
+import { getIconGroup } from '../../api/creator/iconGroup';
 
-const IconDetail = (): ReactNode => {
-  const [iconDetail, setIconDetail] = useState<IconGroup>({} as IconGroup);
+const IconDetailPage = (): ReactNode => {
+  const { id } = useParams();
+  const [iconDetail, setIconDetail] = useState<IconGroupDetail>();
 
   useEffect((): void => {
-    setIconDetail({
-      id: 0,
-      title: '노노노',
-      creator: '에이핑크',
-      headImage: '/images/empty.png',
-      description:
-        '이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요이 아이콘은 내가 만든건데 아주 귀엽습니다? 등록해주세요',
-      iconImages: [
-        '/images/empty.png',
-        '/images/empty.png',
-        '/images/empty.png',
-        '/images/empty.png',
-        '/images/empty.png',
-      ],
-      approvalState: ApprovalState.PENDING,
-      soldIconNumber: 100,
-      revenue: 200000,
-    });
-  }, []);
+    const fetchIconDetail = async () => {
+      if (!id) return;
+      
+      const data = await getIconGroup(id);
+      setIconDetail(data);
+    };
+
+    fetchIconDetail();
+  }, [id]);
 
   return (
-    <div className="flex flex-col min-h-screen p-8">
-      <div className="flex flex-row items-center mb-6">
-        <img src={iconDetail.headImage} alt="Profile" className="w-24 h-24 rounded-full mr-8" />
-        <div className="mx-4">
-          <h1 className="text-2xl font-bold">{iconDetail.title}</h1>
-          <p className="text-gray-500">{iconDetail.creator}</p>
-          <p className="mt-2">{iconDetail.description}</p>
+    iconDetail && (
+      <div className="min-h-screen p-8 space-y-8">
+        <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center space-x-4">
+            <img src={iconDetail.headImage} alt="Profile" className="w-24 h-24" />
+            <div className="flex flex-col space-y-1">
+              <h1 className="text-2xl font-bold w-40">{iconDetail.title}</h1>
+              <p className="text-gray-500">{iconDetail.creator}</p>
+              <p className="flex-1">{iconDetail.description}</p>
+            </div>
+          </div>
+          <div className="flex flex-row items-center space-x-4">
+            <Button text={iconDetail.approvalState} />
+          </div>
         </div>
-        <div className="flex flex-row justify-end w-full mb-4">
-          <Button
-            text={iconDetail.approvalState ?? ApprovalState.PENDING}
-          />
-        </div>
+        <IconInfoSection soldIconNumber={iconDetail.soldIconNumber} revenue={iconDetail.revenue} />
+        <IconsSection iconImages={iconDetail.iconImages} />
       </div>
-      <IconInfoSection soldIconNumber={iconDetail.soldIconNumber} revenue={iconDetail.revenue} />
-      <div className="mb-4"></div>
-      <IconsSection iconImages={iconDetail.iconImages ?? []} />
-    </div>
+    )
   );
 };
 
-export default IconDetail;
+export default IconDetailPage;

@@ -1,63 +1,47 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { Creator } from '../../types/Props';
-import CreatorSection from '../../sections/CreatorSection';
+import { SettlementDetail } from '../../types/Types';
+import CreatorSection from '../../sections/CreatorInfoSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
+import { useParams } from 'react-router-dom';
+import { getSettlement } from '../../api/creator/settlement';
 
-const SettlementDetail = (): ReactNode => {
-  const [settlementDetail, setSettlementDetail] = useState<Creator>({} as Creator);
+const SettlementDetailPage = (): ReactNode => {
+  const { year, month } = useParams<{ year: string; month: string }>();
+  const [settlementDetail, setSettlementDetail] = useState<SettlementDetail>();
 
   useEffect(() => {
-    setSettlementDetail({
-      id: 0,
-      nickname: '박하준',
-      profilePicture: '/images/test/1.jpeg',
-      soldIconNumber: 48,
-      revenue: 52800,
-      iconGroups: [
-        {
-          id: 0,
-          title: '루돌프 토스트',
-          iconImages: [
-            '/images/christmas/r1.png',
-            '/images/christmas/r2.png',
-            '/images/christmas/r3.png',
-            '/images/christmas/r4.png',
-          ],
-          soldIconNumber: 21,
-          revenue: 23100,
-        },
-        {
-          id: 1,
-          title: '산타 토스트',
-          iconImages: [
-            '/images/christmas/s1.png',
-            '/images/christmas/s2.png',
-            '/images/christmas/s3.png',
-            '/images/christmas/s4.png',
-          ],
-          soldIconNumber: 27,
-          revenue: 29700,
-        },
-      ],
-    });
-  }, []);
+    const fetchSettlement = async () => {
+      if (!year || !month) {
+        return;
+      }
+
+      const data = await getSettlement(parseInt(year), parseInt(month));
+      setSettlementDetail(data);
+    };
+
+    fetchSettlement();
+  }, [year, month]);
 
   return (
-    <div className="flex flex-col min-h-screen p-8">
-      <div className="flex flex-row items-center mb-6">
-      <img src={settlementDetail.profilePicture} alt="Profile" className="w-24 h-24 rounded-full mr-8" />
-        <div className="mx-4">
-          <h1 className="text-2xl font-bold">{settlementDetail.nickname}</h1>
+    settlementDetail && (
+      <div className="min-h-screen p-8 space-y-8">
+        <div className="flex flex-row items-center justify-between">
+          <div className="flex flex-row items-center space-x-4">
+            <div className="flex flex-col justify-center">
+              <h1 className="text-2xl font-bold">{`${settlementDetail.year}년 ${settlementDetail.month}월 ${settlementDetail.nickname}님의 정산 내역`}</h1>
+            </div>
+          </div>
+          <div className="flex flex-row items-center space-x-4"></div>
         </div>
+        <CreatorSection
+          soldIconNumber={settlementDetail.soldIconNumber}
+          revenue={settlementDetail.revenue}
+          settlement={settlementDetail.settlement}
+        />
+        <IconGroupsSection iconGroups={settlementDetail.iconGroups} />
       </div>
-      <CreatorSection
-        soldIconNumber={settlementDetail.soldIconNumber}
-        revenue={settlementDetail.revenue}
-      />
-      <div className="mb-8" />
-      <IconGroupsSection iconGroups={settlementDetail.iconGroups ?? []} />
-    </div>
+    )
   );
 };
 
-export default SettlementDetail;
+export default SettlementDetailPage;
