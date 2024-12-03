@@ -18,7 +18,7 @@ const SignupPage = (): ReactNode => {
   const [isValidNickname, setIsValidNickname] = useState<boolean>(false);
 
   const handleSignupClick = async (): Promise<void> => {
-    const res = await postCreatorInfo({
+    await postCreatorInfo({
       profile: profilePicture as File,
       creatorRequest: {
         nickname: nickname,
@@ -28,11 +28,6 @@ const SignupPage = (): ReactNode => {
         },
       },
     });
-
-    if (!res.ok) {
-      alert('fail');
-      return;
-    }
 
     alert('회원가입이 완료되었습니다.');
     navigate('/login');
