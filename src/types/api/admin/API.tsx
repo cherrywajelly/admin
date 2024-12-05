@@ -182,3 +182,9 @@ export type CapsuleToastResponse = {
     createdAt: string;
   }[];
 };
+
+export type UsersElemResponse = {
+  memberId: number;
+  nickname: string;
+  memberProfileUrl: string;
+};

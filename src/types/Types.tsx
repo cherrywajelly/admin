@@ -191,3 +191,9 @@ export type PaymentDetail = {
   image: string;
   createdAt: string;
 };
+
+export type User = {
+  id: number;
+  title: string;
+  image: string;
+};
