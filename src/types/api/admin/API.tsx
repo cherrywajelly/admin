@@ -112,3 +112,23 @@ export type GroupResponse = {
     memberProfileUrl: string;
   }[];
 };
+
+export type PaymentsElemResponse = {
+  paymentId: number;
+  nickname: string;
+  itemName: string;
+  itemType: string;
+  createdAt: string;
+};
+
+export type PaymentResponse = {
+  orderId: number;
+  nickname: string;
+  itemType: string;
+  itemName: string;
+  amount: number;
+  paymentState: string;
+  expiredDate: string;
+  createdAt: string;
+  iconThumbnailImageUrl: string;
+};

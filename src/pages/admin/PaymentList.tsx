@@ -6,6 +6,7 @@ import { AdminMenu } from '../../types/Enums';
 import ListElem from '../../components/ListElem';
 import { Payment } from '../../types/Types';
 import Button from '../../components/Button';
+import { getPayments } from '../../api/admin/payment';
 
 const PaymentListPage = (): ReactNode => {
   const navigate = useNavigate();
@@ -18,22 +19,12 @@ const PaymentListPage = (): ReactNode => {
   };
 
   useEffect((): void => {
-    setPayments([
-      {
-        id: 1,
-        nickname: 'Nickname',
-        itemName: '산타맛 토스트',
-        itemType: 'ICON',
-        createdAt: '2024-01-01',
-      },
-      {
-        id: 2,
-        nickname: 'Nickname',
-        itemName: '프리미엄',
-        itemType: 'PREMIUM',
-        createdAt: '2024-01-01',
-      },
-    ]);
+    const fetchPaymentList = async () => {
+      const data = await getPayments(0, 200);
+      setPayments(data);
+    };
+
+    fetchPaymentList();
   }, []);
 
   return (
