@@ -60,3 +60,9 @@ export const MethodType = {
   PUT: 'PUT',
 } as const;
 export type MethodType = (typeof MethodType)[keyof typeof MethodType];
+
+export const ToastType = {
+  EVENT: '이벤트 토스트',
+  CAPSULE: '캡슐 토스트',
+} as const;
+export type ToastType = (typeof ToastType)[keyof typeof ToastType];

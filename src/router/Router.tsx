@@ -22,7 +22,8 @@ import {
   AdminPaymentList,
   AdminPaymentDetail,
   AdminToastList,
-  AdminToastDetail,
+  AdminEventToastDetail,
+  AdminCapsuleToastDetail,
   AdminGroupList,
   AdminGroupDetail,
 } from './Admin';
@@ -62,7 +63,8 @@ const Router = (): ReactNode => {
             <Route path="payments" element={<AdminPaymentList />} />
             <Route path="payments/:id" element={<AdminPaymentDetail />} />
             <Route path="toasts" element={<AdminToastList />} />
-            <Route path="toasts/:id" element={<AdminToastDetail />} />
+            <Route path="eventtoasts/:id" element={<AdminEventToastDetail />} />
+            <Route path="capsuletoasts/:id" element={<AdminCapsuleToastDetail />} />
             <Route path="groups" element={<AdminGroupList />} />
             <Route path="groups/:id" element={<AdminGroupDetail />} />
           </Route>

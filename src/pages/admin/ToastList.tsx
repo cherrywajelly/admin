@@ -1,25 +1,25 @@
-import { ReactNode, useContext, useEffect } from 'react';
-import { ContextProps } from '../../types/Props';
-import { useNavigate } from 'react-router-dom';
-import Context from '../../contexts/Context';
-import { AdminMenu } from '../../types/Enums';
+import { ReactNode, useState } from 'react';
+import { ToastType } from '../../types/Enums';
+import { Tab, Tabs } from '@mui/material';
+import EventToastList from './EventToastList';
+import CapsuleToastList from './CapsuleToastList';
 
 const ToastListPage = (): ReactNode => {
-  const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
+  const [toastType, setToastType] = useState<ToastType>(ToastType.EVENT);
 
-  const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.TOAST_DETAIL);
-    navigate(`/admin/toasts/${id}`);
+  const handleToastTapChange = (_: React.SyntheticEvent, newValue: ToastType): void => {
+    setToastType(newValue);
   };
-
-  useEffect((): void => {
-
-  }, []);
 
   return (
     <div>
-      ToastList
+      <Tabs value={toastType} onChange={handleToastTapChange} aria-label="toast tabs">
+        {[ToastType.EVENT, ToastType.CAPSULE].map((toast: ToastType) => (
+          <Tab key={toast} value={toast} label={toast} />
+        ))}
+      </Tabs>
+      {toastType === ToastType.EVENT && <EventToastList />}
+      {toastType === ToastType.CAPSULE && <CapsuleToastList />}
     </div>
   );
 };

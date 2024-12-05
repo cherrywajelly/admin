@@ -11,7 +11,8 @@ import UserDetail from '../pages/admin/UserDetail.tsx';
 import PaymentList from '../pages/admin/PaymentList.tsx';
 import PaymentDetail from '../pages/admin/PaymentDetail.tsx';
 import ToastList from '../pages/admin/ToastList.tsx';
-import ToastDetail from '../pages/admin/ToastDetail.tsx';
+import EventToastDetail from '../pages/admin/EventToastDetail.tsx';
+import CapsuleToastDetail from '../pages/admin/CapsuleToastDetail.tsx';
 import GroupList from '../pages/admin/GroupList.tsx';
 import GroupDetail from '../pages/admin/GroupDetail.tsx';
 
@@ -29,7 +30,8 @@ export {
   PaymentList as AdminPaymentList,
   PaymentDetail as AdminPaymentDetail,
   ToastList as AdminToastList,
-  ToastDetail as AdminToastDetail,
+  EventToastDetail as AdminEventToastDetail,
+  CapsuleToastDetail as AdminCapsuleToastDetail,
   GroupList as AdminGroupList,
   GroupDetail as AdminGroupDetail,
 };
