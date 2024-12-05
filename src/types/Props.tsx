@@ -1,7 +1,7 @@
 import { SelectChangeEvent } from '@mui/material';
 import { BankName, ApprovalState } from './Enums';
 import { ReactNode } from 'react';
-import { IconGroupDetail, IconGroupShort } from './Types';
+import { IconGroupDetail, IconGroupShort, Jam, Piece, Group, Member } from './Types';
 
 export type ButtonProps = {
   styles?: string;
@@ -144,4 +144,23 @@ export type SocialAuthCallbackProps = {
   social: string;
   role: string;
   version: string;
+};
+
+export type InfoSectionProps = {
+  infos: {
+    key: string;
+    value: string;
+  }[];
+};
+
+export type JamSectionProps = {
+  jams: Jam[];
+};
+
+export type PieceSectionProps = {
+  pieces: Piece[];
+};
+
+export type MemberSectionProps = {
+  members: Member[];
 };

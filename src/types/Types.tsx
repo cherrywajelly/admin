@@ -97,3 +97,97 @@ export type IconGroupShort = {
   revenue: number;
   iconImageUrl: string[];
 };
+
+export type EventToast = {
+  id: number;
+  title: string;
+  nickname: string;
+  image: string;
+};
+
+export type EventToastDetail = {
+  id: number;
+  image: string;
+  title: string;
+  nickname: string;
+  openDate: string;
+  isOpened: boolean;
+  createdAt: string;
+  jams: Jam[];
+};
+
+export type Jam = {
+  id: number;
+  title: string;
+  image: string;
+  nickname: string;
+  createdAt: string;
+};
+
+export type CapsuleToast = {
+  id: number;
+  title: string;
+  group: string;
+  image: string;
+};
+
+export type CapsuleToastDetail = {
+  id: number;
+  image: string;
+  title: string;
+  group: string;
+  memoDate: string;
+  openDate: string;
+  isOpened: boolean;
+  capsuleToastType: string;
+  createdAt: string;
+  pieces: Piece[];
+};
+
+export type Piece = {
+  id: number;
+  title: string;
+  image: string;
+  nickname: string;
+  createdAt: string;
+};
+
+export type Group = {
+  id: number;
+  title: string;
+  image: string;
+};
+
+export type GroupDetail = {
+  id: number;
+  image: string;
+  title: string;
+  createdAt: string;
+  members: Member[];
+};
+
+export type Member = {
+  id: number;
+  nickname: string;
+  image: string;
+};
+
+export type Payment = {
+  id: number;
+  nickname: string;
+  itemName: string;
+  itemType: string;
+  createdAt: string;
+};
+
+export type PaymentDetail = {
+  id: string;
+  nickname: string;
+  itemName: string;
+  itemType: string;
+  amount: number;
+  paymentState: string;
+  expiredDate: string;
+  image: string;
+  createdAt: string;
+};
