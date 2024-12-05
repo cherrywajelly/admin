@@ -6,6 +6,7 @@ import { AdminMenu } from '../../types/Enums';
 import { Group } from '../../types/Types';
 import ListElem from '../../components/ListElem';
 import Button from '../../components/Button';
+import { getGroups } from '../../api/admin/group';
 
 const GroupListPage = (): ReactNode => {
   const navigate = useNavigate();
@@ -18,18 +19,12 @@ const GroupListPage = (): ReactNode => {
   };
 
   useEffect((): void => {
-    setGroups([
-      {
-        id: 1,
-        title: 'Title',
-        image: '/images/empty.png',
-      },
-      {
-        id: 2,
-        title: 'Title',
-        image: '/images/empty.png',
-      },
-    ]);
+    const fetchGroupList = async () => {
+      const data = await getGroups();
+      setGroups(data);
+    };
+
+    fetchGroupList();
   }, []);
 
   return (

@@ -3,30 +3,21 @@ import { useParams } from 'react-router-dom';
 import { GroupDetail } from '../../types/Types';
 import InfoSection from '../../sections/InfoSection';
 import MemberSection from '../../sections/MembersSection';
+import { getGroup } from '../../api/admin/group';
 
 const GroupDetailPage = (): ReactNode => {
   const { id } = useParams();
   const [groupDetail, setGroupDetail] = useState<GroupDetail>();
 
   useEffect(() => {
-    setGroupDetail({
-      id: 1,
-      image: '/images/empty.png',
-      title: 'Title',
-      createdAt: '2024-01-01',
-      members: [
-        {
-          id: 1,
-          image: '/images/empty.png',
-          nickname: 'Nickname',
-        },
-        {
-          id: 2,
-          image: '/images/empty.png',
-          nickname: 'Nickname',
-        },
-      ],
-    });
+    const fetchGroupDetail = async () => {
+      if (!id) return;
+      
+      const data = await getGroup(id);
+      setGroupDetail(data);
+    };
+
+    fetchGroupDetail();   
   }, [id]);
 
   return (
