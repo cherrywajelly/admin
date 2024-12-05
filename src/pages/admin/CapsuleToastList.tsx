@@ -6,6 +6,7 @@ import { AdminMenu } from '../../types/Enums';
 import { CapsuleToast } from '../../types/Types';
 import ListElem from '../../components/ListElem';
 import Button from '../../components/Button';
+import { getCapsuleToasts } from '../../api/admin/capsuleToast';
 
 const CapsuleToastListPage = (): ReactNode => {
   const navigate = useNavigate();
@@ -18,20 +19,26 @@ const CapsuleToastListPage = (): ReactNode => {
   };
 
   useEffect((): void => {
-    setCapsuleToasts([
-      {
-        id: 1,
-        title: 'Title',
-        group: 'Group',
-        image: '/images/empty.png',
-      },
-      {
-        id: 2,
-        title: 'Title',
-        group: 'Group',
-        image: '/images/empty.png',
-      },
-    ]);
+    // setCapsuleToasts([
+    //   {
+    //     id: 1,
+    //     title: 'Title',
+    //     group: 'Group',
+    //     image: '/images/empty.png',
+    //   },
+    //   {
+    //     id: 2,
+    //     title: 'Title',
+    //     group: 'Group',
+    //     image: '/images/empty.png',
+    //   },
+    // ]);
+    const fetchCapsuleToastList = async () => {
+      const data = await getCapsuleToasts();
+      setCapsuleToasts(data);
+    };
+
+    fetchCapsuleToastList();
   }, []);
 
   return (

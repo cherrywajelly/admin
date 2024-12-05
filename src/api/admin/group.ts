@@ -9,7 +9,7 @@ export const getGroups = async (): Promise<any> => {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
 
-    const data: GroupsElemResponse[] = (await res.json()).teamManagerResponses;
+    const data: GroupsElemResponse[] = (await res.json()).managerProfileResponses;
 
     const mappedData = data.map((group: GroupsElemResponse) => ({
       id: group.teamId,

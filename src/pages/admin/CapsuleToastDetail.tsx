@@ -3,39 +3,48 @@ import { useParams } from 'react-router-dom';
 import { CapsuleToastDetail } from '../../types/Types';
 import InfoSection from '../../sections/InfoSection';
 import PiecesSection from '../../sections/PiecesSection';
+import { getCapsuleToast } from '../../api/admin/capsuleToast';
 
 const CapsuleToastDetailPage = (): ReactNode => {
   const { id } = useParams();
   const [capsuleToastDetail, setCapsuleToastDetail] = useState<CapsuleToastDetail>();
 
   useEffect(() => {
-    setCapsuleToastDetail({
-      id: 1,
-      image: '/images/empty.png',
-      title: 'Title',
-      group: 'Group',
-      memoDate: '2024-01-01',
-      openDate: '2024-01-01',
-      isOpened: false,
-      capsuleToastType: 'GROUP',
-      createdAt: '2024-01-01',
-      pieces: [
-        {
-          id: 1,
-          title: 'Title',
-          image: '/images/empty.png',
-          nickname: 'Nickname',
-          createdAt: '2024-01-01',
-        },
-        {
-          id: 2,
-          title: 'Title',
-          image: '/images/empty.png',
-          nickname: 'Nickname',
-          createdAt: '2024-01-01',
-        },
-      ],
-    });
+    // setCapsuleToastDetail({
+    //   id: 1,
+    //   image: '/images/empty.png',
+    //   title: 'Title',
+    //   group: 'Group',
+    //   memoDate: '2024-01-01',
+    //   openDate: '2024-01-01',
+    //   isOpened: false,
+    //   capsuleToastType: 'GROUP',
+    //   createdAt: '2024-01-01',
+    //   pieces: [
+    //     {
+    //       id: 1,
+    //       title: 'Title',
+    //       image: '/images/empty.png',
+    //       nickname: 'Nickname',
+    //       createdAt: '2024-01-01',
+    //     },
+    //     {
+    //       id: 2,
+    //       title: 'Title',
+    //       image: '/images/empty.png',
+    //       nickname: 'Nickname',
+    //       createdAt: '2024-01-01',
+    //     },
+    //   ],
+    // });
+    const fetchCapsuleToastDetail = async () => {
+      if (!id) return;
+      
+      const data = await getCapsuleToast(id);
+      setCapsuleToastDetail(data);
+    };
+
+    fetchCapsuleToastDetail();
   }, [id]);
 
   return (
