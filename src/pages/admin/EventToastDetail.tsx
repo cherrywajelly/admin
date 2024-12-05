@@ -3,37 +3,21 @@ import { useParams } from 'react-router-dom';
 import { EventToastDetail } from '../../types/Types';
 import InfoSection from '../../sections/InfoSection';
 import JamsSection from '../../sections/JamsSection';
+import { getEventToast } from '../../api/admin/eventToast';
 
 const EventToastDetailPage = (): ReactNode => {
   const { id } = useParams();
   const [eventToastDetail, setEventToastDetail] = useState<EventToastDetail>();
 
   useEffect(() => {
-    setEventToastDetail({
-      id: 1,
-      image: '/images/empty.png',
-      title: 'Title',
-      nickname: 'Nickname',
-      openDate: '2024-01-01',
-      isOpened: false,
-      createdAt: '2024-01-01',
-      jams: [
-        {
-          id: 1,
-          title: 'Title',
-          image: '/images/empty.png',
-          nickname: 'Nickname',
-          createdAt: '2024-01-01',
-        },
-        {
-          id: 2,
-          title: 'Title',
-          image: '/images/empty.png',
-          nickname: 'Nickname',
-          createdAt: '2024-01-01',
-        },
-      ],
-    });
+    const fetchEventToastDetail = async () => {
+      if (!id) return;
+      
+      const data = await getEventToast(id);
+      setEventToastDetail(data);
+    };
+
+    fetchEventToastDetail();
   }, [id]);
 
   return (
