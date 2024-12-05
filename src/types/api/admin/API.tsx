@@ -95,3 +95,20 @@ export type CreatorIconResponse = {
     iconImageUrl: string[];
   }[];
 };
+
+export type GroupsElemResponse = {
+  teamId: number;
+  name: string;
+  teamProfileUrl: string;
+};
+
+export type GroupResponse = {
+  teamId: number;
+  teamProfileUrl: string;
+  name: string;
+  createdAt: string;
+  memberManagerResponses: {
+    nickname: string;
+    memberProfileUrl: string;
+  }[];
+};
