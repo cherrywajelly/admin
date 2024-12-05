@@ -107,7 +107,7 @@ export type GroupResponse = {
   teamProfileUrl: string;
   name: string;
   createdAt: string;
-  memberManagerResponses: {
+  managerProfileResponses: {
     nickname: string;
     memberProfileUrl: string;
   }[];
