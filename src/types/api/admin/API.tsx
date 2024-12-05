@@ -132,3 +132,27 @@ export type PaymentResponse = {
   createdAt: string;
   iconThumbnailImageUrl: string;
 };
+
+export type EventToastsElemResponse = {
+  eventToastId: number;
+  iconImageUrl: string;
+  title: string;
+  nickname: string;
+};
+
+export type EventToastResponse = {
+  eventToastId: number;
+  iconImageUrl: string;
+  title: string;
+  nickname: string;
+  openedDate: string;
+  isOpened: boolean;
+  createdAt: string;
+  jamManagerResponses: {
+    jamId: number;
+    iconImageUrl: string;
+    title: string;
+    nickname: string;
+    createdAt: string;
+  }[];
+};

@@ -6,6 +6,7 @@ import { AdminMenu } from '../../types/Enums';
 import { EventToast } from '../../types/Types';
 import ListElem from '../../components/ListElem';
 import Button from '../../components/Button';
+import { getEventToasts } from '../../api/admin/eventToast';
 
 const EventToastListPage = (): ReactNode => {
   const navigate = useNavigate();
@@ -18,20 +19,12 @@ const EventToastListPage = (): ReactNode => {
   };
 
   useEffect((): void => {
-    setEventToasts([
-      {
-        id: 1,
-        title: 'Title',
-        nickname: 'Nickname',
-        image: '/images/empty.png',
-      },
-      {
-        id: 2,
-        title: 'Title',
-        nickname: 'Nickname',
-        image: '/images/empty.png',
-      },
-    ]);
+    const fetchEventToastList = async () => {
+      const data = await getEventToasts();
+      setEventToasts(data);
+    };
+
+    fetchEventToastList();
 }, []);
 
   return (
