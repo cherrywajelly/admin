@@ -156,3 +156,29 @@ export type EventToastResponse = {
     createdAt: string;
   }[];
 };
+
+export type CapsuleToastsElemResponse = {
+  giftToastId: number;
+  iconImageUrl: string;
+  title: string;
+  name: string;
+};
+
+export type CapsuleToastResponse = {
+  giftToastId: number;
+  iconImageUrl: string;
+  title: string;
+  name: string;
+  memorizedDate: string;
+  openedDate: string;
+  isOpened: boolean;
+  giftToastType: string;
+  createdAt: string;
+  toastPieceManagerResponses: {
+    toastPieceId: number;
+    iconImageUrl: string;
+    title: string;
+    nickname: string;
+    createdAt: string;
+  }[];
+};
