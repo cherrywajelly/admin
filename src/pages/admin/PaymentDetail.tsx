@@ -40,13 +40,13 @@ const PaymentDetailPage = (): ReactNode => {
           { key: '주문 번호', value: paymentDetail.id },
         ]} />
 
-        {paymentDetail.itemType === 'ICON' && (
+        {/* {paymentDetail.itemType === 'ICON' && (
           <div>
             <h2 className="text-xl font-bold">ICON</h2>
             <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
             <img src={paymentDetail.image} alt="icon" className="w-24 h-24" />
           </div>
-        )}
+        )} */}
       </div>
     )
   );
