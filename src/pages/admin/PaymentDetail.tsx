@@ -3,23 +3,21 @@ import { useParams } from 'react-router-dom';
 import { PaymentDetail } from '../../types/Types';
 import InfoSection from '../../sections/InfoSection';
 import { Divider } from '@mui/material';
+import { getPayment } from '../../api/admin/payment';
 
 const PaymentDetailPage = (): ReactNode => {
   const { id } = useParams();
   const [paymentDetail, setPaymentDetail] = useState<PaymentDetail>();
 
   useEffect(() => {
-    setPaymentDetail({
-      id: 'ERUGOHWHIOEFW',
-      image: '/images/empty.png',
-      nickname: 'Nickname',
-      itemName: 'Item Name',
-      itemType: 'ICON',
-      amount: 10000,
-      paymentState: 'SUCCESS',
-      expiredDate: '2024-01-01',
-      createdAt: '2024-01-01',
-    });
+    const fetchPaymentDetail = async () => {
+      if (!id) return;
+      
+      const data = await getPayment(id);
+      setPaymentDetail(data);
+    };
+
+    fetchPaymentDetail();   
   }, [id]);
 
   return (
@@ -27,7 +25,7 @@ const PaymentDetailPage = (): ReactNode => {
       <div className="min-h-screen p-8 space-y-8">
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center space-x-4">
-            <img src={paymentDetail.image} alt="Profile" className="w-24 h-24" />
+            {paymentDetail.image && <img src={paymentDetail.image} alt="Profile" className="w-24 h-24" />}
             <div className="flex flex-col justify-center">
               <h1 className="text-2xl font-bold">{`${paymentDetail.nickname}님의 구매 내역`}</h1>
             </div>
