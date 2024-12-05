@@ -1,6 +1,6 @@
 import { apiRequest } from '..';
 import { SettlementsResponse, SettlementResponse, SettlementRequestBody } from '../../types/api/admin/API';
-import { ApprovalState, BankName } from '../../types/Enums';
+import { BankName } from '../../types/Enums';
 
 export const getSettlements = async (year: number, month: number): Promise<any> => {
   try {
@@ -16,7 +16,7 @@ export const getSettlements = async (year: number, month: number): Promise<any> 
       id: settlement.memberId,
       nickname: settlement.nickname,
       profileUrl: settlement.profileUrl,
-      isSettled: settlement.settlementState === ApprovalState.APPROVED,
+      isSettled: settlement.settlementState === "APPROVAL",
     }));
 
     console.log(mappedData);
