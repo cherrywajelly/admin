@@ -28,6 +28,14 @@ export const AdminMenu = {
   SETTLEMENT_DETAIL: '정산 상세',
   INQUIRY_LIST: '문의 목록',
   INQUIRY_DETAIL: '문의 상세',
+  USER_LIST: '유저 관리',
+  USER_DETAIL: '유저 상세',
+  TOAST_LIST: '토스트 관리',
+  TOAST_DETAIL: '토스트 상세',
+  GROUP_LIST: '그룹 관리',
+  GROUP_DETAIL: '그룹 상세',
+  PAYMENT_LIST: '결제 관리',
+  PAYMENT_DETAIL: '결제 상세',
   PROMETHEUS: 'Prometheus',
   LOKI: 'Loki',
 } as const;
@@ -52,3 +60,9 @@ export const MethodType = {
   PUT: 'PUT',
 } as const;
 export type MethodType = (typeof MethodType)[keyof typeof MethodType];
+
+export const ToastType = {
+  EVENT: '이벤트 토스트',
+  CAPSULE: '캡슐 토스트',
+} as const;
+export type ToastType = (typeof ToastType)[keyof typeof ToastType];
