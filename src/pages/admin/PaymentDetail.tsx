@@ -2,8 +2,6 @@ import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PaymentDetail } from '../../types/Types';
 import InfoSection from '../../sections/InfoSection';
-import MemberSection from '../../sections/MembersSection';
-import IconGroupsSection from '../../sections/IconGroupsSection';
 import { Divider } from '@mui/material';
 
 const PaymentDetailPage = (): ReactNode => {

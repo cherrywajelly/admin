@@ -1,7 +1,7 @@
 import { SelectChangeEvent } from '@mui/material';
 import { BankName, ApprovalState } from './Enums';
 import { ReactNode } from 'react';
-import { IconGroupDetail, IconGroupShort, Jam, Piece, Group, Member } from './Types';
+import { IconGroupDetail, IconGroupShort, Jam, Piece, Member } from './Types';
 
 export type ButtonProps = {
   styles?: string;
