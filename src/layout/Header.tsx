@@ -1,7 +1,7 @@
 import Button from '../components/Button';
 import { ReactNode, useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-
+import { getCreatorInfo } from '../api/creator/member';
 const Header = (): ReactNode => {
   const [nickname, setNickname] = useState<string>();
 
@@ -12,13 +12,19 @@ const Header = (): ReactNode => {
     window.location.href = '/login';
   };
   
-  useEffect((): void => {
+  useEffect(() => {
     switch (localStorage.getItem('role')) {
       case 'admin':
-        setNickname('cherry');
+        setNickname('관리자');
         break;
       case 'creator':
-        setNickname('박하준');
+        const fetchCreatorInfo = async () => {
+          const data = await getCreatorInfo();
+          console.log(data);
+          setNickname(data.nickname);
+        };
+    
+        fetchCreatorInfo();
         break;
     }
   }, []);

@@ -71,6 +71,22 @@ const Layout = (): ReactNode => {
             menu: AdminMenu.INQUIRY_LIST,
             url: '/admin/inquiries',
           },
+          {
+            menu: AdminMenu.USER_LIST,
+            url: '/admin/users',
+          },
+          {
+            menu: AdminMenu.TOAST_LIST,
+            url: '/admin/toasts',
+          },
+          {
+            menu: AdminMenu.GROUP_LIST,
+            url: '/admin/groups',
+          },
+          {
+            menu: AdminMenu.PAYMENT_LIST,
+            url: '/admin/payments',
+          },
         ]);
 
         setExternalLinks([

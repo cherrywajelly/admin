@@ -95,3 +95,96 @@ export type CreatorIconResponse = {
     iconImageUrl: string[];
   }[];
 };
+
+export type GroupsElemResponse = {
+  teamId: number;
+  name: string;
+  teamProfileUrl: string;
+};
+
+export type GroupResponse = {
+  teamId: number;
+  teamProfileUrl: string;
+  name: string;
+  createdAt: string;
+  memberManagerResponses: {
+    nickname: string;
+    memberProfileUrl: string;
+  }[];
+};
+
+export type PaymentsElemResponse = {
+  paymentId: number;
+  nickname: string;
+  itemName: string;
+  itemType: string;
+  createdAt: string;
+};
+
+export type PaymentResponse = {
+  orderId: number;
+  nickname: string;
+  itemType: string;
+  itemName: string;
+  amount: number;
+  paymentState: string;
+  expiredDate: string;
+  createdAt: string;
+  iconThumbnailImageUrl: string;
+};
+
+export type EventToastsElemResponse = {
+  eventToastId: number;
+  iconImageUrl: string;
+  title: string;
+  nickname: string;
+};
+
+export type EventToastResponse = {
+  eventToastId: number;
+  iconImageUrl: string;
+  title: string;
+  nickname: string;
+  openedDate: string;
+  isOpened: boolean;
+  createdAt: string;
+  jamManagerResponses: {
+    jamId: number;
+    iconImageUrl: string;
+    title: string;
+    nickname: string;
+    createdAt: string;
+  }[];
+};
+
+export type CapsuleToastsElemResponse = {
+  giftToastId: number;
+  iconImageUrl: string;
+  title: string;
+  name: string;
+};
+
+export type CapsuleToastResponse = {
+  giftToastId: number;
+  iconImageUrl: string;
+  title: string;
+  name: string;
+  memorizedDate: string;
+  openedDate: string;
+  isOpened: boolean;
+  giftToastType: string;
+  createdAt: string;
+  toastPieceManagerResponses: {
+    toastPieceId: number;
+    iconImageUrl: string;
+    title: string;
+    nickname: string;
+    createdAt: string;
+  }[];
+};
+
+export type UsersElemResponse = {
+  memberId: number;
+  nickname: string;
+  memberProfileUrl: string;
+};
