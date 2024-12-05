@@ -1,22 +1,23 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps } from '../../types/Props';
-import { useNavigate } from 'react-router-dom';
-import Context from '../../contexts/Context';
-import { AdminMenu } from '../../types/Enums';
+import { ReactNode, useEffect, useState } from 'react';
+// import { ReactNode, useContext, useEffect, useState } from 'react';
+// import { ContextProps } from '../../types/Props';
+// import { useNavigate } from 'react-router-dom';
+// import Context from '../../contexts/Context';
+// import { AdminMenu } from '../../types/Enums';
 import { Group } from '../../types/Types';
 import ListElem from '../../components/ListElem';
-import Button from '../../components/Button';
+// import Button from '../../components/Button';
 import { getGroups } from '../../api/admin/group';
 
 const GroupListPage = (): ReactNode => {
-  const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
+  // const navigate = useNavigate();
+  // const { setSelectedMenu } = useContext(Context) as ContextProps;
   const [groups, setGroups] = useState<Group[]>([]);
 
-  const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.GROUP_DETAIL);
-    navigate(`/admin/groups/${id}`);
-  };
+  // const handleButtonClick = (id: number): void => {
+  //   setSelectedMenu(AdminMenu.GROUP_DETAIL);
+  //   navigate(`/admin/groups/${id}`);
+  // };
 
   useEffect((): void => {
     const fetchGroupList = async () => {
@@ -37,7 +38,7 @@ const GroupListPage = (): ReactNode => {
           background="bg-white"
           divider={idx < groups.length - 1}
           buttons={[
-            <Button text="상세 보기" onClick={() => handleButtonClick(group.id)} />,
+            // <Button text="상세 보기" onClick={() => handleButtonClick(group.id)} />,
           ]}
         />
       ))}
