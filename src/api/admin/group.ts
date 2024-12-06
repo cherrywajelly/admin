@@ -38,7 +38,7 @@ export const getGroup = async (groupId: string): Promise<any> => {
       image: data.teamProfileUrl,
       title: data.name,
       createdAt: data.createdAt,
-      members: data.memberManagerResponses.map((member) => ({
+      members: data.managerProfileResponses.map((member) => ({
         nickname: member.nickname,
         image: member.memberProfileUrl,
       })),

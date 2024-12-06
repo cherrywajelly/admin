@@ -94,10 +94,10 @@ const Layout = (): ReactNode => {
             menu: AdminMenu.PROMETHEUS,
             url: getEnv('VITE_PROMETHEUS_URL'),
           },
-          {
-            menu: AdminMenu.LOKI,
-            url: 'https://grafana.com/oss/loki/',
-          },
+          // {
+          //   menu: AdminMenu.LOKI,
+          //   url: 'https://grafana.com/oss/loki/',
+          // },
         ]);
         break;
     }

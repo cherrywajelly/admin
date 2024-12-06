@@ -2,7 +2,6 @@ import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { PaymentDetail } from '../../types/Types';
 import InfoSection from '../../sections/InfoSection';
-import { Divider } from '@mui/material';
 import { getPayment } from '../../api/admin/payment';
 
 const PaymentDetailPage = (): ReactNode => {
@@ -32,6 +31,7 @@ const PaymentDetailPage = (): ReactNode => {
           </div>
           <div className="flex flex-row items-center space-x-4"></div>
         </div>
+
         <InfoSection infos={[
           { key: '구매 항목', value: paymentDetail.itemName },
           { key: '구매 날짜', value: paymentDetail.createdAt },
@@ -39,14 +39,6 @@ const PaymentDetailPage = (): ReactNode => {
           { key: '결제 상태', value: paymentDetail.paymentState },
           { key: '주문 번호', value: paymentDetail.id },
         ]} />
-
-        {paymentDetail.itemType === 'ICON' && (
-          <div>
-            <h2 className="text-xl font-bold">ICON</h2>
-            <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
-            <img src={paymentDetail.image} alt="icon" className="w-24 h-24" />
-          </div>
-        )}
       </div>
     )
   );
