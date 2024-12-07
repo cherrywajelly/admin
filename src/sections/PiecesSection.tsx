@@ -12,7 +12,6 @@ const PiecesSection = (props: PieceSectionProps): ReactNode => {
       <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
       {pieces.map((piece: Piece, index: number) => (
         <div key={index}>
-          <div className="flex justify-end">{`토스트 조각 작성 일자 ${piece.createdAt}`}</div>
           <div className="flex flex-row items-center justify-between p-4 w-full h-28">
             <div className="flex flex-row items-center space-x-4">
               {piece.image && (
@@ -25,6 +24,7 @@ const PiecesSection = (props: PieceSectionProps): ReactNode => {
                 <p className="text-gray-500">{piece.nickname}</p>
               </div>
             </div>
+            <div className="flex justify-end">{`작성 일자 ${piece.createdAt}`}</div>
           </div>
         </div>  
       ))}
