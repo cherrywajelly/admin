@@ -30,7 +30,7 @@ const Layout = (): ReactNode => {
       window.location.href = '/login';
       return;
     }
-    
+
     switch (localStorage.getItem('role')) {
       case 'creator':
         setSidebarMenus([
@@ -55,6 +55,10 @@ const Layout = (): ReactNode => {
 
       case 'admin':
         setSidebarMenus([
+          {
+            menu: AdminMenu.DASHBOARD,
+            url: '/admin/dashboard',
+          },
           {
             menu: AdminMenu.ICON_LIST,
             url: '/admin/icons',
@@ -104,17 +108,17 @@ const Layout = (): ReactNode => {
   }, []);
 
   return (
-    <>
+    <div>
       <Header />
       <Divider sx={{ width: '100%', backgroundColor: 'black' }} />
 
-      <div className="flex flex-row">
+      <div className="flex h-full">
         {renderSidebar()}
-        <div className="w-full">
+        <div className="w-full min-h-screen">
           <Outlet />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -139,7 +139,7 @@ export type CapsuleToastDetail = {
   memoDate: string;
   openDate: string;
   isOpened: boolean;
-  capsuleToastType: string;
+  toastType: string;
   createdAt: string;
   pieces: Piece[];
 };

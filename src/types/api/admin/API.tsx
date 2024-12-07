@@ -189,6 +189,17 @@ export type UsersElemResponse = {
   memberProfileUrl: string;
 };
 
+export type EventToastRequestBody = {
+  openedDate: string;
+  isOpened: boolean;
+};
+
+export type CapsuleToastRequestBody = {
+  memorizedDate: string;
+  openedDate: string;
+  isOpened: boolean;
+};
+
 export type UserDetailResponse = {
   memberId: number;
   memberProfileUrl: string;
