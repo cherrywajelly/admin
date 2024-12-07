@@ -193,3 +193,9 @@ export type EventToastRequestBody = {
   openedDate: string;
   isOpened: boolean;
 };
+
+export type CapsuleToastRequestBody = {
+  memorizedDate: string;
+  openedDate: string;
+  isOpened: boolean;
+};
