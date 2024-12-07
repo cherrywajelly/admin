@@ -2,11 +2,7 @@ import { ReactNode } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from '../layout/Layout.tsx';
 
-import {
-  LoginPage,
-  SignupPage,
-  SocialAuthCallback,
-} from './Auth';
+import { LoginPage, SignupPage, SocialAuthCallback } from './Auth';
 
 import {
   AdminIconList,
@@ -35,8 +31,9 @@ import {
   CreatorSettlement,
   CreatorSettlementDetail,
   CreatorMyPage,
-  CreatorAccountModification
+  CreatorAccountModification,
 } from './Creator';
+import AdminHome from '../pages/admin/Home.tsx';
 
 const Router = (): ReactNode => {
   return (
@@ -44,13 +41,26 @@ const Router = (): ReactNode => {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/api/v2/login/kakao" element={<SocialAuthCallback social="kakao" role="creator" version="v2" />} />
-        <Route path="/api/v3/login/kakao" element={<SocialAuthCallback social="kakao" role="admin" version="v3" />} />
-        <Route path="/api/v2/login/google" element={<SocialAuthCallback social="google" role="creator" version="v2" />} />
-        <Route path="/api/v3/login/google" element={<SocialAuthCallback social="google" role="admin" version="v3" />} />
+        <Route
+          path="/api/v2/login/kakao"
+          element={<SocialAuthCallback social="kakao" role="creator" version="v2" />}
+        />
+        <Route
+          path="/api/v3/login/kakao"
+          element={<SocialAuthCallback social="kakao" role="admin" version="v3" />}
+        />
+        <Route
+          path="/api/v2/login/google"
+          element={<SocialAuthCallback social="google" role="creator" version="v2" />}
+        />
+        <Route
+          path="/api/v3/login/google"
+          element={<SocialAuthCallback social="google" role="admin" version="v3" />}
+        />
         <Route path="/" element={<Layout />}>
           <Route path="admin">
-            <Route index path="icons" element={<AdminIconList />} />
+            <Route index path="dashboard" element={<AdminHome />} />
+            <Route path="icons" element={<AdminIconList />} />
             <Route path="icons/:id" element={<AdminIconDetail />} />
             <Route path="creators" element={<AdminCreatorList />} />
             <Route path="creators/:id" element={<AdminCreatorDetail />} />

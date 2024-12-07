@@ -27,7 +27,11 @@ const SocialAuthCallback = (props: SocialAuthCallbackProps): ReactNode => {
           });
         }
 
-        window.location.href = isNew ? '/signup' : `/${role}/icons`;
+        window.location.href = isNew
+          ? '/signup'
+          : role === 'admin'
+            ? `/${role}/dashboard`
+            : `/${role}/icons`;
       } catch (error) {
         alert((error as Error).message);
         window.location.href = '/login';
