@@ -56,6 +56,10 @@ const Layout = (): ReactNode => {
       case 'admin':
         setSidebarMenus([
           {
+            menu: AdminMenu.DASHBOARD,
+            url: '/admin/dashboard',
+          },
+          {
             menu: AdminMenu.ICON_LIST,
             url: '/admin/icons',
           },

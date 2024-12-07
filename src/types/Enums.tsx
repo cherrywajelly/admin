@@ -20,6 +20,7 @@ export const ApprovalState = {
 export type ApprovalState = (typeof ApprovalState)[keyof typeof ApprovalState];
 
 export const AdminMenu = {
+  DASHBOARD: '대시보드',
   ICON_LIST: '아이콘 목록',
   ICON_DETAIL: '아이콘 상세',
   CREATOR_LIST: '제작자 목록',

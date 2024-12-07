@@ -59,7 +59,7 @@ const Router = (): ReactNode => {
         />
         <Route path="/" element={<Layout />}>
           <Route path="admin">
-            <Route index path="home" element={<AdminHome />} />
+            <Route index path="dashboard" element={<AdminHome />} />
             <Route path="icons" element={<AdminIconList />} />
             <Route path="icons/:id" element={<AdminIconDetail />} />
             <Route path="creators" element={<AdminCreatorList />} />
