@@ -197,3 +197,59 @@ export type User = {
   title: string;
   image: string;
 };
+
+export type UserDetail = {
+  id: number;
+  title: string;
+  image: string;
+  email: string;
+  loginType: string;
+  premium: string;
+};
+
+export type UserDetailFollower = {
+  nickname: string;
+  image: string;
+};
+
+export type UserDetailFollowing = {
+  nickname: string;
+  image: string;
+};
+
+export type UserDetailGroup = {
+  name: string;
+  image: string;
+};
+
+export type UserDetailShowcase = {
+  title: string;
+  image: string;
+};
+
+export type UserDetailEvent = {
+  title: string;
+  image: string;
+};
+
+export type UserDetailCapsule = {
+  title: string;
+  image: string;
+};
+
+export type UserDetailIconGroup = {
+  name: string;
+  images: string[];
+};
+
+export type UserDetailPayment = {
+  id: number;
+  itemName: string;
+  itemType: string;
+  amount: number;
+  state: string;
+  nickname: string;
+  images: string[];
+  createdAt: string;
+  expiredDate: string;
+};
