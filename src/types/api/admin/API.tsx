@@ -188,3 +188,60 @@ export type UsersElemResponse = {
   nickname: string;
   memberProfileUrl: string;
 };
+
+export type UserDetailResponse = {
+  memberId: number;
+  memberProfileUrl: string;
+  nickname: string;
+  email: string;
+  memberRole: string;
+  loginType: string;
+  premiumType: string;
+};
+
+export type UserDetailFollowerResponse = {
+  followMemberNickname: string;
+  followMemberProfileUrl: string;
+};
+
+export type UserDetailFollowingResponse = {
+  followingMemberNickname: string;
+  followingMemberProfileUrl: string;
+};
+
+export type UserDetailGroupResponse = {
+  teamName: string;
+  teamProfileUrl: string;
+};
+
+export type UserDetailShowcaseResponse = {
+  showcaseName: string;
+  showcaseIconImage: string;
+};
+
+export type UserDetailEventResponse = {
+  eventToastName: string;
+  eventToastIconImage: string;
+};
+
+export type UserDetailCapsuleResponse = {
+  giftToastName: string;
+  giftToastIconImage: string;
+};
+
+export type UserDetailIconGroupResponse = {
+  iconGroupName: string;
+  iconImages: string[];
+};
+
+export type UserDetailPaymentResponse = {
+  amount: number;
+  paymentState: string;
+  orderId: string;
+  itemType: string;
+  itemTypeData: string;
+  createdAt: string;
+  nickname: string;
+  images: string[];
+  expiredDate: string;
+};

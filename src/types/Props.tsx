@@ -38,7 +38,7 @@ export type ListElemProps = {
   background?: string;
   image?: string;
   divider?: boolean;
-  buttons: ReactNode[];
+  buttons?: ReactNode[];
 };
 
 export type IconDetailProps = {
@@ -163,4 +163,8 @@ export type PieceSectionProps = {
 
 export type MemberSectionProps = {
   members: Member[];
+};
+
+export type UserDetailSectionProps = {
+  userId: string;
 };
