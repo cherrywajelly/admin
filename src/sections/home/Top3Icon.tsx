@@ -11,20 +11,31 @@ export interface IconGroupTop3Props {
 export const dashboardIconStyles = [
   {
     color: 'bg-gray-80 text-white text-subtitle4',
-    height: 'h-[80px]',
+    height: 'h-[88px]',
   },
   {
     color: 'bg-gray-60 text-white text-body2',
-    height: 'h-[55px]',
+    height: 'h-[58px]',
   },
   {
     color: 'bg-gray-10 text-black text-body4',
-    height: 'h-[40px]',
+    height: 'h-[44px]',
   },
 ];
 
 export default function Top3Icon() {
   const [topIcons, setTopIcons] = useState<IconGroupTop3Props[]>([]);
+  const [visibleIndexes, setVisibleIndexes] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (topIcons.length > 0) {
+      topIcons.forEach((_, index) => {
+        setTimeout(() => {
+          setVisibleIndexes((prev) => [...prev, index]);
+        }, index * 400);
+      });
+    }
+  }, [topIcons]);
 
   useEffect(() => {
     const fetchTopIcons = async () => {
@@ -48,7 +59,9 @@ export default function Top3Icon() {
           topIcons.map((icon, index) => (
             <div
               key={index}
-              className={`shadow-lg flex items-center justify-between rounded-[10px] p-4 ${dashboardIconStyles[index]?.color} ${dashboardIconStyles[index]?.height}`}
+              className={`shadow-lg flex items-center justify-between rounded-[10px] p-4 transition-all duration-700 ease-in-out transform 
+                ${visibleIndexes.includes(index) ? 'animate-slide-up' : 'opacity-0 translate-y-10'}
+                ${dashboardIconStyles[index]?.color} ${dashboardIconStyles[index]?.height}`}
             >
               <span>
                 <b>{index + 1}</b> 위

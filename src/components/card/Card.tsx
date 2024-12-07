@@ -12,7 +12,7 @@ export const Card = (props: CardProps) => {
     <div className={clsx(styleVar.container, className)}>
       {title && (
         <div className="break-keep">
-          <div className="text-body3 text-gray-80">{title}</div>
+          <div className="text-body1 text-gray-80">{title}</div>
           {/* <div className="">{subTitle}</div> */}
           <span />
         </div>
