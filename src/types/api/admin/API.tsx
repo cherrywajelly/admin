@@ -188,3 +188,8 @@ export type UsersElemResponse = {
   nickname: string;
   memberProfileUrl: string;
 };
+
+export type EventToastRequestBody = {
+  openedDate: string;
+  isOpened: boolean;
+};
