@@ -7,13 +7,12 @@ const styleVar = {
 };
 
 export const Card = (props: CardProps) => {
-  const { title, subTitle, children, className } = props;
+  const { title, children, className } = props;
   return (
     <div className={clsx(styleVar.container, className)}>
       {title && (
         <div className="break-keep">
           <div className="text-body1 text-gray-80">{title}</div>
-          {/* <div className="">{subTitle}</div> */}
           <span />
         </div>
       )}
