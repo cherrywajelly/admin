@@ -4,6 +4,7 @@ import InfoSection from '../../../sections/InfoSection';
 import { UserDetail } from '../../../types/Types';
 import { getUserDetail } from '../../../api/admin/user';
 import UserDetailSection from '../../../sections/UserDetailSection';
+import DetailHeaderSection from '../../../sections/DetailHeaderSection';
 
 const UserDetailPage = (): ReactNode => {
   const { id } = useParams();
@@ -23,6 +24,7 @@ const UserDetailPage = (): ReactNode => {
   return (
     userDetail && (
       <div className="min-h-screen p-8 space-y-8">
+        <DetailHeaderSection title={'유저 상세 조회'} />
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center space-x-4">
             <img src={userDetail.image} alt="Profile" className="w-24 h-24" />

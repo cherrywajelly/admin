@@ -7,6 +7,7 @@ import Button from '../../components/Button';
 import IconsSection from '../../sections/IconsSection';
 import { getIconGroup, postIconGroup } from '../../api/admin/iconGroup';
 import { IconGroupRequestBody } from '../../types/api/admin/API';
+import DetailHeaderSection from '../../sections/DetailHeaderSection';
 
 const IconDetailPage = (): ReactNode => {
   const { id } = useParams();
@@ -62,6 +63,7 @@ const IconDetailPage = (): ReactNode => {
   return (
     iconDetail && (
       <div className="min-h-screen p-8 space-y-8">
+        <DetailHeaderSection title={'아이콘 그룹 상세 조회'} />
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center space-x-4">
             <img src={iconDetail.headImage} alt="Profile" className="w-24 h-24" />

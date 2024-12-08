@@ -168,3 +168,7 @@ export type MemberSectionProps = {
 export type UserDetailSectionProps = {
   userId: string;
 };
+
+export type DetailHeaderSectionProps = {
+  title: string;
+};
