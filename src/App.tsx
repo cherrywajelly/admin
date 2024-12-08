@@ -1,6 +1,7 @@
 import { ReactNode, useState } from 'react';
 import Router from './router/Router.tsx';
 import Context from './contexts/Context.tsx';
+import './style.css';
 
 function App(): ReactNode {
   const [selectedMenu, setSelectedMenu] = useState<string>('');
