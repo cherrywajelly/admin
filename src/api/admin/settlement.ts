@@ -19,8 +19,6 @@ export const getSettlements = async (year: number, month: number): Promise<any> 
       isSettled: settlement.settlementState === "APPROVAL",
     }));
 
-    console.log(mappedData);
-    
     return mappedData;
   } catch (error) {
     console.error('Failed to get inquiry detail:', error);

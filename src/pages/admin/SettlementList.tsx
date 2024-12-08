@@ -13,7 +13,6 @@ const SettlementListPage = (): ReactNode => {
   const [month, setMonth] = useState<number>(9);
 
   const handleYearChange = (_: React.SyntheticEvent, newValue: number) => {
-    console.log(`year: ${newValue + 2023}`);
     setYear(newValue);
     
     const fetchSettlements = async () => {
@@ -25,7 +24,6 @@ const SettlementListPage = (): ReactNode => {
   };
 
   const handleMonthChange = (_: React.SyntheticEvent, newValue: number) => {
-    console.log(`month: ${newValue + 1}`);
     setMonth(newValue);
 
     const fetchSettlements = async () => {

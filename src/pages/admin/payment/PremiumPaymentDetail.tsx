@@ -14,7 +14,6 @@ const PremiumPaymentDetailPage = (): ReactNode => {
       
       const data = await getPremiumPayment(id);
       setPremiumPaymentDetail(data);
-      console.log(data);
     };
 
     fetchPremiumPaymentDetail();   
