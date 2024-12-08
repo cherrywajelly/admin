@@ -1,10 +1,7 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import CreatorSection from '../../sections/CreatorInfoSection';
-import { CreatorMenu } from '../../types/Enums';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../contexts/Context';
-import { ContextProps } from '../../types/Props';
 import { CreatorMember } from '../../types/Types';
 import { getCreatorInfo } from '../../api/creator/member';
 import IconGroupsSection from '../../sections/IconGroupsSection';
@@ -13,10 +10,8 @@ const MyPage = (): ReactNode => {
   const [creatorDetail, setCreatorDetail] = useState<CreatorMember>();
 
   const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
 
   const handleAccountModification = () => {
-    setSelectedMenu(CreatorMenu.ACCOUNT_MODIFICATION);
     navigate('/creator/modify');
   };
 

@@ -1,8 +1,5 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps } from '../../../types/Props';
+import { ReactNode, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../../contexts/Context';
-import { AdminMenu } from '../../../types/Enums';
 import Button from '../../../components/Button';
 import ListElem from '../../../components/ListElem';
 import { User } from '../../../types/Types';
@@ -10,11 +7,9 @@ import { getUsers } from '../../../api/admin/user';
 
 const UserListPage = (): ReactNode => {
   const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
   const [users, setUsers] = useState<User[]>([]);
 
   const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.USER_DETAIL);
     navigate(`/admin/users/${id}`);
   };
   

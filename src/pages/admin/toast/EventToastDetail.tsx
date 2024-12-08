@@ -8,7 +8,6 @@ import Button from '../../../components/Button';
 import TextInput from '../../../components/TextInput';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
-import DetailHeaderSection from '../../../sections/DetailHeaderSection';
 
 const EventToastDetailPage = (): ReactNode => {
   const { id } = useParams();
@@ -60,7 +59,6 @@ const EventToastDetailPage = (): ReactNode => {
   return (
     eventToastDetail && (
       <div className="min-h-screen p-8 space-y-8">
-        <DetailHeaderSection title={'이벤트 토스트 상세 조회'} /> 
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center space-x-4">
             <img src={eventToastDetail.image} alt="Profile" className="w-24 h-24" />
