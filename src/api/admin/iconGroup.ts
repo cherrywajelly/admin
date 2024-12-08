@@ -18,6 +18,7 @@ export const getIconGroups = async (): Promise<any> => {
       title: iconGroupsElem.title,
       headImage: iconGroupsElem.thumbnailUrl,
       approvalState: toApprovalState(iconGroupsElem.iconState),
+      type: iconGroupsElem.iconType,
     }));
 
     return mappedData;

@@ -172,3 +172,10 @@ export type UserDetailSectionProps = {
 export type DetailHeaderSectionProps = {
   title: string;
 };
+
+export type TableHeaderProps = {
+  headers: {
+    width: string;
+    text: string;
+  }[];
+};

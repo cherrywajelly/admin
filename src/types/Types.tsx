@@ -21,6 +21,7 @@ export type IconGroup = {
   title: string;
   headImage: string;
   approvalState: ApprovalState;
+  type: string;
 };
 
 export type IconGroupDetail = {
@@ -103,6 +104,9 @@ export type EventToast = {
   title: string;
   nickname: string;
   image: string;
+  openDate: string;
+  isOpened: boolean;
+  createdAt: string;
 };
 
 export type EventToastDetail = {
@@ -129,6 +133,11 @@ export type CapsuleToast = {
   title: string;
   group: string;
   image: string;
+  memoDate: string;
+  openDate: string;
+  isOpened: boolean;
+  createdAt: string;
+  toastType: string;
 };
 
 export type CapsuleToastDetail = {
@@ -156,6 +165,8 @@ export type Group = {
   id: number;
   title: string;
   image: string;
+  memberCount: number;
+  createdAt: string;
 };
 
 export type GroupDetail = {
@@ -196,6 +207,10 @@ export type User = {
   id: number;
   title: string;
   image: string;
+  email: string;
+  loginType: string;
+  premium: string;
+  role: string;
 };
 
 export type UserDetail = {
@@ -260,6 +275,8 @@ export type IconPayment = {
   itemType: string;
   nickname: string;
   createdAt: string;
+  amount: number;
+  paymentState: string;
 };
 
 export type PremiumPayment = {
@@ -268,6 +285,9 @@ export type PremiumPayment = {
   itemType: string;
   nickname: string;
   createdAt: string;
+  amount: number;
+  paymentState: string;
+  expiredDate: string;
 };
 
 export type IconPaymentDetail = {

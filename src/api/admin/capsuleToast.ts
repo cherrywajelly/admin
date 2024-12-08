@@ -17,6 +17,11 @@ export const getCapsuleToasts = async (): Promise<any> => {
       title: capsuleToast.title,
       image: capsuleToast.iconImageUrl,
       group: capsuleToast.name,
+      memoDate: capsuleToast.memorizedDate,
+      openDate: capsuleToast.openedDate,
+      isOpened: capsuleToast.isOpened,
+      createdAt: capsuleToast.createdAt,
+      toastType: capsuleToast.giftToastType,
     }));
 
     return mappedData;

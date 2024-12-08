@@ -1,13 +1,13 @@
 import { ReactNode, useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import ListElem from '../../components/ListElem';
 import Button from '../../components/Button';
-import { Tab, Tabs } from '@mui/material';
+import { Divider, Tab, Tabs } from '@mui/material';
 import { ContextProps } from '../../types/Props';
 import Context from '../../contexts/Context';
 import { AdminMenu } from '../../types/Enums';
 import { CreatorSettlement } from '../../types/Types';
 import { getSettlements } from '../../api/admin/settlement';
+import TableHeader from '../../components/TableHeader';
 
 const SettlementListPage = (): ReactNode => {
   const { setSelectedMenu } = useContext(Context) as ContextProps;
@@ -73,20 +73,29 @@ const SettlementListPage = (): ReactNode => {
           <Tab key={month} label={`${month + 1}월`} className="flex-1 min-w-0" />
         ))}
       </Tabs>
-      {settlements.map((settlement: CreatorSettlement, index: number) => (
-        <div key={index} className="w-full">
-          <ListElem
-            key={index}
-            id={index}
-            title={settlement.nickname}
-            image={settlement.profileUrl}
-            background={settlement.isSettled ? 'bg-white' : 'bg-ivory'}
-            buttons={[
-              <Button text={`${settlement.isSettled ? '정산 완료' : '정산 미완료'}`} />,
-              <Button text="상세 보기" onClick={() => handleButtonClick(settlement.id, year + 2023, month + 1)} />,
-            ]}
-            divider={index < settlements.length - 1}
-          />
+      <TableHeader headers={[
+        { width: '1/12', text: '제작자 이미지' },
+        { width: '2/12', text: '제작자 이름' },
+        { width: '2/12', text: '정산 상태' },
+        { width: '5/12', text: '' },
+        { width: '2/12', text: '' },
+      ]} />
+      {settlements.map((settlement: CreatorSettlement, idx: number) => (
+        <div className={`w-full ${settlement.isSettled ? 'bg-white' : 'bg-ivory'}`}>
+          <div className={`flex flex-row items-center p-4 w-full h-28`}>
+            {settlement.profileUrl && (
+              <div className="w-1/12 h-20 overflow-hidden">
+                <img src={settlement.profileUrl} alt="icon" className="w-full h-full object-contain" />
+              </div>
+            )}
+            <p className="text-lg w-2/12 text-center">{settlement.nickname}</p>
+            <p className="text-lg w-2/12 text-center">{settlement.isSettled ? '정산 완료' : '정산 미완료'}</p>
+            <div className="flex flex-row w-5/12 justify-center"/>
+            <div className="flex flex-row w-2/12 justify-center">
+              <Button text="상세 보기" onClick={(): void => handleButtonClick(settlement.id, year + 2023, month + 1)} />
+            </div>
+          </div>
+          {idx < settlements.length - 1 && <Divider sx={{ width: '100%', backgroundColor: 'gray-80' }} />}
         </div>
       ))}
     </div>

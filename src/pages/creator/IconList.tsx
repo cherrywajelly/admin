@@ -2,11 +2,12 @@ import { ReactNode, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ContextProps } from '../../types/Props';
 import { ApprovalState, CreatorMenu } from '../../types/Enums';
-import ListElem from '../../components/ListElem.tsx';
 import Button from '../../components/Button.tsx';
 import Context from '../../contexts/Context.tsx';
 import { getIconGroups } from '../../api/creator/iconGroup.ts';
 import { IconGroup } from '../../types/Types.tsx';
+import TableHeader from '../../components/TableHeader.tsx';
+import Divider from '@mui/material/Divider';
 
 const IconListPage = (): ReactNode => {
   const [iconList, setIconList] = useState<IconGroup[]>([]);
@@ -30,18 +31,30 @@ const IconListPage = (): ReactNode => {
 
   return (
     <div className="flex flex-col w-full">
+      <TableHeader headers={[
+        { width: '1/12', text: '아이콘 이미지' },
+        { width: '2/12', text: '아이콘 이름' },
+        { width: '2/12', text: '승인 상태' },
+        { width: '5/12', text: '' },
+        { width: '2/12', text: '' },
+      ]} />
       {iconList.map((icon: IconGroup, idx: number) => (
-        <ListElem
-          key={idx}
-          title={icon.title}
-          image={icon.headImage}
-          divider={idx < iconList.length - 1}
-          background={icon.approvalState === ApprovalState.PENDING ? 'bg-ivory' : 'bg-white'}
-          buttons={[
-            <Button text={icon.approvalState as string} />,
-            <Button text="상세 보기" onClick={(): void => handleButtonClick(icon.id ?? 0)} />,
-          ]}
-        />
+        <div className={`w-full ${icon.approvalState === ApprovalState.PENDING ? 'bg-ivory' : 'bg-white'}`}>
+          <div className={`flex flex-row items-center p-4 w-full h-28`}>
+            {icon.headImage && (
+              <div className="w-1/12 h-20 overflow-hidden">
+                <img src={icon.headImage} alt="icon" className="w-full h-full object-contain" />
+              </div>
+            )}
+            <p className="text-lg w-2/12 text-center">{icon.title}</p>
+            <p className="text-lg w-2/12 text-center">{icon.approvalState}</p>
+            <div className="flex flex-row w-5/12 justify-center"/>
+            <div className="flex flex-row w-2/12 justify-center">
+              <Button text="상세 보기" onClick={(): void => handleButtonClick(icon.id ?? 0)} />
+            </div>
+          </div>
+          {idx < iconList.length - 1 && <Divider sx={{ width: '100%', backgroundColor: 'gray-80' }} />}
+        </div>
       ))}
     </div>
   );

@@ -19,6 +19,7 @@ export const getPremiumPayments = async (page: number, size: number): Promise<an
       amount: premiumPayment.amount,
       paymentState: premiumPayment.paymentState,
       createdAt: premiumPayment.createdAt,
+      expiredDate: premiumPayment.expiredDate,
     }));
 
     return mappedData;

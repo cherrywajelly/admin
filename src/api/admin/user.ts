@@ -15,6 +15,10 @@ export const getUsers = async (): Promise<any> => {
       id: user.memberId,
       title: user.nickname,
       image: user.memberProfileUrl,
+      email: user.email,
+      loginType: user.loginType,
+      premium: user.premiumType,
+      role: user.memberRole,
     }));
 
     return mappedData;

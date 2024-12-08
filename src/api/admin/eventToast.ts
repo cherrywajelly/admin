@@ -17,6 +17,9 @@ export const getEventToasts = async (): Promise<any> => {
       title: eventToast.title,
       image: eventToast.iconImageUrl,
       nickname: eventToast.nickname,
+      openDate: eventToast.openedDate,
+      isOpened: eventToast.isOpened,
+      createdAt: eventToast.createdAt,
     }));
 
     return mappedData;

@@ -19,6 +19,7 @@ export const getIconPayments = async (page: number, size: number): Promise<any> 
       amount: iconPayment.amount,
       paymentState: iconPayment.paymentState,
       createdAt: iconPayment.createdAt,
+      expiredDate: iconPayment.expiredDate,
     }));
 
     return mappedData;

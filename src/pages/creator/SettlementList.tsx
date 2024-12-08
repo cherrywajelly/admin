@@ -2,11 +2,12 @@ import { ReactNode, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ContextProps } from '../../types/Props';
 import Context from '../../contexts/Context';
-import ListElem from '../../components/ListElem';
 import Button from '../../components/Button';
 import { CreatorMenu } from '../../types/Enums';
 import { getSettlements } from '../../api/creator/settlement';
 import { Settlement } from '../../types/Types';
+import TableHeader from '../../components/TableHeader';
+import Divider from '@mui/material/Divider';
 
 const SettlementListPage = (): ReactNode => {
   const [settlementList, setSettlementList] = useState<Settlement[]>([]);
@@ -30,19 +31,24 @@ const SettlementListPage = (): ReactNode => {
 
   return (
     <div className="flex flex-col w-full">
+      <TableHeader headers={[
+        { width: '2/12', text: '정산 년월' },
+        { width: '2/12', text: '정산 일자' },
+        { width: '7/12', text: '' },
+        { width: '2/12', text: '' },
+      ]} />
       {settlementList.map((settlement: Settlement, idx: number) => (
-        <ListElem
-          key={idx}
-          title={`${settlement.year}년 ${settlement.month}월 정산`}
-          divider={idx < settlementList.length - 1}
-          buttons={[
-            <Button text={settlement.settlementDate} />,
-            <Button
-              text="상세 보기"
-              onClick={(): void => handleButtonClick(settlement.year, settlement.month)}
-            />,
-          ]}
-        />
+        <div className={`w-full`}>
+          <div className={`flex flex-row items-center p-4 w-full h-28`}>
+            <p className="text-lg w-2/12 text-center">{`${settlement.year}년 ${settlement.month}월`}</p>
+            <p className="text-lg w-2/12 text-center">{settlement.settlementDate}</p>
+            <div className="flex flex-row w-7/12 justify-center"/>
+            <div className="flex flex-row w-2/12 justify-center">
+              <Button text="상세 보기" onClick={(): void => handleButtonClick(settlement.year, settlement.month)} />
+            </div>
+          </div>
+          {idx < settlementList.length - 1 && <Divider sx={{ width: '100%', backgroundColor: 'gray-80' }} />}
+        </div>
       ))}
     </div>
   );
