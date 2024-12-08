@@ -14,7 +14,7 @@ const IconPaymentListPage = (): ReactNode => {
   const [iconPayments, setIconPayments] = useState<IconPayment[]>([]);
 
   const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.TOAST_DETAIL);
+    setSelectedMenu(AdminMenu.PAYMENT_DETAIL);
     navigate(`/admin/iconPayments/${id}`);
   };
 

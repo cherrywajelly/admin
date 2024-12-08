@@ -14,7 +14,7 @@ const PremiumPaymentListPage = (): ReactNode => {
   const [premiumPayments, setPremiumPayments] = useState<PremiumPayment[]>([]);
 
   const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.TOAST_DETAIL);
+    setSelectedMenu(AdminMenu.PAYMENT_DETAIL);
     navigate(`/admin/premiumPayments/${id}`);
   };
 
