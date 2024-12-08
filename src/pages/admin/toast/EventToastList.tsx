@@ -1,8 +1,5 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps } from '../../../types/Props';
+import { ReactNode, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../../contexts/Context';
-import { AdminMenu } from '../../../types/Enums';
 import { EventToast } from '../../../types/Types';
 import Button from '../../../components/Button';
 import { getEventToasts } from '../../../api/admin/eventToast';
@@ -11,11 +8,9 @@ import Divider from '@mui/material/Divider';
 
 const EventToastListPage = (): ReactNode => {
   const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
   const [eventToasts, setEventToasts] = useState<EventToast[]>([]);
 
   const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.TOAST_DETAIL);
     navigate(`/admin/eventToasts/${id}`);
   };
 

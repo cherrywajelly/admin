@@ -1,9 +1,7 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ContextProps } from '../../types/Props';
-import { ApprovalState, CreatorMenu } from '../../types/Enums';
+import { ApprovalState } from '../../types/Enums';
 import Button from '../../components/Button.tsx';
-import Context from '../../contexts/Context.tsx';
 import { getIconGroups } from '../../api/creator/iconGroup.ts';
 import { IconGroup } from '../../types/Types.tsx';
 import TableHeader from '../../components/TableHeader.tsx';
@@ -13,10 +11,8 @@ const IconListPage = (): ReactNode => {
   const [iconList, setIconList] = useState<IconGroup[]>([]);
 
   const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
 
   const handleButtonClick = (id: number): void => {
-    setSelectedMenu(CreatorMenu.ICON_DETAIL);
     navigate(`/creator/icons/${id}`);
   };
 

@@ -1,8 +1,5 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps } from '../../../types/Props';
+import { ReactNode, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../../contexts/Context';
-import { AdminMenu } from '../../../types/Enums';
 import { IconPayment } from '../../../types/Types';
 import Button from '../../../components/Button';
 import { getIconPayments } from '../../../api/admin/iconPayment';
@@ -11,11 +8,9 @@ import Divider from '@mui/material/Divider';
 
 const IconPaymentListPage = (): ReactNode => {
   const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
   const [iconPayments, setIconPayments] = useState<IconPayment[]>([]);
 
   const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.TOAST_DETAIL);
     navigate(`/admin/iconPayments/${id}`);
   };
 

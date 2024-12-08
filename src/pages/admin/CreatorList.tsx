@@ -1,9 +1,7 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps, Creator } from '../../types/Props';
+import { ReactNode, useEffect, useState } from 'react';
+import { Creator } from '../../types/Props';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../contexts/Context';
-import { AdminMenu } from '../../types/Enums';
 import { getCreators } from '../../api/admin/creator';
 import TableHeader from '../../components/TableHeader';
 import { Divider } from '@mui/material';
@@ -11,10 +9,8 @@ import { Divider } from '@mui/material';
 const CreatorListPage = (): ReactNode => {
   const [creators, setCreators] = useState<Creator[]>([]);
   const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
 
   const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.CREATOR_DETAIL);
     navigate(`/admin/creators/${id}`);
   };
 

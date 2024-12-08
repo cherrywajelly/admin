@@ -1,10 +1,7 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps } from '../../types/Props';
+import { ReactNode, useEffect, useState } from 'react';
 import { Inquiry } from '../../types/Types';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../contexts/Context';
-import { AdminMenu } from '../../types/Enums';
 import { getInquiries } from '../../api/admin/inquiry';
 import Divider from '@mui/material/Divider';
 import TableHeader from '../../components/TableHeader';
@@ -12,10 +9,8 @@ import TableHeader from '../../components/TableHeader';
 const InquiryListPage = (): ReactNode => {
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
 
   const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.INQUIRY_DETAIL);
     navigate(`/admin/inquiries/${id}`);
   };
 

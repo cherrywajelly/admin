@@ -13,7 +13,7 @@ import Context from '../contexts/Context.tsx';
 const Sidebar = (props: SidebarMenusProps): ReactNode => {
   const { sidebarMenus, externalLinks } = props;
 
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
+  const { selectedMenu, setSelectedMenu } = useContext(Context) as ContextProps;
   const navigate = useNavigate();
 
   return (
@@ -24,11 +24,14 @@ const Sidebar = (props: SidebarMenusProps): ReactNode => {
             {sidebarMenus.map((sidebarMenu: SidebarMenu, idx: number) => (
               <ListItem disablePadding key={idx}>
                 <ListItemButton
-                  className="!p-2"
+                  className={`!p-2 hover:!bg-gray-60 ${
+                    selectedMenu === sidebarMenu.menu ? '!bg-gray-60' : ''
+                  }`}
                   onClick={(): void => {
                     setSelectedMenu(sidebarMenu.menu);
                     navigate(sidebarMenu.url);
                   }}
+                
                 >
                   <ListItemText primary={sidebarMenu.menu} className="text-white" />
                 </ListItemButton>

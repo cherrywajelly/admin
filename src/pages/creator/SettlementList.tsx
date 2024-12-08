@@ -1,9 +1,6 @@
-import { ReactNode, useContext, useState, useEffect } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ContextProps } from '../../types/Props';
-import Context from '../../contexts/Context';
 import Button from '../../components/Button';
-import { CreatorMenu } from '../../types/Enums';
 import { getSettlements } from '../../api/creator/settlement';
 import { Settlement } from '../../types/Types';
 import TableHeader from '../../components/TableHeader';
@@ -13,10 +10,8 @@ const SettlementListPage = (): ReactNode => {
   const [settlementList, setSettlementList] = useState<Settlement[]>([]);
 
   const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
 
   const handleButtonClick = (year: number, month: number): void => {
-    setSelectedMenu(CreatorMenu.SETTLEMENT_DETAIL);
     navigate(`/creator/settlements/${year}/${month}`);
   };
 

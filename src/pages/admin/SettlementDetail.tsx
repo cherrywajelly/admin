@@ -6,7 +6,6 @@ import Button from '../../components/Button';
 import { SettlementDetail } from '../../types/Types';
 import { getSettlement, postSettlement } from '../../api/admin/settlement';
 import { SettlementRequestBody } from '../../types/api/admin/API';
-import DetailHeaderSection from '../../sections/DetailHeaderSection';
 
 const SettlementDetailPage = (): ReactNode => {
   const { id, year, month } = useParams<{ id: string; year: string; month: string }>();
@@ -49,7 +48,6 @@ const SettlementDetailPage = (): ReactNode => {
   return (
     settlementDetail && (
       <div className="min-h-screen p-8 space-y-8">
-        <DetailHeaderSection title={'정산 상세 조회'} />
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center space-x-4">
             <div className="flex flex-col justify-center">

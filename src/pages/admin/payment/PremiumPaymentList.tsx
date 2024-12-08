@@ -1,8 +1,5 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps } from '../../../types/Props';
+import { ReactNode, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../../contexts/Context';
-import { AdminMenu } from '../../../types/Enums';
 import { PremiumPayment } from '../../../types/Types';
 import Button from '../../../components/Button';
 import { getPremiumPayments } from '../../../api/admin/premiumPayment';
@@ -11,11 +8,9 @@ import Divider from '@mui/material/Divider';
 
 const PremiumPaymentListPage = (): ReactNode => {
   const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
   const [premiumPayments, setPremiumPayments] = useState<PremiumPayment[]>([]);
 
   const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.TOAST_DETAIL);
     navigate(`/admin/premiumPayments/${id}`);
   };
 
