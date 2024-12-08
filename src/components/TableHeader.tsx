@@ -5,7 +5,7 @@ const TableHeader = (props: TableHeaderProps): ReactNode => {
   const { headers } = props;
 
   return (
-    <div className="flex w-full py-3 px-4">
+    <div className="flex w-full py-3 px-4 bg-gray-05">
       {headers.map((header: { width: string; text: string }, idx: number): ReactNode => (
         <div className={`w-${header.width} font-bold text-center`} key={idx}>{header.text}</div>
       ))}

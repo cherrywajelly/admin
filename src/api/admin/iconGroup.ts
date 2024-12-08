@@ -11,7 +11,7 @@ export const getIconGroups = async (): Promise<any> => {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
 
-    const data: IconGroupsElemResponse[] = (await res.json()).iconGroupNonApprovalResponses;
+    const data: IconGroupsElemResponse[] = (await res.json()).iconGroupAdminResponses;
 
     const mappedData = data.map((iconGroupsElem: IconGroupsElemResponse) => ({
       id: iconGroupsElem.iconGroupId,
@@ -19,7 +19,9 @@ export const getIconGroups = async (): Promise<any> => {
       headImage: iconGroupsElem.thumbnailUrl,
       approvalState: toApprovalState(iconGroupsElem.iconState),
       type: iconGroupsElem.iconType,
+      nickname: iconGroupsElem.nickname,
     }));
+
 
     return mappedData;
   } catch (error) {

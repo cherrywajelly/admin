@@ -3,6 +3,9 @@ export type SettlementsElemResponse = {
   year: number;
   month: number;
   settlementDate: number[];
+  settlement: number;
+  revenue: number;
+  saleCount: number;
 };
 
 export type SettlementResponse = {
@@ -30,6 +33,8 @@ export type IconGroupsElemResponse = {
   iconImageUrl: string;
   iconTitle: string;
   iconState: string;
+  orderCount: number;
+  totalRevenue: number;
 };
 
 export type IconGroupResponse = {

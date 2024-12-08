@@ -32,7 +32,10 @@ const CreatorListPage = (): ReactNode => {
       <TableHeader headers={[
         { width: '1/12', text: '제작자 이미지' },
         { width: '2/12', text: '제작자 이름' },
-        { width: '7/12', text: '' },
+        { width: '2/12', text: '제작한 아이콘 수' },
+        { width: '2/12', text: '판매한 아이콘 수' },
+        { width: '2/12', text: '총 수익' },
+        { width: '1/12', text: '' },
         { width: '2/12', text: '' },
       ]} />
       {creators.map((creator: Creator, idx: number) => (
@@ -44,7 +47,10 @@ const CreatorListPage = (): ReactNode => {
               </div>
             )}
             <p className="text-lg w-2/12 text-center">{creator.nickname}</p>
-            <div className="flex flex-row w-7/12 justify-center"/>
+            <p className="text-lg w-2/12 text-center">{creator.createdIconCount}</p>
+            <p className="text-lg w-2/12 text-center">{creator.salesIconCount}</p>
+            <p className="text-lg w-2/12 text-center">{creator.totalRevenue}</p>
+            <div className="flex flex-row w-1/12 justify-center"/>
             <div className="flex flex-row w-2/12 justify-center">
               <Button text="상세 보기" onClick={(): void => handleButtonClick(creator.id)} />
             </div>

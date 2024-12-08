@@ -16,6 +16,9 @@ export const getCreators = async (): Promise<any> => {
       id: creatorsElem.memberId,
       nickname: creatorsElem.nickname,
       profilePicture: creatorsElem.profileUrl,
+      salesIconCount: creatorsElem.salesIconCount,
+      totalRevenue: creatorsElem.totalRevenue,
+      createdIconCount: creatorsElem.createdIconCount,
     }));
     
     return mappedData;

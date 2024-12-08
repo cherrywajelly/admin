@@ -22,6 +22,9 @@ export type IconGroup = {
   headImage: string;
   approvalState: ApprovalState;
   type: string;
+  orderCount: number;
+  revenue: number;
+  nickname: string;
 };
 
 export type IconGroupDetail = {
@@ -48,6 +51,9 @@ export type Settlement = {
   year: number;
   month: number;
   settlementDate: string;
+  settlement: number;
+  revenue: number;
+  saleCount: number;
 };
 
 export type SettlementDetail = {

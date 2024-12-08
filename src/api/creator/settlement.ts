@@ -15,6 +15,9 @@ export const getSettlements = async (): Promise<any> => {
       year: settlement.year,
       month: settlement.month,
       settlementDate: settlement.settlementDate,
+      settlement: settlement.settlement,
+      revenue: settlement.revenue,
+      saleCount: settlement.saleCount,
     }));
 
     return mappedData;

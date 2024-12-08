@@ -35,7 +35,9 @@ const IconListPage = (): ReactNode => {
         { width: '1/12', text: '아이콘 이미지' },
         { width: '2/12', text: '아이콘 이름' },
         { width: '2/12', text: '승인 상태' },
-        { width: '5/12', text: '' },
+        { width: '2/12', text: '판매한 아이콘 수' },
+        { width: '2/12', text: '총 수익' },
+        { width: '1/12', text: '' },
         { width: '2/12', text: '' },
       ]} />
       {iconList.map((icon: IconGroup, idx: number) => (
@@ -48,7 +50,9 @@ const IconListPage = (): ReactNode => {
             )}
             <p className="text-lg w-2/12 text-center">{icon.title}</p>
             <p className="text-lg w-2/12 text-center">{icon.approvalState}</p>
-            <div className="flex flex-row w-5/12 justify-center"/>
+            <p className="text-lg w-2/12 text-center">{icon.orderCount}</p>
+            <p className="text-lg w-2/12 text-center">{icon.revenue}</p>
+            <div className="flex flex-row w-1/12 justify-center"/>
             <div className="flex flex-row w-2/12 justify-center">
               <Button text="상세 보기" onClick={(): void => handleButtonClick(icon.id ?? 0)} />
             </div>

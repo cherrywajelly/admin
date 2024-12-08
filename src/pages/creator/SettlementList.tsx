@@ -34,7 +34,10 @@ const SettlementListPage = (): ReactNode => {
       <TableHeader headers={[
         { width: '2/12', text: '정산 년월' },
         { width: '2/12', text: '정산 일자' },
-        { width: '7/12', text: '' },
+        { width: '2/12', text: '판매한 아이콘 수' },
+        { width: '2/12', text: '총 수익' },
+        { width: '2/12', text: '정산 금액' },
+        { width: '1/12', text: '' },
         { width: '2/12', text: '' },
       ]} />
       {settlementList.map((settlement: Settlement, idx: number) => (
@@ -42,7 +45,10 @@ const SettlementListPage = (): ReactNode => {
           <div className={`flex flex-row items-center p-4 w-full h-28`}>
             <p className="text-lg w-2/12 text-center">{`${settlement.year}년 ${settlement.month}월`}</p>
             <p className="text-lg w-2/12 text-center">{settlement.settlementDate}</p>
-            <div className="flex flex-row w-7/12 justify-center"/>
+            <p className="text-lg w-2/12 text-center">{settlement.saleCount}</p>
+            <p className="text-lg w-2/12 text-center">{settlement.revenue}</p>
+            <p className="text-lg w-2/12 text-center">{settlement.settlement}</p>
+            <div className="flex flex-row w-1/12 justify-center"/>
             <div className="flex flex-row w-2/12 justify-center">
               <Button text="상세 보기" onClick={(): void => handleButtonClick(settlement.year, settlement.month)} />
             </div>

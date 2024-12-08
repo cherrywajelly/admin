@@ -51,6 +51,7 @@ export type IconGroupsElemResponse = {
   thumbnailUrl: string;
   iconType: string;
   iconState: string;
+  nickname: string;
 };
 
 export type IconGroupResponse = {
@@ -75,6 +76,9 @@ export type CreatorsElemResponse = {
   memberId: number;
   profileUrl: string;
   nickname: string;
+  salesIconCount: number;
+  totalRevenue: number;
+  createdIconCount: number;
 };
 
 export type CreatorInfoResponse = {

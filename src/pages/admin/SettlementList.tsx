@@ -13,8 +13,8 @@ const SettlementListPage = (): ReactNode => {
   const { setSelectedMenu } = useContext(Context) as ContextProps;
   const navigate = useNavigate();
   const [settlements, setSettlements] = useState<CreatorSettlement[]>([]);
-  const [year, setYear] = useState<number>(0);
-  const [month, setMonth] = useState<number>(0);
+  const [year, setYear] = useState<number>(1);
+  const [month, setMonth] = useState<number>(9);
 
   const handleYearChange = (_: React.SyntheticEvent, newValue: number) => {
     console.log(`year: ${newValue + 2023}`);

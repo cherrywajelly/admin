@@ -94,6 +94,9 @@ export type Creator = {
   madeIconNumber: number;
   soldIconNumber: number;
   revenue: number;
+  salesIconCount: number;
+  totalRevenue: number;
+  createdIconCount: number;
   iconGroups: IconGroupDetail[];
 };
 
