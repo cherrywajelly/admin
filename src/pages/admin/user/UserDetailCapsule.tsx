@@ -1,8 +1,8 @@
 import { ReactNode, useState, useEffect } from "react";
-import { UserDetailSectionProps } from "../../types/Props";
-import { UserDetailCapsule } from "../../types/Types";
-import { getUserCapsules } from "../../api/admin/user";
-import ListElem from "../../components/ListElem";
+import { UserDetailSectionProps } from "../../../types/Props";
+import { UserDetailCapsule } from "../../../types/Types";
+import { getUserCapsules } from "../../../api/admin/user";
+import ListElem from "../../../components/ListElem";
 
 const UserDetailCapsulePage = (props: UserDetailSectionProps): ReactNode => {
   const { userId } = props;

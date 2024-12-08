@@ -1,7 +1,7 @@
 import { ReactNode, useState, useEffect } from "react";
-import { UserDetailSectionProps } from "../../types/Props";
-import { UserDetailIconGroup } from "../../types/Types";
-import { getUserIconGroups } from "../../api/admin/user";
+import { UserDetailSectionProps } from "../../../types/Props";
+import { UserDetailIconGroup } from "../../../types/Types";
+import { getUserIconGroups } from "../../../api/admin/user";
 import { Divider } from "@mui/material";
 
 const UserDetailIconGroupPage = (props: UserDetailSectionProps): ReactNode => {

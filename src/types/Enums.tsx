@@ -68,6 +68,12 @@ export const ToastType = {
 } as const;
 export type ToastType = (typeof ToastType)[keyof typeof ToastType];
 
+export const PaymentType = {
+  ICON: '아이콘',
+  PREMIUM: '프리미엄',
+} as const;
+export type PaymentType = (typeof PaymentType)[keyof typeof PaymentType];
+
 export const UserDetailType = {
   FOLLOWER: '팔로워',
   FOLLOWING: '팔로잉',

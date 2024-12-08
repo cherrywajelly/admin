@@ -1,8 +1,8 @@
 import { ReactNode, useState, useEffect } from "react";
-import { UserDetailSectionProps } from "../../types/Props";
-import ListElem from "../../components/ListElem";
-import { UserDetailGroup } from "../../types/Types";
-import { getUserGroups } from "../../api/admin/user";
+import { UserDetailSectionProps } from "../../../types/Props";
+import ListElem from "../../../components/ListElem";
+import { UserDetailGroup } from "../../../types/Types";
+import { getUserGroups } from "../../../api/admin/user";
 
 const UserDetailGroupPage = (props: UserDetailSectionProps): ReactNode => {
   const { userId } = props;

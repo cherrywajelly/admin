@@ -1,8 +1,8 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { PaymentDetail } from '../../types/Types';
-import InfoSection from '../../sections/InfoSection';
-import { getPayment } from '../../api/admin/payment';
+import { PaymentDetail } from '../../../types/Types';
+import InfoSection from '../../../sections/InfoSection';
+import { getPayment } from '../../../api/admin/payment';
 
 const PaymentDetailPage = (): ReactNode => {
   const { id } = useParams();

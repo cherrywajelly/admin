@@ -16,7 +16,8 @@ import {
   AdminUserList,
   AdminUserDetail,
   AdminPaymentList,
-  AdminPaymentDetail,
+  AdminIconPaymentDetail,
+  AdminPremiumPaymentDetail,
   AdminToastList,
   AdminEventToastDetail,
   AdminCapsuleToastDetail,
@@ -71,10 +72,11 @@ const Router = (): ReactNode => {
             <Route path="users" element={<AdminUserList />} />
             <Route path="users/:id" element={<AdminUserDetail />} />
             <Route path="payments" element={<AdminPaymentList />} />
-            <Route path="payments/:id" element={<AdminPaymentDetail />} />
+            <Route path="iconPayments/:id" element={<AdminIconPaymentDetail />} />
+            <Route path="premiumPayments/:id" element={<AdminPremiumPaymentDetail />} />
             <Route path="toasts" element={<AdminToastList />} />
-            <Route path="eventtoasts/:id" element={<AdminEventToastDetail />} />
-            <Route path="capsuletoasts/:id" element={<AdminCapsuleToastDetail />} />
+            <Route path="eventToasts/:id" element={<AdminEventToastDetail />} />
+            <Route path="capsuleToasts/:id" element={<AdminCapsuleToastDetail />} />
             <Route path="groups" element={<AdminGroupList />} />
             <Route path="groups/:id" element={<AdminGroupDetail />} />
           </Route>

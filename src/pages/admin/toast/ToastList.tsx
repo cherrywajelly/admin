@@ -1,5 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { ToastType } from '../../types/Enums';
+import { ToastType } from '../../../types/Enums';
 import { Tab, Tabs } from '@mui/material';
 import EventToastList from './EventToastList';
 import CapsuleToastList from './CapsuleToastList';

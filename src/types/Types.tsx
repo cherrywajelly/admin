@@ -253,3 +253,43 @@ export type UserDetailPayment = {
   createdAt: string;
   expiredDate: string;
 };
+
+export type IconPayment = {
+  id: number;
+  itemName: string;
+  itemType: string;
+  nickname: string;
+  createdAt: string;
+};
+
+export type PremiumPayment = {
+  id: number;
+  itemName: string;
+  itemType: string;
+  nickname: string;
+  createdAt: string;
+};
+
+export type IconPaymentDetail = {
+  id: string;
+  nickname: string;
+  itemName: string;
+  itemType: string;
+  amount: number;
+  paymentState: string;
+  expiredDate: string;
+  image: string;
+  createdAt: string;
+};
+
+export type PremiumPaymentDetail = {
+  id: string;
+  nickname: string;
+  itemName: string;
+  itemType: string;
+  amount: number;
+  paymentState: string;
+  expiredDate: string;
+  image: string;
+  createdAt: string;
+};

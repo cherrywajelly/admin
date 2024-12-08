@@ -1,12 +1,12 @@
 import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps } from '../../types/Props';
+import { ContextProps } from '../../../types/Props';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../contexts/Context';
-import { AdminMenu } from '../../types/Enums';
-import { CapsuleToast } from '../../types/Types';
-import ListElem from '../../components/ListElem';
-import Button from '../../components/Button';
-import { getCapsuleToasts } from '../../api/admin/capsuleToast';
+import Context from '../../../contexts/Context';
+import { AdminMenu } from '../../../types/Enums';
+import { CapsuleToast } from '../../../types/Types';
+import ListElem from '../../../components/ListElem';
+import Button from '../../../components/Button';
+import { getCapsuleToasts } from '../../../api/admin/capsuleToast';
 
 const CapsuleToastListPage = (): ReactNode => {
   const navigate = useNavigate();
@@ -15,24 +15,10 @@ const CapsuleToastListPage = (): ReactNode => {
 
   const handleButtonClick = (id: number): void => {
     setSelectedMenu(AdminMenu.TOAST_DETAIL);
-    navigate(`/admin/capsuletoasts/${id}`);
+    navigate(`/admin/capsuleToasts/${id}`);
   };
 
   useEffect((): void => {
-    // setCapsuleToasts([
-    //   {
-    //     id: 1,
-    //     title: 'Title',
-    //     group: 'Group',
-    //     image: '/images/empty.png',
-    //   },
-    //   {
-    //     id: 2,
-    //     title: 'Title',
-    //     group: 'Group',
-    //     image: '/images/empty.png',
-    //   },
-    // ]);
     const fetchCapsuleToastList = async () => {
       const data = await getCapsuleToasts();
       setCapsuleToasts(data);
