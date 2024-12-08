@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { InquiryDetail } from '../../types/Types';
 import Button from '../../components/Button';
 import { getInquiry, putInquiryResolve } from '../../api/admin/inquiry';
-import DetailHeaderSection from '../../sections/DetailHeaderSection';
 
 const InquiryDetailPage = (): ReactNode => {
   const { id } = useParams<string>();
@@ -32,7 +31,6 @@ const InquiryDetailPage = (): ReactNode => {
   return (
     inquiry && (
       <div className="flex flex-col w-full max-w-3xl mx-auto p-6 space-y-6">
-        <DetailHeaderSection title={'문의 상세 조회'} />
         <div className="flex justify-between items-center">
           <h2 className="text-2xl font-bold">{inquiry.title}</h2>
           <div className="flex items-center gap-4">

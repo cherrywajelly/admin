@@ -1,8 +1,5 @@
-import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps } from '../../../types/Props';
+import { ReactNode, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../../contexts/Context';
-import { AdminMenu } from '../../../types/Enums';
 import { CapsuleToast } from '../../../types/Types';
 import ListElem from '../../../components/ListElem';
 import Button from '../../../components/Button';
@@ -10,11 +7,9 @@ import { getCapsuleToasts } from '../../../api/admin/capsuleToast';
 
 const CapsuleToastListPage = (): ReactNode => {
   const navigate = useNavigate();
-  const { setSelectedMenu } = useContext(Context) as ContextProps;
   const [capsuleToasts, setCapsuleToasts] = useState<CapsuleToast[]>([]);
 
   const handleButtonClick = (id: number): void => {
-    setSelectedMenu(AdminMenu.TOAST_DETAIL);
     navigate(`/admin/capsuleToasts/${id}`);
   };
 
