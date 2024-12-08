@@ -4,6 +4,7 @@ import CreatorInfoSection from '../../sections/CreatorInfoSection';
 import IconGroupsSection from '../../sections/IconGroupsSection';
 import { CreatorDetail } from '../../types/Types';
 import { getCreator } from '../../api/admin/creator';
+import DetailHeaderSection from '../../sections/DetailHeaderSection';
 
 const CreatorDetailPage = (): ReactNode => {
   const { id } = useParams();
@@ -23,6 +24,7 @@ const CreatorDetailPage = (): ReactNode => {
   return (
     creatorDetail && (
       <div className="min-h-screen p-8 space-y-8">
+        <DetailHeaderSection title={'제작자 상세 조회'} />
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center space-x-4">
             <img src={creatorDetail.profilePicture} alt="Profile" className="w-24 h-24" />

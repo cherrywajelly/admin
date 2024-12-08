@@ -4,6 +4,7 @@ import { GroupDetail } from '../../types/Types';
 import InfoSection from '../../sections/InfoSection';
 import MemberSection from '../../sections/MembersSection';
 import { getGroup } from '../../api/admin/group';
+import DetailHeaderSection from '../../sections/DetailHeaderSection';
 
 const GroupDetailPage = (): ReactNode => {
   const { id } = useParams();
@@ -23,6 +24,7 @@ const GroupDetailPage = (): ReactNode => {
   return (
     groupDetail && (
       <div className="min-h-screen p-8 space-y-8">
+        <DetailHeaderSection title={'그룹 상세 조회'} />
         <div className="flex flex-row items-center justify-between">
           <div className="flex flex-row items-center space-x-4">
             <img src={groupDetail.image} alt="Profile" className="w-24 h-24" />
