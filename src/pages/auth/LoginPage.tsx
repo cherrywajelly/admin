@@ -31,7 +31,6 @@ const LoginPage = (): ReactNode => {
   };
   
   useEffect(() => {
-    console.log(window.location.host);
     if (window.location.host.includes('creator')) {
       localStorage.setItem('role', 'creator');
     } else if (window.location.host.includes('admin')) {
