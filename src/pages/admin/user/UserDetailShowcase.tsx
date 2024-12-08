@@ -1,8 +1,8 @@
 import { ReactNode, useState, useEffect } from "react";
-import { UserDetailSectionProps } from "../../types/Props";
-import { UserDetailShowcase } from "../../types/Types";
-import { getUserShowcases } from "../../api/admin/user";
-import ListElem from "../../components/ListElem";
+import { UserDetailSectionProps } from "../../../types/Props";
+import { UserDetailShowcase } from "../../../types/Types";
+import { getUserShowcases } from "../../../api/admin/user";
+import ListElem from "../../../components/ListElem";
 
 const UserDetailShowcasePage = (props: UserDetailSectionProps): ReactNode => {
   const { userId } = props;

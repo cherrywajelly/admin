@@ -1,11 +1,11 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { CapsuleToastDetail } from '../../types/Types';
-import InfoSection from '../../sections/InfoSection';
-import PiecesSection from '../../sections/PiecesSection';
-import { getCapsuleToast, putCapsuleToast } from '../../api/admin/capsuleToast';
-import Button from '../../components/Button';
-import TextInput from '../../components/TextInput';
+import { CapsuleToastDetail } from '../../../types/Types';
+import InfoSection from '../../../sections/InfoSection';
+import PiecesSection from '../../../sections/PiecesSection';
+import { getCapsuleToast, putCapsuleToast } from '../../../api/admin/capsuleToast';
+import Button from '../../../components/Button';
+import TextInput from '../../../components/TextInput';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 

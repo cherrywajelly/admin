@@ -17,7 +17,7 @@ export interface RevenueIconDataProps {
   month: number;
   toastsRevenue: number;
   jamsRevenue: number;
-}
+}  
 
 export default function IconRevenueGraph() {
   const currentDate = new Date();

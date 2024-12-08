@@ -1,8 +1,8 @@
 import { ReactNode, useEffect, useState } from "react";
-import { UserDetailSectionProps } from "../../types/Props";
-import { UserDetailFollower } from "../../types/Types";
-import ListElem from "../../components/ListElem";
-import { getUserFollowers } from "../../api/admin/user";
+import { UserDetailSectionProps } from "../../../types/Props";
+import { UserDetailFollower } from "../../../types/Types";
+import ListElem from "../../../components/ListElem";
+import { getUserFollowers } from "../../../api/admin/user";
 
 const UserDetailFollowerPage = (props: UserDetailSectionProps): ReactNode => {
   const { userId } = props;

@@ -1,14 +1,14 @@
 import { ReactNode, useState } from "react";
 import { Tabs, Tab } from "@mui/material";
 import { UserDetailType } from "../types/Enums";
-import UserDetailFollowerPage from "../pages/admin/UserDetailFollower";
-import UserDetailFollowingPage from "../pages/admin/UserDetailFollowing";
-import UserDetailGroupPage from "../pages/admin/UserDetailGroup";
-import UserDetailShowcasePage from "../pages/admin/UserDetailShowcase";
-import UserDetailEventPage from "../pages/admin/UserDetailEvent";
-import UserDetailCapsulePage from "../pages/admin/UserDetailCapsule";
-import UserDetailIconGroupPage from "../pages/admin/UserDetailIconGroup";
-import UserDetailPaymentPage from "../pages/admin/UserDetailPayment";
+import UserDetailFollowerPage from "../pages/admin/user/UserDetailFollower";
+import UserDetailFollowingPage from "../pages/admin/user/UserDetailFollowing";
+import UserDetailGroupPage from "../pages/admin/user/UserDetailGroup";
+import UserDetailShowcasePage from "../pages/admin/user/UserDetailShowcase";
+import UserDetailEventPage from "../pages/admin/user/UserDetailEvent";
+import UserDetailCapsulePage from "../pages/admin/user/UserDetailCapsule";
+import UserDetailIconGroupPage from "../pages/admin/user/UserDetailIconGroup";
+import UserDetailPaymentPage from "../pages/admin/user/UserDetailPayment";
 import { UserDetailSectionProps } from "../types/Props";
 
 const UserDetailSection = (props: UserDetailSectionProps): ReactNode => {

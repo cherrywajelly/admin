@@ -1,12 +1,12 @@
 import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps } from '../../types/Props';
+import { ContextProps } from '../../../types/Props';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../contexts/Context';
-import { AdminMenu } from '../../types/Enums';
-import Button from '../../components/Button';
-import ListElem from '../../components/ListElem';
-import { User } from '../../types/Types';
-import { getUsers } from '../../api/admin/user';
+import Context from '../../../contexts/Context';
+import { AdminMenu } from '../../../types/Enums';
+import Button from '../../../components/Button';
+import ListElem from '../../../components/ListElem';
+import { User } from '../../../types/Types';
+import { getUsers } from '../../../api/admin/user';
 
 const UserListPage = (): ReactNode => {
   const navigate = useNavigate();

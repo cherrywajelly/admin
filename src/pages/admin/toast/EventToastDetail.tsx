@@ -1,11 +1,11 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { EventToastDetail } from '../../types/Types';
-import InfoSection from '../../sections/InfoSection';
-import JamsSection from '../../sections/JamsSection';
-import { getEventToast, putEventToast } from '../../api/admin/eventToast';
-import Button from '../../components/Button';
-import TextInput from '../../components/TextInput';
+import { EventToastDetail } from '../../../types/Types';
+import InfoSection from '../../../sections/InfoSection';
+import JamsSection from '../../../sections/JamsSection';
+import { getEventToast, putEventToast } from '../../../api/admin/eventToast';
+import Button from '../../../components/Button';
+import TextInput from '../../../components/TextInput';
 import Modal from '@mui/material/Modal';
 import Divider from '@mui/material/Divider';
 

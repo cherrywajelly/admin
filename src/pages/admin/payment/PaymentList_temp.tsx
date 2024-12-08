@@ -1,12 +1,12 @@
 import { ReactNode, useContext, useEffect, useState } from 'react';
-import { ContextProps } from '../../types/Props';
+import { ContextProps } from '../../../types/Props';
 import { useNavigate } from 'react-router-dom';
-import Context from '../../contexts/Context';
-import { AdminMenu } from '../../types/Enums';
-import ListElem from '../../components/ListElem';
-import { Payment } from '../../types/Types';
-import Button from '../../components/Button';
-import { getPayments } from '../../api/admin/payment';
+import Context from '../../../contexts/Context';
+import { AdminMenu } from '../../../types/Enums';
+import ListElem from '../../../components/ListElem';
+import { Payment } from '../../../types/Types';
+import Button from '../../../components/Button';
+import { getPayments } from '../../../api/admin/payment';
 
 const PaymentListPage = (): ReactNode => {
   const navigate = useNavigate();

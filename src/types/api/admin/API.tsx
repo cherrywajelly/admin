@@ -113,12 +113,26 @@ export type GroupResponse = {
   }[];
 };
 
-export type PaymentsElemResponse = {
+export type IconPaymentsElemResponse = {
   paymentId: number;
   nickname: string;
   itemName: string;
   itemType: string;
+  amount: number;
+  paymentState: string;
   createdAt: string;
+  expiredDate: string;
+};
+
+export type PremiumPaymentsElemResponse = {
+  paymentId: number;
+  nickname: string;
+  itemName: string;
+  itemType: string;
+  amount: number;
+  paymentState: string;
+  createdAt: string;
+  expiredDate: string;
 };
 
 export type PaymentResponse = {

@@ -1,7 +1,7 @@
 import { ReactNode, useState, useEffect } from "react";
-import { UserDetailSectionProps } from "../../types/Props";
-import { UserDetailPayment } from "../../types/Types";
-import { getUserPayments } from "../../api/admin/user";
+import { UserDetailSectionProps } from "../../../types/Props";
+import { UserDetailPayment } from "../../../types/Types";
+import { getUserPayments } from "../../../api/admin/user";
 
 const UserDetailPaymentPage = (props: UserDetailSectionProps): ReactNode => {
   const { userId } = props;

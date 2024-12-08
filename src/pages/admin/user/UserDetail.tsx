@@ -1,9 +1,9 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import InfoSection from '../../sections/InfoSection';
-import { UserDetail } from '../../types/Types';
-import { getUserDetail } from '../../api/admin/user';
-import UserDetailSection from '../../sections/UserDetailSection';
+import InfoSection from '../../../sections/InfoSection';
+import { UserDetail } from '../../../types/Types';
+import { getUserDetail } from '../../../api/admin/user';
+import UserDetailSection from '../../../sections/UserDetailSection';
 
 const UserDetailPage = (): ReactNode => {
   const { id } = useParams();
