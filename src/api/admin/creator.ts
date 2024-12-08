@@ -44,8 +44,6 @@ export const getCreator = async (creatorId: string): Promise<any> => {
       accountNumber: dataInfo.accountNumber,
     };
 
-    console.log(mappedDataInfo);
-
     const resIcon = await apiRequest(`/api/v3/creators/${creatorId}/iconGroups`);
 
     if (!resIcon.ok) {

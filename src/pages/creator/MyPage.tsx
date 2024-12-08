@@ -18,7 +18,6 @@ const MyPage = (): ReactNode => {
   useEffect(() => {
     const fetchCreatorInfo = async () => {
       const data = await getCreatorInfo();
-      console.log(data);
       setCreatorDetail(data);
     };
 

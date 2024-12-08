@@ -49,7 +49,6 @@ export default function IconRevenueGraph() {
             padding={{ left: 30, right: 30 }}
           />
           <YAxis
-            // domain={[0, 'dataMax + 1000']}
             tickFormatter={(value) => value.toLocaleString()}
           />
           <Tooltip
