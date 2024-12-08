@@ -12,7 +12,6 @@ const JamsSection = (props: JamSectionProps): ReactNode => {
       <Divider sx={{ width: '100%', height: '2px', backgroundColor: '#E9E6E4', marginBottom: '8px' }} />
       {jams.map((jam: Jam, index: number) => (
         <div key={index}>
-          <div className="flex justify-end">{`잼 작성 일자 ${jam.createdAt}`}</div>
           <div className="flex flex-row items-center justify-between p-4 w-full h-28">
             <div className="flex flex-row items-center space-x-4">
               {jam.image && (
@@ -25,6 +24,7 @@ const JamsSection = (props: JamSectionProps): ReactNode => {
                 <p className="text-gray-500">{jam.nickname}</p>
               </div>
             </div>
+            <div className="flex justify-end">{`작성 일자 ${jam.createdAt}`}</div>
           </div>
         </div>  
       ))}

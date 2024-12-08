@@ -1,5 +1,6 @@
 import { apiRequest } from "..";
-import { EventToastResponse, EventToastsElemResponse } from '../../types/api/admin/API';
+import { EventToastRequestBody, EventToastResponse, EventToastsElemResponse } from '../../types/api/admin/API';
+import { EventToastDetail } from "../../types/Types";
 
 export const getEventToasts = async (): Promise<any> => {
   try {
@@ -16,6 +17,9 @@ export const getEventToasts = async (): Promise<any> => {
       title: eventToast.title,
       image: eventToast.iconImageUrl,
       nickname: eventToast.nickname,
+      openDate: eventToast.openedDate,
+      isOpened: eventToast.isOpened,
+      createdAt: eventToast.createdAt,
     }));
 
     return mappedData;
@@ -39,7 +43,7 @@ export const getEventToast = async (eventToastId: string): Promise<any> => {
       image: data.iconImageUrl,
       title: data.title,
       nickname: data.nickname,
-      openedDate: data.openedDate,
+      openDate: data.openedDate,
       isOpened: data.isOpened,
       createdAt: data.createdAt,
       jams: data.jamManagerResponses.map((jam) => ({
@@ -54,5 +58,26 @@ export const getEventToast = async (eventToastId: string): Promise<any> => {
     return mappedData;
   } catch (error) {
     console.error('Failed to get inquiry detail:', error);
+  }
+};
+
+export const putEventToast = async (eventToastId: number, eventToast: EventToastDetail): Promise<any> => {
+  try {
+    const requestBody: EventToastRequestBody = {
+      openedDate: eventToast.openDate,
+      isOpened: eventToast.isOpened,
+    };
+
+    const res = await apiRequest(`/api/v3/eventToasts/${eventToastId}`, 'PUT', requestBody);
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    
+    return data;
+  } catch (error) {
+    console.error('Failed to put event toast:', error);
   }
 };

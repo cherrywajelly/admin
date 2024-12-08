@@ -1,22 +1,25 @@
 import { apiRequest } from "..";
-import { PaymentsElemResponse, PaymentResponse } from '../../types/api/admin/API';
+import { IconPaymentsElemResponse, PaymentResponse } from "../../types/api/admin/API";
 
-export const getPayments = async (page: number, size: number): Promise<any> => {
+export const getIconPayments = async (page: number, size: number): Promise<any> => {
   try {
-    const res = await apiRequest(`/api/v3/payments?page=${page}&size=${size}`);
+    const res = await apiRequest(`/api/v3/payments/icons?page=${page}&size=${size}`);
 
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
 
-    const data: PaymentsElemResponse[] = (await res.json()).paymentsAdminResponses;
+    const data: IconPaymentsElemResponse[] = (await res.json()).paymentsAdminResponses;
 
-    const mappedData = data.map((payment: PaymentsElemResponse) => ({
-      id: payment.paymentId,
-      nickname: payment.nickname,
-      itemName: payment.itemName,
-      itemType: payment.itemType,
-      createdAt: payment.createdAt,
+    const mappedData = data.map((iconPayment: IconPaymentsElemResponse) => ({
+      id: iconPayment.paymentId,
+      nickname: iconPayment.nickname,
+      itemName: iconPayment.itemName,
+      itemType: iconPayment.itemType,
+      amount: iconPayment.amount,
+      paymentState: iconPayment.paymentState,
+      createdAt: iconPayment.createdAt,
+      expiredDate: iconPayment.expiredDate,
     }));
 
     return mappedData;
@@ -25,7 +28,7 @@ export const getPayments = async (page: number, size: number): Promise<any> => {
   }
 };
 
-export const getPayment = async (paymentId: string): Promise<any> => {
+export const getIconPayment = async (paymentId: string): Promise<any> => {
   try {
     const res = await apiRequest(`/api/v3/payments/${paymentId}`);
 

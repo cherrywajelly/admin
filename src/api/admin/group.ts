@@ -15,6 +15,8 @@ export const getGroups = async (): Promise<any> => {
       id: group.teamId,
       title: group.name,
       image: group.teamProfileUrl,
+      memberCount: group.memberCount,
+      createdAt: group.createdAt,
     }));
 
     return mappedData;

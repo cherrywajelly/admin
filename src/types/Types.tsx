@@ -21,6 +21,10 @@ export type IconGroup = {
   title: string;
   headImage: string;
   approvalState: ApprovalState;
+  type: string;
+  orderCount: number;
+  revenue: number;
+  nickname: string;
 };
 
 export type IconGroupDetail = {
@@ -47,6 +51,9 @@ export type Settlement = {
   year: number;
   month: number;
   settlementDate: string;
+  settlement: number;
+  revenue: number;
+  saleCount: number;
 };
 
 export type SettlementDetail = {
@@ -103,6 +110,9 @@ export type EventToast = {
   title: string;
   nickname: string;
   image: string;
+  openDate: string;
+  isOpened: boolean;
+  createdAt: string;
 };
 
 export type EventToastDetail = {
@@ -129,6 +139,11 @@ export type CapsuleToast = {
   title: string;
   group: string;
   image: string;
+  memoDate: string;
+  openDate: string;
+  isOpened: boolean;
+  createdAt: string;
+  toastType: string;
 };
 
 export type CapsuleToastDetail = {
@@ -139,7 +154,7 @@ export type CapsuleToastDetail = {
   memoDate: string;
   openDate: string;
   isOpened: boolean;
-  capsuleToastType: string;
+  toastType: string;
   createdAt: string;
   pieces: Piece[];
 };
@@ -156,6 +171,8 @@ export type Group = {
   id: number;
   title: string;
   image: string;
+  memberCount: number;
+  createdAt: string;
 };
 
 export type GroupDetail = {
@@ -196,4 +213,109 @@ export type User = {
   id: number;
   title: string;
   image: string;
+  email: string;
+  loginType: string;
+  premium: string;
+  role: string;
+};
+
+export type UserDetail = {
+  id: number;
+  title: string;
+  image: string;
+  email: string;
+  loginType: string;
+  premium: string;
+};
+
+export type UserDetailFollower = {
+  nickname: string;
+  image: string;
+};
+
+export type UserDetailFollowing = {
+  nickname: string;
+  image: string;
+};
+
+export type UserDetailGroup = {
+  name: string;
+  image: string;
+};
+
+export type UserDetailShowcase = {
+  title: string;
+  image: string;
+};
+
+export type UserDetailEvent = {
+  title: string;
+  image: string;
+};
+
+export type UserDetailCapsule = {
+  title: string;
+  image: string;
+};
+
+export type UserDetailIconGroup = {
+  name: string;
+  images: string[];
+};
+
+export type UserDetailPayment = {
+  id: number;
+  itemName: string;
+  itemType: string;
+  amount: number;
+  state: string;
+  nickname: string;
+  images: string[];
+  createdAt: string;
+  expiredDate: string;
+};
+
+export type IconPayment = {
+  id: number;
+  itemName: string;
+  itemType: string;
+  nickname: string;
+  createdAt: string;
+  amount: number;
+  paymentState: string;
+};
+
+export type PremiumPayment = {
+  id: number;
+  itemName: string;
+  itemType: string;
+  nickname: string;
+  createdAt: string;
+  amount: number;
+  paymentState: string;
+  expiredDate: string;
+};
+
+export type IconPaymentDetail = {
+  id: string;
+  nickname: string;
+  itemName: string;
+  itemType: string;
+  amount: number;
+  paymentState: string;
+  expiredDate: string;
+  image: string;
+  createdAt: string;
+};
+
+export type PremiumPaymentDetail = {
+  id: string;
+  nickname: string;
+  itemName: string;
+  itemType: string;
+  amount: number;
+  paymentState: string;
+  expiredDate: string;
+  image: string;
+  createdAt: string;
 };

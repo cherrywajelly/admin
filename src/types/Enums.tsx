@@ -20,6 +20,7 @@ export const ApprovalState = {
 export type ApprovalState = (typeof ApprovalState)[keyof typeof ApprovalState];
 
 export const AdminMenu = {
+  DASHBOARD: '대시보드',
   ICON_LIST: '아이콘 목록',
   ICON_DETAIL: '아이콘 상세',
   CREATOR_LIST: '제작자 목록',
@@ -66,3 +67,21 @@ export const ToastType = {
   CAPSULE: '캡슐 토스트',
 } as const;
 export type ToastType = (typeof ToastType)[keyof typeof ToastType];
+
+export const PaymentType = {
+  ICON: '아이콘',
+  PREMIUM: '프리미엄',
+} as const;
+export type PaymentType = (typeof PaymentType)[keyof typeof PaymentType];
+
+export const UserDetailType = {
+  FOLLOWER: '팔로워',
+  FOLLOWING: '팔로잉',
+  GROUP: '소속 그룹',
+  SHOWCASE: '진열장 토스트',
+  EVENT: '이벤트 토스트',
+  CAPSULE: '캡슐 토스트',
+  ICON_GROUP: '아이콘 그룹',
+  PAYMENT: '결제 내역',
+} as const;
+export type UserDetailType = (typeof UserDetailType)[keyof typeof UserDetailType];

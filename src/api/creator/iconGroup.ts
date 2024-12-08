@@ -30,7 +30,6 @@ export const postIconGroup = async ({
 
       if (res.status === 200) {
         alert('아이콘 등록 신청되었습니다.');
-        console.log(res);
         return res;
       }
     })
@@ -55,6 +54,8 @@ export const getIconGroups = async (): Promise<any> => {
       title: iconGroup.iconTitle,
       headImage: iconGroup.iconImageUrl,
       approvalState: toApprovalState(iconGroup.iconState),
+      orderCount: iconGroup.orderCount,
+      revenue: iconGroup.totalRevenue,
     }));
     
     return mappedData;

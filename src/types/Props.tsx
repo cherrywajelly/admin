@@ -38,7 +38,7 @@ export type ListElemProps = {
   background?: string;
   image?: string;
   divider?: boolean;
-  buttons: ReactNode[];
+  buttons?: ReactNode[];
 };
 
 export type IconDetailProps = {
@@ -94,6 +94,9 @@ export type Creator = {
   madeIconNumber: number;
   soldIconNumber: number;
   revenue: number;
+  salesIconCount: number;
+  totalRevenue: number;
+  createdIconCount: number;
   iconGroups: IconGroupDetail[];
 };
 
@@ -163,4 +166,19 @@ export type PieceSectionProps = {
 
 export type MemberSectionProps = {
   members: Member[];
+};
+
+export type UserDetailSectionProps = {
+  userId: string;
+};
+
+export type DetailHeaderSectionProps = {
+  title: string;
+};
+
+export type TableHeaderProps = {
+  headers: {
+    width: string;
+    text: string;
+  }[];
 };

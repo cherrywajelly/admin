@@ -20,7 +20,6 @@ const Header = (): ReactNode => {
       case 'creator':
         const fetchCreatorInfo = async () => {
           const data = await getCreatorInfo();
-          console.log(data);
           setNickname(data.nickname);
         };
     

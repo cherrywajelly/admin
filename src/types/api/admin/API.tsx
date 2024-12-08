@@ -51,6 +51,7 @@ export type IconGroupsElemResponse = {
   thumbnailUrl: string;
   iconType: string;
   iconState: string;
+  nickname: string;
 };
 
 export type IconGroupResponse = {
@@ -75,6 +76,9 @@ export type CreatorsElemResponse = {
   memberId: number;
   profileUrl: string;
   nickname: string;
+  salesIconCount: number;
+  totalRevenue: number;
+  createdIconCount: number;
 };
 
 export type CreatorInfoResponse = {
@@ -100,6 +104,8 @@ export type GroupsElemResponse = {
   teamId: number;
   name: string;
   teamProfileUrl: string;
+  createdAt: string;
+  memberCount: number;
 };
 
 export type GroupResponse = {
@@ -113,12 +119,26 @@ export type GroupResponse = {
   }[];
 };
 
-export type PaymentsElemResponse = {
+export type IconPaymentsElemResponse = {
   paymentId: number;
   nickname: string;
   itemName: string;
   itemType: string;
+  amount: number;
+  paymentState: string;
   createdAt: string;
+  expiredDate: string;
+};
+
+export type PremiumPaymentsElemResponse = {
+  paymentId: number;
+  nickname: string;
+  itemName: string;
+  itemType: string;
+  amount: number;
+  paymentState: string;
+  createdAt: string;
+  expiredDate: string;
 };
 
 export type PaymentResponse = {
@@ -138,6 +158,9 @@ export type EventToastsElemResponse = {
   iconImageUrl: string;
   title: string;
   nickname: string;
+  openedDate: string;
+  isOpened: boolean;
+  createdAt: string;
 };
 
 export type EventToastResponse = {
@@ -162,6 +185,11 @@ export type CapsuleToastsElemResponse = {
   iconImageUrl: string;
   title: string;
   name: string;
+  memorizedDate: string;
+  openedDate: string;
+  isOpened: boolean;
+  giftToastType: string;
+  createdAt: string;
 };
 
 export type CapsuleToastResponse = {
@@ -187,4 +215,76 @@ export type UsersElemResponse = {
   memberId: number;
   nickname: string;
   memberProfileUrl: string;
+  email: string;
+  loginType: string;
+  premiumType: string;
+  memberRole: string;
+};
+
+export type EventToastRequestBody = {
+  openedDate: string;
+  isOpened: boolean;
+};
+
+export type CapsuleToastRequestBody = {
+  memorizedDate: string;
+  openedDate: string;
+  isOpened: boolean;
+};
+
+export type UserDetailResponse = {
+  memberId: number;
+  memberProfileUrl: string;
+  nickname: string;
+  email: string;
+  memberRole: string;
+  loginType: string;
+  premiumType: string;
+};
+
+export type UserDetailFollowerResponse = {
+  followMemberNickname: string;
+  followMemberProfileUrl: string;
+};
+
+export type UserDetailFollowingResponse = {
+  followingMemberNickname: string;
+  followingMemberProfileUrl: string;
+};
+
+export type UserDetailGroupResponse = {
+  teamName: string;
+  teamProfileUrl: string;
+};
+
+export type UserDetailShowcaseResponse = {
+  showcaseName: string;
+  showcaseIconImage: string;
+};
+
+export type UserDetailEventResponse = {
+  eventToastName: string;
+  eventToastIconImage: string;
+};
+
+export type UserDetailCapsuleResponse = {
+  giftToastName: string;
+  giftToastIconImage: string;
+};
+
+export type UserDetailIconGroupResponse = {
+  iconGroupName: string;
+  iconImages: string[];
+};
+
+export type UserDetailPaymentResponse = {
+  amount: number;
+  paymentState: string;
+  orderId: string;
+  itemType: string;
+  itemTypeData: string;
+  createdAt: string;
+  nickname: string;
+  images: string[];
+  expiredDate: string;
 };

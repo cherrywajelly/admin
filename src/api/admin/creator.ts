@@ -16,6 +16,9 @@ export const getCreators = async (): Promise<any> => {
       id: creatorsElem.memberId,
       nickname: creatorsElem.nickname,
       profilePicture: creatorsElem.profileUrl,
+      salesIconCount: creatorsElem.salesIconCount,
+      totalRevenue: creatorsElem.totalRevenue,
+      createdIconCount: creatorsElem.createdIconCount,
     }));
     
     return mappedData;
@@ -40,8 +43,6 @@ export const getCreator = async (creatorId: string): Promise<any> => {
       bankName: BankName[dataInfo.bank as keyof typeof BankName],
       accountNumber: dataInfo.accountNumber,
     };
-
-    console.log(mappedDataInfo);
 
     const resIcon = await apiRequest(`/api/v3/creators/${creatorId}/iconGroups`);
 

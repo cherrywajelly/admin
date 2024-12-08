@@ -1,5 +1,6 @@
 import { apiRequest } from "..";
-import { CapsuleToastResponse, CapsuleToastsElemResponse } from '../../types/api/admin/API';
+import { CapsuleToastRequestBody, CapsuleToastResponse, CapsuleToastsElemResponse } from '../../types/api/admin/API';
+import { CapsuleToastDetail } from "../../types/Types";
 
 export const getCapsuleToasts = async (): Promise<any> => {
   try {
@@ -16,6 +17,11 @@ export const getCapsuleToasts = async (): Promise<any> => {
       title: capsuleToast.title,
       image: capsuleToast.iconImageUrl,
       group: capsuleToast.name,
+      memoDate: capsuleToast.memorizedDate,
+      openDate: capsuleToast.openedDate,
+      isOpened: capsuleToast.isOpened,
+      createdAt: capsuleToast.createdAt,
+      toastType: capsuleToast.giftToastType,
     }));
 
     return mappedData;
@@ -43,6 +49,7 @@ export const getCapsuleToast = async (capsuleToastId: string): Promise<any> => {
       openDate: data.openedDate,
       isOpened: data.isOpened,
       createdAt: data.createdAt,
+      toastType: data.giftToastType,
       pieces: data.toastPieceManagerResponses.map((piece: any) => ({
         id: piece.toastPieceId,
         title: piece.title,
@@ -55,5 +62,27 @@ export const getCapsuleToast = async (capsuleToastId: string): Promise<any> => {
     return mappedData;
   } catch (error) {
     console.error('Failed to get inquiry detail:', error);
+  }
+};
+
+export const putCapsuleToast = async (capsuleToastId: number, capsuleToast: CapsuleToastDetail): Promise<any> => {
+  try {
+    const requestBody: CapsuleToastRequestBody = {
+      memorizedDate: capsuleToast.memoDate,
+      openedDate: capsuleToast.openDate,
+      isOpened: capsuleToast.isOpened,
+    };
+
+    const res = await apiRequest(`/api/v3/giftToasts/${capsuleToastId}`, 'PUT', requestBody);
+
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+    
+    return data;
+  } catch (error) {
+    console.error('Failed to put event toast:', error);
   }
 };

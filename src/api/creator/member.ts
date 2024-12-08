@@ -6,8 +6,6 @@ export const getCreatorInfo = async (): Promise<any> => {
   try {
     const res = await apiRequest('/api/v2/members');
 
-    console.log(res);
-
     if (!res.ok) {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
@@ -37,7 +35,6 @@ export const getCreatorInfo = async (): Promise<any> => {
   }
 };
 
-// 아이콘 제작자 회원가입
 export const postCreatorInfo = async ({
   profile,
   creatorRequest,
@@ -63,12 +60,10 @@ export const postCreatorInfo = async ({
       }
     })
     .catch((err) => {
-      // console.log(err);
       throw err;
     });
 };
 
-// 아이콘 제작자 정보 수정
 export const putCreatorInfo = async ({
   profile,
   creatorRequest,

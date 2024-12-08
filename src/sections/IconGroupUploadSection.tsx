@@ -50,9 +50,6 @@ const IconGroupUploadSection = ({
             multiple
             onChange={(e): void => {
               if (e.target.files) {
-                // const files = Array.from(e.target.files);
-                // const newImageUrls = files.map((file) => URL.createObjectURL(file));
-                // setIconImages([...iconImages, ...newImageUrls]);
                 setIconFiles(Array.from(e.target.files));
               }
             }}

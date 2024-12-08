@@ -6,13 +6,14 @@ import Settlement from '../pages/admin/SettlementList.tsx';
 import SettlementDetail from '../pages/admin/SettlementDetail.tsx';
 import InquiryList from '../pages/admin/InquiryList.tsx';
 import InquiryDetail from '../pages/admin/InquiryDetail.tsx';
-import UserList from '../pages/admin/UserList.tsx';
-import UserDetail from '../pages/admin/UserDetail.tsx';
-import PaymentList from '../pages/admin/PaymentList.tsx';
-import PaymentDetail from '../pages/admin/PaymentDetail.tsx';
-import ToastList from '../pages/admin/ToastList.tsx';
-import EventToastDetail from '../pages/admin/EventToastDetail.tsx';
-import CapsuleToastDetail from '../pages/admin/CapsuleToastDetail.tsx';
+import UserList from '../pages/admin/user/UserList.tsx';
+import UserDetail from '../pages/admin/user/UserDetail.tsx';
+import PaymentList from '../pages/admin/payment/PaymentList.tsx';
+import IconPaymentDetail from '../pages/admin/payment/IconPaymentDetail.tsx';
+import PremiumPaymentDetail from '../pages/admin/payment/PremiumPaymentDetail.tsx';
+import ToastList from '../pages/admin/toast/ToastList.tsx';
+import EventToastDetail from '../pages/admin/toast/EventToastDetail.tsx';
+import CapsuleToastDetail from '../pages/admin/toast/CapsuleToastDetail.tsx';
 import GroupList from '../pages/admin/GroupList.tsx';
 import GroupDetail from '../pages/admin/GroupDetail.tsx';
 
@@ -28,7 +29,8 @@ export {
   UserList as AdminUserList,
   UserDetail as AdminUserDetail,
   PaymentList as AdminPaymentList,
-  PaymentDetail as AdminPaymentDetail,
+  IconPaymentDetail as AdminIconPaymentDetail,
+  PremiumPaymentDetail as AdminPremiumPaymentDetail,
   ToastList as AdminToastList,
   EventToastDetail as AdminEventToastDetail,
   CapsuleToastDetail as AdminCapsuleToastDetail,
