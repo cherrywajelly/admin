@@ -3,12 +3,8 @@ import { SocialLoginButtonProps } from '../types/Props';
 import { getEnv } from '../utils/utils';
 
 const getAuthURL = (social: string, role: string): string => {
-  console.log(`social: ${social}`);
-  console.log(`role: ${role}`);
   const clientId = getEnv(`VITE_${social.toUpperCase()}_CLIENT_ID`);
   const redirectUri = getEnv(`VITE_${role.toUpperCase()}_${social.toUpperCase()}_REDIRECT_URI`);
-  console.log(`clientId: ${clientId}`);
-  console.log(`redirectUri: ${redirectUri}`);
 
   let authURL: string = '';
   switch (social) {
@@ -25,9 +21,6 @@ const getAuthURL = (social: string, role: string): string => {
 
 const SocialLoginButton = (props: SocialLoginButtonProps): ReactNode => {
   const { social, role, styles, icon, text } = props;
-
-  console.log(`social in props: ${social}`);
-  console.log(`role in props: ${role}`);
 
   const handleSocialLogin = (): void => {
     window.location.href = getAuthURL(social, role);

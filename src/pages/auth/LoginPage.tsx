@@ -5,17 +5,30 @@ import SocialLoginButton from '../../components/SocialLoginButton';
 const LoginPage = (): ReactNode => {
   const [isCreatorClicked, setIsCreatorClicked] = useState<boolean>(false);
   const [isAdminClicked, setIsAdminClicked] = useState<boolean>(false);
+  const [role, setRole] = useState<string>('');
+
+  useEffect(() => {
+    if (window.location.host.includes('creator')) {
+      localStorage.setItem('role', 'creator');
+      setRole('creator');
+    } else if (window.location.host.includes('admin')) {
+      localStorage.setItem('role', 'admin');
+      setRole('admin');
+    }
+  }, []);
 
   const handleCreatorClick = (): void => {
     setIsAdminClicked(false);
     if (isCreatorClicked) {
       setIsCreatorClicked(false);
       localStorage.removeItem('role');
+      setRole('');
       return;
     }
 
     setIsCreatorClicked(true);
     localStorage.setItem('role', 'creator');
+    setRole('creator');
   };
   
   const handleAdminClick = (): void => {
@@ -23,21 +36,15 @@ const LoginPage = (): ReactNode => {
     if (isAdminClicked) {
       setIsAdminClicked(false);
       localStorage.removeItem('role');
+      setRole('');
       return;
     }
 
     setIsAdminClicked(true);
     localStorage.setItem('role', 'admin');
+    setRole('admin');
   };
   
-  useEffect(() => {
-    if (window.location.host.includes('creator')) {
-      localStorage.setItem('role', 'creator');
-    } else if (window.location.host.includes('admin')) {
-      localStorage.setItem('role', 'admin');
-    }
-  }, []);
-
   return (
     <div className="flex flex-row items-center justify-center min-h-screen space-x-14">
       <img src="/images/timetoast.png" alt="timetoast" className="max-w-md" />
@@ -59,14 +66,14 @@ const LoginPage = (): ReactNode => {
         )}
         <SocialLoginButton
           social="kakao"
-          role={localStorage.getItem('role') || ''}
+          role={role}
           styles="bg-[#FEE500] border-none"
           icon="/images/kakao.svg"
           text="카카오로 시작하기"
         />
         <SocialLoginButton
           social="google"
-          role={localStorage.getItem('role') || ''}
+          role={role}
           styles="bg-white border border-gray-300"
           icon="/images/google.svg"
           text="구글 계정으로 시작하기"
