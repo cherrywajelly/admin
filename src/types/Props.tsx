@@ -94,6 +94,9 @@ export type Creator = {
   madeIconNumber: number;
   soldIconNumber: number;
   revenue: number;
+  salesIconCount: number;
+  totalRevenue: number;
+  createdIconCount: number;
   iconGroups: IconGroupDetail[];
 };
 
@@ -171,4 +174,11 @@ export type UserDetailSectionProps = {
 
 export type DetailHeaderSectionProps = {
   title: string;
+};
+
+export type TableHeaderProps = {
+  headers: {
+    width: string;
+    text: string;
+  }[];
 };

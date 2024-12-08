@@ -51,6 +51,7 @@ export type IconGroupsElemResponse = {
   thumbnailUrl: string;
   iconType: string;
   iconState: string;
+  nickname: string;
 };
 
 export type IconGroupResponse = {
@@ -75,6 +76,9 @@ export type CreatorsElemResponse = {
   memberId: number;
   profileUrl: string;
   nickname: string;
+  salesIconCount: number;
+  totalRevenue: number;
+  createdIconCount: number;
 };
 
 export type CreatorInfoResponse = {
@@ -100,6 +104,8 @@ export type GroupsElemResponse = {
   teamId: number;
   name: string;
   teamProfileUrl: string;
+  createdAt: string;
+  memberCount: number;
 };
 
 export type GroupResponse = {
@@ -152,6 +158,9 @@ export type EventToastsElemResponse = {
   iconImageUrl: string;
   title: string;
   nickname: string;
+  openedDate: string;
+  isOpened: boolean;
+  createdAt: string;
 };
 
 export type EventToastResponse = {
@@ -176,6 +185,11 @@ export type CapsuleToastsElemResponse = {
   iconImageUrl: string;
   title: string;
   name: string;
+  memorizedDate: string;
+  openedDate: string;
+  isOpened: boolean;
+  giftToastType: string;
+  createdAt: string;
 };
 
 export type CapsuleToastResponse = {
@@ -201,6 +215,10 @@ export type UsersElemResponse = {
   memberId: number;
   nickname: string;
   memberProfileUrl: string;
+  email: string;
+  loginType: string;
+  premiumType: string;
+  memberRole: string;
 };
 
 export type EventToastRequestBody = {

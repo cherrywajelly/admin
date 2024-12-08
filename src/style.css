@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.Mui-selected {
+  color: #A37D64 !important;
+}
+
+/* 탭 인디케이터 색상 변경 */
+.MuiTabs-indicator {
+  background-color: #A37D64 !important;
+}
