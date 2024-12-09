@@ -3,7 +3,7 @@ import CreatorSection from '../../sections/CreatorInfoSection';
 import Button from '../../components/Button';
 import { useNavigate } from 'react-router-dom';
 import { CreatorMember } from '../../types/Types';
-import { getCreatorInfo } from '../../api/creator/member';
+import { deleteWithdrawal, getCreatorInfo } from '../../api/creator/member';
 import IconGroupsSection from '../../sections/IconGroupsSection';
 
 const MyPage = (): ReactNode => {
@@ -24,6 +24,17 @@ const MyPage = (): ReactNode => {
     fetchCreatorInfo();
   }, []);
 
+  const handleWithdrawal = () => {
+    deleteWithdrawal()
+      .then((res) => {
+        console.log(res);
+        alert('제작자 탈퇴 완료');
+        navigate('/login');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     creatorDetail && (
       <div className="min-h-screen p-8 space-y-8">
@@ -33,8 +44,15 @@ const MyPage = (): ReactNode => {
             <div className="flex flex-col justify-center">
               <h1 className="text-2xl font-bold">{creatorDetail.nickname}</h1>
             </div>
+            <button
+              onClick={handleWithdrawal}
+              className="text-navigation1 border py-2 px-4 rounded-[10px]"
+            >
+              탈퇴하기
+            </button>
           </div>
-          <div className="flex flex-row items-center space-x-4">
+
+          <div className="flex flex-col items-center gap-4 space-x-4">
             <Button text="수정하기" onClick={handleAccountModification} />
           </div>
         </div>
