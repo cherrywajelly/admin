@@ -23,12 +23,14 @@ export const getCreatorInfo = async (): Promise<any> => {
       soldIconNumber: data.selledIconCount,
       revenue: data.revenue,
       settlement: data.settlement,
-      iconGroups: data.iconGroupOrderedResponses.iconGroupOrderedResponses.map((iconGroup: any) => ({
-        title: iconGroup.iconName,
-        salesCount: iconGroup.orderCount,
-        revenue: iconGroup.income,
-        iconImageUrl: iconGroup.iconImageUrl,
-      })),
+      iconGroups: data.iconGroupOrderedResponses.iconGroupOrderedResponses.map(
+        (iconGroup: any) => ({
+          title: iconGroup.iconName,
+          salesCount: iconGroup.orderCount,
+          revenue: iconGroup.income,
+          iconImageUrl: iconGroup.iconImageUrl,
+        })
+      ),
     };
 
     return mappedData;
@@ -101,7 +103,7 @@ export const putCreatorInfo = async ({
 export const getNicknameCheck = async (nickname: string): Promise<boolean> => {
   try {
     const res = await apiRequest(`/api/v2/members/nickname-validation?nickname=${nickname}`);
-    
+
     if (res.ok) {
       alert('사용 가능한 닉네임입니다.');
       return true;
@@ -113,4 +115,22 @@ export const getNicknameCheck = async (nickname: string): Promise<boolean> => {
     alert('이미 존재하는 닉네임입니다.');
     return false;
   }
+};
+
+// 아이콘 제작자 탈퇴
+export const deleteWithdrawal = async () => {
+  await apiRequest(`/api/v2/withdrawal`, 'DELETE')
+    .then((res) => {
+      if (res.status === 500) {
+        throw new Error('Internal Server Error');
+      }
+
+      if (res.status === 200) {
+        return res;
+      }
+    })
+    .catch((err) => {
+      // console.log(err);
+      throw err;
+    });
 };
