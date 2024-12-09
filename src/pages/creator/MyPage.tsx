@@ -35,6 +35,7 @@ const MyPage = (): ReactNode => {
       .then((res) => {
         console.log(res);
         alert('제작자 탈퇴 완료');
+        navigate('/login');
       })
       .catch((err) => {
         console.log(err);
